@@ -628,7 +628,6 @@
 		84A1A6B8166CF87B002D4491 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		B857D1BD1672084C00B8DC54 /* MainLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainLayer.h; path = Classes/MainLayer.h; sourceTree = "<group>"; };
 		B857D1BE1672084C00B8DC54 /* MainLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainLayer.m; path = Classes/MainLayer.m; sourceTree = "<group>"; };
-		B857D1C116720D1400B8DC54 /* VCTest3Protocal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCTest3Protocal.h; path = Test3D/VCTest3Protocal.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -654,7 +653,6 @@
 		84A1A423166CF138002D4491 = {
 			isa = PBXGroup;
 			children = (
-				B857D1C116720D1400B8DC54 /* VCTest3Protocal.h */,
 				84A1A6B5166CF6D3002D4491 /* VCTest3.h */,
 				84A1A6B6166CF6D3002D4491 /* VCTest3.m */,
 				84A1A6B2166CF5DE002D4491 /* HelloViewController.h */,

@@ -13,8 +13,11 @@
 #import "CC3Camera.h"
 #import "CC3Light.h"
 #import "CCRenderTexture.h"
+#import "CCTouchDispatcher.h"
+#import "CGPointExtension.h"
 
 @implementation Test3DScene
+@synthesize iEditMode;
 
 -(void) dealloc {
 	[super dealloc];
@@ -38,13 +41,15 @@
 
 	// Create the camera, place it back a bit, and add it to the scene
 	CC3Camera* cam = [CC3Camera nodeWithName: @"Camera"];
-	cam.location = cc3v( 0.0, 0.0, 6.0 );
+	//cam.location = cc3v( 0.0, 5.0, 5.0 );
+    //cam.rotation = cc3v(-45.0, 0.0, 0.0);
+    cam.location = cc3v(0.0, 0.0, 10.0);
 	[self addChild: cam];
 
 	// Create a light, place it back and to the left at a specific
 	// position (not just directional lighting), and add it to the scene
 	CC3Light* lamp = [CC3Light nodeWithName: @"Lamp"];
-	lamp.location = cc3v( -2.0, 0.0, 0.0 );
+	lamp.location = cc3v( -6.0, 0.0, 0.0 );
 	lamp.isDirectionalOnly = NO;
 	[cam addChild: lamp];
 
@@ -57,57 +62,9 @@
 	[self createGLBuffers];
 	[self releaseRedundantData];
 	
-	// That's it! The scene is now constructed and is good to go.
-	
-	// If you encounter problems displaying your models, you can uncomment one or
-	// more of the following lines to help you troubleshoot. You can also use these
-	// features on a single node, or a structure of nodes. See the CC3Node notes.
-	
-	// Displays short descriptive text for each node (including class, node name & tag).
-	// The text is displayed centered on the pivot point (origin) of the node.
-//	self.shouldDrawAllDescriptors = YES;
-	
-	// Displays bounding boxes around those nodes with local content (eg- meshes).
-//	self.shouldDrawAllLocalContentWireframeBoxes = YES;
-	
-	// Displays bounding boxes around all nodes. The bounding box for each node
-	// will encompass its child nodes.
-//	self.shouldDrawAllWireframeBoxes = YES;
-	
-	// Moves the camera so that it will display the entire scene.
-//	[self.activeCamera moveWithDuration: 3.0 toShowAllOf: self];
-	
-	// If you encounter issues creating and adding nodes, or loading models from
-	// files, the following line is used to log the full structure of the scene.
-	LogCleanDebug(@"The structure of this scene is: %@", [self structureDescription]);
-	
-	// ------------------------------------------
-
-	// But to add some dynamism, we'll animate the 'hello, world' message
-	// using a couple of cocos2d actions...
-	
-	// Fetch the 'hello, world' 3D text object that was loaded from the
-	// POD file and start it rotating
 	CC3MeshNode* helloTxt = (CC3MeshNode*)[self getNodeNamed: @"Hello"];
-	CCActionInterval* partialRot = [CC3RotateBy actionWithDuration: 1.0
-														  rotateBy: cc3v(30.0, 0.0, 0.0)];
-	[helloTxt runAction: [CCRepeatForever actionWithAction: partialRot]];
-	
-	// To make things a bit more appealing, set up a repeating up/down cycle to
-	// change the color of the text from the original red to blue, and back again.
-	GLfloat tintTime = 8.0f;
-	ccColor3B startColor = helloTxt.color;
-	ccColor3B endColor = { 50, 0, 200 };
-	CCActionInterval* tintDown = [CCTintTo actionWithDuration: tintTime
-														  red: endColor.r
-														green: endColor.g
-														 blue: endColor.b];
-	CCActionInterval* tintUp = [CCTintTo actionWithDuration: tintTime
-														red: startColor.r
-													  green: startColor.g
-													   blue: startColor.b];
-	 CCActionInterval* tintCycle = [CCSequence actionOne: tintDown two: tintUp];
-	[helloTxt runAction: [CCRepeatForever actionWithAction: tintCycle]];
+    mainNode = helloTxt;
+    mainNode.isTouchEnabled = YES;
     
 }
 
@@ -152,10 +109,10 @@
 	// Uncomment this line to have the camera move to show the entire scene.
 	// This must be done after the CC3Layer has been attached to the view,
 	// because this makes use of the camera frustum and projection.
-	[self.activeCamera moveWithDuration: 3.0 toShowAllOf: self];
+	//[self.activeCamera moveWithDuration: 3.0 toShowAllOf: self];
 
 	// Uncomment this line to draw the bounding box of the scene.
-	self.shouldDrawWireframeBox = YES;
+	self.shouldDrawWireframeBox = NO;
 }
 
 /**
@@ -183,7 +140,139 @@
  * For more info, read the notes of this method on CC3Scene.
  */
 -(void) touchEvent: (uint) touchType at: (CGPoint) touchPoint {
-    NSLog(@"touch point X:%f Y:%f", touchPoint.x, touchPoint.y);
+    switch (touchType) {
+		case kCCTouchBegan:
+            [self pickNodeFromTouchEvent: touchType at: touchPoint];
+			break;
+		case kCCTouchMoved:
+            switch (iEditMode) {
+                case EMode3DTransfer:
+                    [self transferMainNodeFromSwipeAt: touchPoint];
+                    break;
+                case EMode3DRotate:
+                    [self rotateMainNodeFromSwipeAt: touchPoint];
+                    break;
+                case EMode3DZDepth:
+                    [self zdepthNodeFromSwipeAt:touchPoint];
+                    break;
+                case EMode3DScale:
+                    [self scaleNodeFromSwipeAt:touchPoint];
+                    break;
+                default:
+                    break;
+            }
+			break;
+		case kCCTouchEnded:
+			break;
+		default:
+			break;
+	}
+	
+	// For all event types, remember where the touchpoint was, for subsequent events.
+	lastTouchEventPoint = touchPoint;
+}
+
+/** Set this parameter to adjust the rate of rotation from the length of touch-move swipe. */
+#define kSwipeScale 0.6
+
+/**
+ * 旋轉
+ * Rotates the die cube, by determining the direction of each touch move event.
+ *
+ * The touch-move swipe is measured in 2D screen coordinates, which are mapped to
+ * 3D coordinates by recognizing that the screen's X-coordinate maps to the camera's
+ * rightDirection vector, and the screen's Y-coordinates maps to the camera's upDirection.
+ *
+ * The cube rotates around an axis perpendicular to the swipe. The rotation angle is
+ * determined by the length of the touch-move swipe.
+ *
+ * To allow freewheeling after the finger is lifted, we set the spin speed and spin axis
+ * in the die cube. We indicate for now that the cube is not freewheeling.
+ */
+-(void) rotateMainNodeFromSwipeAt: (CGPoint) touchPoint {
+	
+	CC3Camera* cam = self.activeCamera;
+	
+	// Get the direction and length of the movement since the last touch move event, in
+	// 2D screen coordinates. The 2D rotation axis is perpendicular to this movement.
+	CGPoint swipe2d = ccpSub(touchPoint, lastTouchEventPoint);
+	CGPoint axis2d = ccpPerp(swipe2d);
+	
+	// Project the 2D axis into a 3D axis by mapping the 2D X & Y screen coords
+	// to the camera's rightDirection and upDirection, respectively.
+	CC3Vector axis = CC3VectorAdd(CC3VectorScaleUniform(cam.rightDirection, axis2d.x),
+								  CC3VectorScaleUniform(cam.upDirection, axis2d.y));
+	GLfloat angle = ccpLength(swipe2d) * kSwipeScale;
+	
+	// Rotate the cube under direct finger control, by directly rotating by the angle
+	// and axis determined by the swipe. If the die cube is just to be directly controlled
+	// by finger movement, and is not to freewheel, this is all we have to do.
+	[mainNode rotateByAngle: angle aroundAxis: axis];
+}
+/** Set this parameter to adjust the rate of rotation from the length of touch-move swipe. */
+#define kTransferScale 0.01
+/**
+ *移動
+ */
+-(void) transferMainNodeFromSwipeAt: (CGPoint) touchPoint {
+    CC3Camera* cam = self.activeCamera;
+	
+	// Get the direction and length of the movement since the last touch move event, in
+	// 2D screen coordinates. The 2D rotation axis is perpendicular to this movement.
+	CGPoint swipe2d = ccpSub(touchPoint, lastTouchEventPoint);
+	swipe2d.x = kTransferScale * swipe2d.x;
+    swipe2d.y = kTransferScale * swipe2d.y;
+    
+
+    CC3Vector axis = CC3VectorAdd(CC3VectorScaleUniform(cam.rightDirection, swipe2d.x),
+								  CC3VectorScaleUniform(cam.upDirection, swipe2d.y));
+	
+	// Rotate the cube under direct finger control, by directly rotating by the angle
+	// and axis determined by the swipe. If the die cube is just to be directly controlled
+	// by finger movement, and is not to freewheel, this is all we have to do.
+    //[mainNode rotateByAngle: angle aroundAxis: axis];
+    [mainNode setLocation:CC3VectorAdd(mainNode.location, axis)];
+}
+
+/**
+ *深度
+ */
+-(void) zdepthNodeFromSwipeAt: (CGPoint) touchPoint {
+    CC3Camera* cam = self.activeCamera;
+	
+	// Get the direction and length of the movement since the last touch move event, in
+	// 2D screen coordinates. The 2D rotation axis is perpendicular to this movement.
+	CGPoint swipe2d = ccpSub(touchPoint, lastTouchEventPoint);
+    swipe2d.y = kTransferScale * swipe2d.y;
+    
+    
+    CC3Vector axis = CC3VectorAdd(CC3VectorMake(0, 0, 0),
+								  CC3VectorScaleUniform(cam.forwardDirection, swipe2d.y));
+	
+	// Rotate the cube under direct finger control, by directly rotating by the angle
+	// and axis determined by the swipe. If the die cube is just to be directly controlled
+	// by finger movement, and is not to freewheel, this is all we have to do.
+    //[mainNode rotateByAngle: angle aroundAxis: axis];
+    [mainNode setLocation:CC3VectorAdd(mainNode.location, axis)];
+}
+
+/**
+ *縮放
+ */
+-(void) scaleNodeFromSwipeAt: (CGPoint) touchPoint {
+    CC3Camera* cam = self.activeCamera;
+	
+	// Get the direction and length of the movement since the last touch move event, in
+	// 2D screen coordinates. The 2D rotation axis is perpendicular to this movement.
+	CGPoint swipe2d = ccpSub(touchPoint, lastTouchEventPoint);
+    swipe2d.y = kTransferScale * swipe2d.y;
+    swipe2d.x = kTransferScale * swipe2d.x;
+    
+    
+    CC3Vector axis = CC3VectorAdd(CC3VectorScaleUniform(cam.rightDirection, swipe2d.x),
+								  CC3VectorScaleUniform(cam.upDirection, swipe2d.y));
+	
+    [mainNode setScale:CC3VectorAdd(mainNode.scale, axis)];
 }
 
 /**
@@ -195,8 +284,16 @@
  *
  * For more info, read the notes of this method on CC3Scene.
  */
+// Tint the node to cyan and back again to provide user feedback to touch
 -(void) nodeSelected: (CC3Node*) aNode byTouchEvent: (uint) touchType at: (CGPoint) touchPoint {
+	LogCleanInfo(@"You selected %@ at %@, or %@ in 2D.", aNode,
+				 NSStringFromCC3Vector(aNode ? aNode.globalLocation : kCC3VectorZero),
+				 NSStringFromCC3Vector(aNode ? [activeCamera projectNode: aNode] : kCC3VectorZero));
+	CCActionInterval* tintUp = [CC3TintEmissionTo actionWithDuration: 0.2f colorTo: kCCC4FCyan];
+	CCActionInterval* tintDown = [CC3TintEmissionTo actionWithDuration: 0.5f colorTo: kCCC4FBlack];
+	[aNode runAction: [CCSequence actionOne: tintUp two: tintDown]];
     
+    mainNode = aNode;
 }
 
 @end

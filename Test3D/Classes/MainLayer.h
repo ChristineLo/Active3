@@ -14,6 +14,9 @@
 @interface MainLayer : CCLayer
 {
     CC3Layer* tileLayer;
+    CCMenu *cm3DMenu;
+    CCMenu *cmDrawMenu;
+    CCMenu *cmSwitchMenu;
 }
 -(CC3Scene*) makeScene;
 -(void) takeScreenShot;

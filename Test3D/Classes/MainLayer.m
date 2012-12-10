@@ -8,7 +8,7 @@
 
 #import "MainLayer.h"
 
-#define kNextBtnImageName 
+#define kSnapShopImageName @"Documents/Active3.jpg"
 
 @implementation MainLayer
 /**
@@ -25,19 +25,10 @@
     if (self = [super init]) {
         tileLayer = [Test3DLayer layerWithColor: ccc4(255, 255, 255, 255)];
         tileLayer.cc3Scene = [self makeScene];
-        //tileLayer.position = ccp(0, 200);
-        //tileLayer.contentSize = CGSizeMake(768, 824);
         [self addChild: tileLayer];
-        
-        //self.isTouchEnabled = YES;
         [self initializeControls];
     }
     return self;
-}
-
--(void) ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    NSLog(@"cclayer touch begin");
 }
 
 -(void) initializeControls {
@@ -47,7 +38,8 @@
 	[[CCDirector sharedDirector] setDepthTest: NO];
     
     [self addButtons];
-    [self addLabel];
+    //[self addLabel];
+    [self scheduleUpdate];
 }
 
 -(void) dealloc {
@@ -57,29 +49,57 @@
  * UI 物件
  */
 -(void) addButtons {
-    CCMenuItem *next = [CCMenuItemImage itemFromNormalImage:@"Icon-Small-50.png" selectedImage:@"Icon-Small-50.png" target:self selector:@selector(saveScreenShotSelected:)];
-    next.position = ccp(100, 100);
     
-    CCMenu *viewMenu = [CCMenu menuWithItems:next, nil];
-    [self addChild:viewMenu];
+    
+    
+    
+    CCMenuItemFont *menu1 = [CCMenuItemFont  itemFromString:@"平移" target:self selector:@selector(editModeSelected:)];
+    menu1.tag = EMode3DTransfer;
+    CCMenuItemFont *menu2 = [CCMenuItemFont  itemFromString:@"旋轉" target:self selector:@selector(editModeSelected:)];
+    menu2.tag = EMode3DRotate;
+    CCMenuItemFont *menu3 = [CCMenuItemFont  itemFromString:@"深度" target:self selector:@selector(editModeSelected:)];
+    menu3.tag = EMode3DZDepth;
+    CCMenuItemFont *menu4 = [CCMenuItemFont  itemFromString:@"縮放" target:self selector:@selector(editModeSelected:)];
+    menu4.tag = EMode3DScale;
+    /*
+    CCMenuItem *menu1 = [CCMenuItemImage itemFromNormalImage:@"Icon-Small-50.png" selectedImage:@"Icon-Small-50.png" target:self selector:@selector(saveScreenShotSelected:)];
+    CCMenuItem *menu2 = [CCMenuItemImage itemFromNormalImage:@"Icon-Small-50.png" selectedImage:@"Icon-Small-50.png" target:self selector:@selector(saveScreenShotSelected:)];
+    CCMenuItem *menu3 = [CCMenuItemImage itemFromNormalImage:@"Icon-Small-50.png" selectedImage:@"Icon-Small-50.png" target:self selector:@selector(saveScreenShotSelected:)];
+    */
+    CCMenu *view3DMenu = [CCMenu menuWithItems:menu1, menu2, menu3, menu4,nil];
+    [view3DMenu alignItemsHorizontallyWithPadding:10.0];
+    [view3DMenu setPosition:ccp(view3DMenu.boundingBox.size.width/2, 800)];
+    [view3DMenu setColor:ccc3(0, 0, 0)];
+    [self addChild:view3DMenu];
 }
 
 -(void) addLabel {
-	CCLabelTTF *label = [CCLabelTTF labelWithString:@"Tiles per side: 88" fontName:@"Arial" fontSize: 22];
-	label.anchorPoint = ccp(1.0, 0.0);		// Alight bottom-right
-    label.color = ccc3(255, 0, 0);
-    label.position = ccp(500, 970);
-	[self addChild: label z: 10];			// Draw on top
+    NSString *sActive3Cnt = @"        這裡有一些圖形，現在要請你想出一幅完整的圖畫或是一件新發明，讓它包含下列所有的圖形。\n        你可以將這些圖形轉方向、擴大、縮小或是將幾個圖形組合成一個圖形，但是必須符合這些圖形原來的形狀；除了這些圖形之外，可以加上其他的東西；\n        請你儘量想出別人想不到的圖案、故事或發明，畫完之後幫它取一個名字或下一個標題，寫在底下畫線的地方。同樣的，也請你想出一個特別的標題，讓圖畫變得更有意思，（請你根據下面的圖形，將你要畫的圖案或物品，畫在下一頁的空白處，注意：不能改變下列圖形原有的形狀，並且每個圖形只能出現一次）。（十分鐘）";
+    
+	CCLabelTTF *clTaitle = [CCLabelTTF labelWithString:@"活動三" fontName:@"Arial" fontSize: 32];
+    clTaitle.color = ccc3(0, 0, 0);
+    clTaitle.position = ccp(384, 1024 - 30);
+	[self addChild: clTaitle z: 10];			// Draw on top
+    
+    CCLabelTTF *clContent = [CCLabelTTF labelWithString:sActive3Cnt dimensions:CGSizeMake(740, 300) alignment:NSTextAlignmentLeft lineBreakMode:NSLineBreakByCharWrapping fontName:@"Arial" fontSize:16];
+    clContent.anchorPoint = ccp(0.5, 1);
+    clContent.color = ccc3(0, 0, 0);
+    clContent.position = ccp(384, clTaitle.position.y - 25);
+	[self addChild: clContent z: 10];			// Draw on top
 }
 
 /**
  * 按鈕動作
  */
 -(void) saveScreenShotSelected: (CCMenuItemToggle*) menuItem {
-    //[self takeScreenShot];
-    NSLog(@"click");
+    [self takeScreenShot];
 }
 
+-(void) editModeSelected: (CCMenuItemToggle*) menuItem {
+    Test3DScene *tileScene = (Test3DScene*)tileLayer.cc3Scene;
+    tileScene.iEditMode = menuItem.tag;
+    NSLog(@"main layer click, EditMode:%d",menuItem.tag);
+}
 #pragma mark Updating
 -(void) update: (ccTime)dt {
     [tileLayer update: dt];
@@ -168,7 +188,7 @@
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     //儲存圖片
     if (image) {
-        NSString *path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Test.jpg"];
+        NSString *path = [NSHomeDirectory() stringByAppendingPathComponent:kSnapShopImageName];
         [UIImageJPEGRepresentation(image, 1.0) writeToFile:path atomically:YES];
         NSLog(@"%@",path);
     }
