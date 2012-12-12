@@ -9,6 +9,7 @@
 #import "MainLayer.h"
 
 #define kSnapShopImageName @"Documents/Active3.jpg"
+#define kMenuPosY 780
 
 @implementation MainLayer
 /**
@@ -23,9 +24,16 @@
 
 -(id) init {
     if (self = [super init]) {
-        tileLayer = [Test3DLayer layerWithColor: ccc4(255, 255, 255, 255)];
+        CCLayerColor *backGround = [CCLayerColor layerWithColor:ccc4(255, 255, 255, 255)];
+        [self addChild:backGround];
+        
+        drawLayer = [[DrawCanvasLayer alloc] init];
+        [self addChild:drawLayer];
+        
+        tileLayer = [Test3DLayer layerWithColor: ccc4(0, 0, 0, 0)];
         tileLayer.cc3Scene = [self makeScene];
         [self addChild: tileLayer];
+        
         [self initializeControls];
     }
     return self;
@@ -38,6 +46,10 @@
 	[[CCDirector sharedDirector] setDepthTest: NO];
     
     [self addButtons];
+    cm3DMenu.visible = NO;
+    cmDrawMenu.visible = !cm3DMenu.visible;
+    tileLayer.isTouchEnabled = NO;
+    drawLayer.isTouchEnabled = !tileLayer.isTouchEnabled;
     //[self addLabel];
     [self scheduleUpdate];
 }
@@ -49,10 +61,30 @@
  * UI 物件
  */
 -(void) addButtons {
+    //切換與截圖
+    CCMenuItemFont *menu8 = [CCMenuItemFont  itemFromString:@"儲存" target:self selector:@selector(saveScreenShotSelected:)];
+    CCMenuItemFont *menu7 = [CCMenuItemFont  itemFromString:@"3D" target:self selector:@selector(switchEditStateSelected:)];
+    [menu7 setContentSize:menu8.boundingBox.size];
     
+    cmSwitchMenu = [CCMenu menuWithItems:menu7, menu8, nil];
+    [cmSwitchMenu alignItemsHorizontallyWithPadding:10.0f];
+    [cmSwitchMenu setPosition:ccp(680, kMenuPosY)];
+    [cmSwitchMenu setColor:ccBLACK];
+    [self addChild:cmSwitchMenu];
     
+    //繪圖
+    CCMenuItemFont *menu6 = [CCMenuItemFont  itemFromString:@"橡皮擦" target:self selector:@selector(drawModeSelected:)];
+    [menu6 setTag:EModeDrawEraser];
+    CCMenuItemFont *menu5 = [CCMenuItemFont  itemFromString:@"畫筆" target:self selector:@selector(drawModeSelected:)];
+    [menu5 setTag:EModeDrawPen];
+    [menu5 setContentSize:menu6.boundingBox.size];
+    cmDrawMenu = [CCMenu menuWithItems:menu5, menu6, nil];
+    [cmDrawMenu alignItemsHorizontallyWithPadding:10.0f];
+    [cmDrawMenu setPosition:ccp(120, kMenuPosY)];
+    [cmDrawMenu setColor:ccBLACK];
+    [self addChild:cmDrawMenu];
     
-    
+    //3D模型控制
     CCMenuItemFont *menu1 = [CCMenuItemFont  itemFromString:@"平移" target:self selector:@selector(editModeSelected:)];
     menu1.tag = EMode3DTransfer;
     CCMenuItemFont *menu2 = [CCMenuItemFont  itemFromString:@"旋轉" target:self selector:@selector(editModeSelected:)];
@@ -66,11 +98,11 @@
     CCMenuItem *menu2 = [CCMenuItemImage itemFromNormalImage:@"Icon-Small-50.png" selectedImage:@"Icon-Small-50.png" target:self selector:@selector(saveScreenShotSelected:)];
     CCMenuItem *menu3 = [CCMenuItemImage itemFromNormalImage:@"Icon-Small-50.png" selectedImage:@"Icon-Small-50.png" target:self selector:@selector(saveScreenShotSelected:)];
     */
-    CCMenu *view3DMenu = [CCMenu menuWithItems:menu1, menu2, menu3, menu4,nil];
-    [view3DMenu alignItemsHorizontallyWithPadding:10.0];
-    [view3DMenu setPosition:ccp(view3DMenu.boundingBox.size.width/2, 800)];
-    [view3DMenu setColor:ccc3(0, 0, 0)];
-    [self addChild:view3DMenu];
+    cm3DMenu = [CCMenu menuWithItems:menu1, menu2, menu3, menu4,nil];
+    [cm3DMenu alignItemsHorizontallyWithPadding:10.0];
+    [cm3DMenu setPosition:ccp(155, kMenuPosY)];
+    [cm3DMenu setColor:ccBLACK];
+    [self addChild:cm3DMenu];
 }
 
 -(void) addLabel {
@@ -99,6 +131,30 @@
     Test3DScene *tileScene = (Test3DScene*)tileLayer.cc3Scene;
     tileScene.iEditMode = menuItem.tag;
     NSLog(@"main layer click, EditMode:%d",menuItem.tag);
+}
+
+-(void) drawModeSelected: (CCMenuItemToggle*) menuItem {
+    drawLayer.iDrawMode = menuItem.tag;
+    NSLog(@"main layer click, EditMode:%d",menuItem.tag);
+}
+
+-(void) switchEditStateSelected: (CCMenuItemToggle*) menuItem {
+    CCMenuItemFont *fontMenu = (CCMenuItemFont*)menuItem;
+    if ([fontMenu.label.string isEqualToString:@"3D"]) {
+        [fontMenu setString:@"繪圖"];
+        cm3DMenu.visible = NO;
+        cmDrawMenu.visible = YES;
+        tileLayer.isTouchEnabled = NO;
+        drawLayer.isTouchEnabled = YES;
+    }
+    else
+    {
+        [fontMenu setString:@"3D"];
+        cm3DMenu.visible = YES;
+        cmDrawMenu.visible = NO;
+        tileLayer.isTouchEnabled = YES;
+        drawLayer.isTouchEnabled = NO;
+    }
 }
 #pragma mark Updating
 -(void) update: (ccTime)dt {

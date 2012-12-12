@@ -10,10 +10,12 @@
 #import "Test3DLayer.h"
 #import "Test3DScene.h"
 #import "cocos2d.h"
+#import "DrawCanvasLayer.h"
 
 @interface MainLayer : CCLayer
 {
     CC3Layer* tileLayer;
+    DrawCanvasLayer *drawLayer;
     CCMenu *cm3DMenu;
     CCMenu *cmDrawMenu;
     CCMenu *cmSwitchMenu;

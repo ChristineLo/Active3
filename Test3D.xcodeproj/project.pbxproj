@@ -208,6 +208,8 @@
 		84A1A6B4166CF5DE002D4491 /* HelloViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A1A6B3166CF5DE002D4491 /* HelloViewController.m */; };
 		84A1A6B7166CF6D3002D4491 /* VCTest3.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A1A6B6166CF6D3002D4491 /* VCTest3.m */; };
 		84A1A6B9166CF87B002D4491 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A1A6B8166CF87B002D4491 /* GLKit.framework */; };
+		B85077361678A182007F31EE /* DrawCanvasLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B85077351678A182007F31EE /* DrawCanvasLayer.m */; };
+		B850773F1678A660007F31EE /* CCNode+SFGestureRecognizers.m in Sources */ = {isa = PBXBuildFile; fileRef = B850773E1678A660007F31EE /* CCNode+SFGestureRecognizers.m */; };
 		B857D1BF1672084C00B8DC54 /* MainLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B857D1BE1672084C00B8DC54 /* MainLayer.m */; };
 /* End PBXBuildFile section */
 
@@ -626,6 +628,10 @@
 		84A1A6B5166CF6D3002D4491 /* VCTest3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCTest3.h; path = Test3D/VCTest3.h; sourceTree = "<group>"; };
 		84A1A6B6166CF6D3002D4491 /* VCTest3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCTest3.m; path = Test3D/VCTest3.m; sourceTree = "<group>"; };
 		84A1A6B8166CF87B002D4491 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		B85077341678A182007F31EE /* DrawCanvasLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawCanvasLayer.h; sourceTree = "<group>"; };
+		B85077351678A182007F31EE /* DrawCanvasLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawCanvasLayer.m; sourceTree = "<group>"; };
+		B850773D1678A660007F31EE /* CCNode+SFGestureRecognizers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CCNode+SFGestureRecognizers.h"; sourceTree = "<group>"; };
+		B850773E1678A660007F31EE /* CCNode+SFGestureRecognizers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CCNode+SFGestureRecognizers.m"; sourceTree = "<group>"; };
 		B857D1BD1672084C00B8DC54 /* MainLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainLayer.h; path = Classes/MainLayer.h; sourceTree = "<group>"; };
 		B857D1BE1672084C00B8DC54 /* MainLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainLayer.m; path = Classes/MainLayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -635,8 +641,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84A1A6B9166CF87B002D4491 /* GLKit.framework in Frameworks */,
 				84A1A433166CF138002D4491 /* QuartzCore.framework in Frameworks */,
+				84A1A6B9166CF87B002D4491 /* GLKit.framework in Frameworks */,
 				84A1A435166CF138002D4491 /* OpenGLES.framework in Frameworks */,
 				84A1A437166CF138002D4491 /* OpenAL.framework in Frameworks */,
 				84A1A439166CF138002D4491 /* AudioToolbox.framework in Frameworks */,
@@ -721,6 +727,7 @@
 		84A1A457166CF138002D4491 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				B850773C1678A660007F31EE /* CCNode+SFGestureRecognizers */,
 				84A1A54D166CF13A002D4491 /* LICENSE_cocos2d.txt */,
 				84A1A55C166CF13B002D4491 /* LICENSE_CocosDenshion.txt */,
 				84A1A567166CF13B002D4491 /* LICENSE_TouchJSON.txt */,
@@ -1292,9 +1299,20 @@
 				84A1A6AD166CF1F4002D4491 /* Storyboard.storyboard */,
 				B857D1BD1672084C00B8DC54 /* MainLayer.h */,
 				B857D1BE1672084C00B8DC54 /* MainLayer.m */,
+				B85077341678A182007F31EE /* DrawCanvasLayer.h */,
+				B85077351678A182007F31EE /* DrawCanvasLayer.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
+		};
+		B850773C1678A660007F31EE /* CCNode+SFGestureRecognizers */ = {
+			isa = PBXGroup;
+			children = (
+				B850773D1678A660007F31EE /* CCNode+SFGestureRecognizers.h */,
+				B850773E1678A660007F31EE /* CCNode+SFGestureRecognizers.m */,
+			);
+			path = "CCNode+SFGestureRecognizers";
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -1549,6 +1567,8 @@
 				84A1A6B4166CF5DE002D4491 /* HelloViewController.m in Sources */,
 				84A1A6B7166CF6D3002D4491 /* VCTest3.m in Sources */,
 				B857D1BF1672084C00B8DC54 /* MainLayer.m in Sources */,
+				B85077361678A182007F31EE /* DrawCanvasLayer.m in Sources */,
+				B850773F1678A660007F31EE /* CCNode+SFGestureRecognizers.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1582,6 +1602,7 @@
 					"-all_load",
 					"-ObjC",
 				);
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WARNING_CFLAGS = "-Wall";
@@ -1608,6 +1629,7 @@
 					"-all_load",
 					"-ObjC",
 				);
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WARNING_CFLAGS = "-Wall";
@@ -1618,6 +1640,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Hunag kiki (H4X28N2W4V)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1627,6 +1650,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D9CF38C7-9945-4EAB-BDF2-CA311BD60FDA";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1635,6 +1659,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Hunag kiki (H4X28N2W4V)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Test3D/Prefix.pch;
@@ -1643,6 +1668,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D9CF38C7-9945-4EAB-BDF2-CA311BD60FDA";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
