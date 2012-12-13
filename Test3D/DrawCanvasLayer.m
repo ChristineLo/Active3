@@ -35,10 +35,10 @@
             ccDrawLine(start, end);
         }
         
-        glColor4f(255, 255, 255, 255);
+        glColor4f(255, 255, 255, 0);
         for(int i = 0; i < [eraseTouchArray count]; i+=2)
         {
-            glLineWidth(7.0f);
+            glLineWidth(20.0f);
             CGPoint start = CGPointFromString([eraseTouchArray objectAtIndex:i]);
             CGPoint end = CGPointFromString([eraseTouchArray objectAtIndex:i+1]);
             

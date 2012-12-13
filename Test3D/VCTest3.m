@@ -60,7 +60,7 @@
     //uiview 顯示題目
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 768, 200)];
     view.backgroundColor = [UIColor clearColor];
-    
+    /*
     UILabel *title = [[UILabel alloc] init];
     title.textColor = [UIColor blackColor];
     title.frame = CGRectMake(384 - 50, 5, 100, 50);
@@ -75,12 +75,21 @@
     content.textAlignment = NSTextAlignmentLeft;
     content.backgroundColor = [UIColor clearColor];
     [content setFont:[UIFont fontWithName:@"Arial"  size:16]];
-    content.text = @"        這裡有一些圖形，現在要請你想出一幅完整的圖畫或是一件新發明，讓它包含下列所有的圖形。\n        你可以將這些圖形轉方向、擴大、縮小或是將幾個圖形組合成一個圖形，但是必須符合這些圖形原來的形狀；除了這些圖形之外，可以加上其他的東西；\n        請你儘量想出別人想不到的圖案、故事或發明，畫完之後幫它取一個名字或下一個標題，寫在底下畫線的地方。同樣的，也請你想出一個特別的標題，讓圖畫變得更有意思，（請你根據下面的圖形，將你要畫的圖案或物品，畫在下一頁的空白處，注意：不能改變下列圖形原有的形狀，並且每個圖形只能出現一次）。（十分鐘）";;
+    content.text = @"        這裡有一些圖形，現在要請你想出一幅完整的圖畫或是一件新發明，讓它包含下列所有的圖形。\n        你可以將這些圖形轉方向、擴大、縮小或是將幾個圖形組合成一個圖形，但是必須符合這些圖形原來的形狀；除了這些圖形之外，可以加上其他的東西；\n        請你儘量想出別人想不到的圖案、故事或發明，畫完之後幫它取一個名字或下一個標題，寫在底下畫線的地方。同樣的，也請你想出一個特別的標題，讓圖畫變得更有意思，（請你根據下面的圖形，將你要畫的圖案或物品，畫在下一頁的空白處，注意：不能改變下列圖形原有的形狀，並且每個圖形只能出現一次）。（十分鐘）";
     content.lineBreakMode = NSLineBreakByCharWrapping;
     content.numberOfLines = 0;
     
     [view addSubview:title];
     [view addSubview:content];
+    */
+    //倒數計時
+    UILabel *label1 = [[UILabel alloc] initWithFrame:CGRectMake(5, 50, 100, 25)];
+    label1.backgroundColor = [UIColor clearColor];
+    label1.textColor = [UIColor blackColor];
+    label1.textAlignment = NSTextAlignmentLeft;
+    label1.text = @"倒數計時:";
+    [view addSubview:label1];
+    
     [self.view addSubview:view];
 }
 

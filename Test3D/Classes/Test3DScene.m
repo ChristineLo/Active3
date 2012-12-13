@@ -53,19 +53,34 @@
 	lamp.isDirectionalOnly = NO;
 	[cam addChild: lamp];
 
+    
 	// This is the simplest way to load a POD resource file and add the
 	// nodes to the CC3Scene, if no customized resource subclass is needed.
-	[self addContentFromPODFile: @"hello-world.pod"];
+	//[self addContentFromPODFile: @"hello-world.pod"];
+    [self addContentFromPODFile:@"boxc.pod" withName:@"Arch"];
+    [self addContentFromPODFile:@"archc.pod" withName:@"Arch2"];
+    [self addContentFromPODFile:@"cylinderc.pod" withName:@"Arch3"];
+
 	
 	// Create OpenGL ES buffers for the vertex arrays to keep things fast and efficient,
 	// and to save memory, release the vertex data in main memory because it is now redundant.
 	[self createGLBuffers];
 	[self releaseRedundantData];
 	
-	CC3MeshNode* helloTxt = (CC3MeshNode*)[self getNodeNamed: @"Hello"];
-    mainNode = helloTxt;
-    mainNode.isTouchEnabled = YES;
+	CC3MeshNode* helloTxt = (CC3MeshNode*)[self getNodeNamed: @"Arch"];
+    helloTxt.isTouchEnabled = YES;
+    helloTxt = (CC3MeshNode*)[self getNodeNamed: @"Arch2"];
+    helloTxt.scale = cc3v(2, 2, 2);
+    helloTxt.isTouchEnabled = YES;
+    helloTxt = (CC3MeshNode*)[self getNodeNamed: @"Arch3"];
+    helloTxt.location = cc3v(0, 0, 0);
+    helloTxt.isTouchEnabled = YES;
     
+    mainNode = helloTxt;
+    
+	//CC3MeshNode* mdBox = (CC3MeshNode*)[self getNodeNamed: @"Box"];
+    //mdBox.isTouchEnabled = YES;
+    //mainNode = mdBox;
 }
 
 
@@ -269,10 +284,16 @@
     swipe2d.x = kTransferScale * swipe2d.x;
     
     
-    CC3Vector axis = CC3VectorAdd(CC3VectorScaleUniform(cam.rightDirection, swipe2d.x),
-								  CC3VectorScaleUniform(cam.upDirection, swipe2d.y));
-	
-    [mainNode setScale:CC3VectorAdd(mainNode.scale, axis)];
+    CC3Vector axis = CC3VectorAdd(CC3VectorScaleUniform(cam.rightDirection, swipe2d.y), CC3VectorScaleUniform(cam.upDirection, swipe2d.y));
+    axis = CC3VectorAdd(axis, CC3VectorScaleUniform(cam.forwardDirection, -swipe2d.y));
+    
+	if (mainNode.scale.x >= 0.5 && mainNode.scale.x >= 0.5 && mainNode.scale.x >= 0.5) {
+        [mainNode setScale:CC3VectorAdd(mainNode.scale, axis)];
+    }
+    else
+    {
+        mainNode.scale = cc3v(0.5, 0.5, 0.5);
+    }
 }
 
 /**

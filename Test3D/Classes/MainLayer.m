@@ -9,7 +9,8 @@
 #import "MainLayer.h"
 
 #define kSnapShopImageName @"Documents/Active3.jpg"
-#define kMenuPosY 780
+#define kMenuPosY 1000
+#define k3DMenu YES
 
 @implementation MainLayer
 /**
@@ -26,10 +27,10 @@
     if (self = [super init]) {
         CCLayerColor *backGround = [CCLayerColor layerWithColor:ccc4(255, 255, 255, 255)];
         [self addChild:backGround];
-        
+        //2D 圖層:畫圖
         drawLayer = [[DrawCanvasLayer alloc] init];
         [self addChild:drawLayer];
-        
+        //3D 圖層
         tileLayer = [Test3DLayer layerWithColor: ccc4(0, 0, 0, 0)];
         tileLayer.cc3Scene = [self makeScene];
         [self addChild: tileLayer];
@@ -46,9 +47,9 @@
 	[[CCDirector sharedDirector] setDepthTest: NO];
     
     [self addButtons];
-    cm3DMenu.visible = NO;
+    cm3DMenu.visible = k3DMenu;
     cmDrawMenu.visible = !cm3DMenu.visible;
-    tileLayer.isTouchEnabled = NO;
+    tileLayer.isTouchEnabled = k3DMenu;
     drawLayer.isTouchEnabled = !tileLayer.isTouchEnabled;
     //[self addLabel];
     [self scheduleUpdate];
@@ -60,6 +61,7 @@
 /**
  * UI 物件
  */
+#define kMenuFontSize 38
 -(void) addButtons {
     //切換與截圖
     CCMenuItemFont *menu8 = [CCMenuItemFont  itemFromString:@"儲存" target:self selector:@selector(saveScreenShotSelected:)];
@@ -98,9 +100,14 @@
     CCMenuItem *menu2 = [CCMenuItemImage itemFromNormalImage:@"Icon-Small-50.png" selectedImage:@"Icon-Small-50.png" target:self selector:@selector(saveScreenShotSelected:)];
     CCMenuItem *menu3 = [CCMenuItemImage itemFromNormalImage:@"Icon-Small-50.png" selectedImage:@"Icon-Small-50.png" target:self selector:@selector(saveScreenShotSelected:)];
     */
+    menu1.fontSize = kMenuFontSize;
+    menu2.fontSize = kMenuFontSize;
+    menu3.fontSize = kMenuFontSize;
+    menu4.fontSize = kMenuFontSize;
+    
     cm3DMenu = [CCMenu menuWithItems:menu1, menu2, menu3, menu4,nil];
-    [cm3DMenu alignItemsHorizontallyWithPadding:10.0];
-    [cm3DMenu setPosition:ccp(155, kMenuPosY)];
+    [cm3DMenu alignItemsHorizontallyWithPadding:20.0];
+    [cm3DMenu setPosition:ccp(200, kMenuPosY)];
     [cm3DMenu setColor:ccBLACK];
     [self addChild:cm3DMenu];
 }
