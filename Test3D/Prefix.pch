@@ -13,3 +13,6 @@
 #import <Foundation/Foundation.h>
 #import <QuartzCore/QuartzCore.h>
 #endif
+
+#define sLEAF_WORD @"要離開嗎？"
+#define sLEAF_ACTIVE @"作答結束！"

@@ -1,20 +1,18 @@
 //
-//  VCTest3.h
+//  VCTest4.h
 //  Test3D
 //
-//  Created by gdlab on 12/12/3.
+//  Created by Mac06 on 12/12/14.
 //
 //
 
 #import <UIKit/UIKit.h>
-#import <GLKit/GLKit.h>
-
 #import "Test3DLayer.h"
 #import "Test3DScene.h"
 #import "CC3EAGLView.h"
 #import "MainLayer.h"
 
-@interface VCTest3 : UIViewController <UIAlertViewDelegate>
+@interface VCTest4 : UIViewController <UIAlertViewDelegate>
 {
     CCDirector *director;
     
@@ -22,6 +20,4 @@
     NSTimer *tCountDownTimer;
     int iActionTime;
 }
-@property (retain, nonatomic) IBOutlet UIView *vEditView;
-
 @end

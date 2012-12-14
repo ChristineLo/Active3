@@ -27,7 +27,7 @@
     
     UILabel *content = [[UILabel alloc] init];
     content.textColor = [UIColor blackColor];
-    content.frame = CGRectMake(384 - 350, title.bounds.origin.y + title.bounds.size.height + 20, 700, 500);
+    content.frame = CGRectMake(384 - 350, title.bounds.origin.y + title.bounds.size.height + 20, 700, 700);
     content.textAlignment = NSTextAlignmentLeft;
     content.backgroundColor = [UIColor clearColor];
     [content setFont:[UIFont fontWithName:@"Arial"  size:30]];
@@ -41,8 +41,21 @@
 }
 
 - (IBAction)start:(UIButton *)sender {
-    UIStoryboard *secondStoryboard = self.storyboard;
-    [self presentViewController:[secondStoryboard instantiateViewControllerWithIdentifier:@"ACT3"] animated:YES completion:Nil];
-    //[self presentViewController:[[VCTest3 alloc] init] animated:YES completion:Nil];
+    [self addLeafAlert];
+}
+
+//離開提示
+- (void) addLeafAlert
+{
+    UIAlertView *leafAlert = [[UIAlertView alloc] initWithTitle:sLEAF_WORD message:Nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"確定",nil];
+    [leafAlert show];
+}
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSLog(@"cancel button index:%d",buttonIndex);
+    if (buttonIndex == 1) {
+        UIStoryboard *secondStoryboard = self.storyboard;
+        [self presentViewController:[secondStoryboard instantiateViewControllerWithIdentifier:@"ACT3"] animated:YES completion:Nil];
+    }
 }
 @end

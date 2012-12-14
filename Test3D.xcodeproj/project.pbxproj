@@ -213,6 +213,15 @@
 		B84B11DD167A152800DE4C77 /* cylinderc.pod in Resources */ = {isa = PBXBuildFile; fileRef = B84B11DA167A152800DE4C77 /* cylinderc.pod */; };
 		B85077361678A182007F31EE /* DrawCanvasLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B85077351678A182007F31EE /* DrawCanvasLayer.m */; };
 		B850773F1678A660007F31EE /* CCNode+SFGestureRecognizers.m in Sources */ = {isa = PBXBuildFile; fileRef = B850773E1678A660007F31EE /* CCNode+SFGestureRecognizers.m */; };
+		B850B08B167B25840064C7C9 /* VCTest4.m in Sources */ = {isa = PBXBuildFile; fileRef = B850B08A167B25840064C7C9 /* VCTest4.m */; };
+		B850B08F167B25B60064C7C9 /* VCWord4.m in Sources */ = {isa = PBXBuildFile; fileRef = B850B08E167B25B60064C7C9 /* VCWord4.m */; };
+		B850B098167B25D50064C7C9 /* action4_image1.png in Resources */ = {isa = PBXBuildFile; fileRef = B850B091167B25D50064C7C9 /* action4_image1.png */; };
+		B850B099167B25D50064C7C9 /* action4_image2.png in Resources */ = {isa = PBXBuildFile; fileRef = B850B092167B25D50064C7C9 /* action4_image2.png */; };
+		B850B09A167B25D50064C7C9 /* action4_image3.png in Resources */ = {isa = PBXBuildFile; fileRef = B850B093167B25D50064C7C9 /* action4_image3.png */; };
+		B850B09B167B25D50064C7C9 /* action4_image4.png in Resources */ = {isa = PBXBuildFile; fileRef = B850B094167B25D50064C7C9 /* action4_image4.png */; };
+		B850B09C167B25D50064C7C9 /* action4_image5.png in Resources */ = {isa = PBXBuildFile; fileRef = B850B095167B25D50064C7C9 /* action4_image5.png */; };
+		B850B09D167B25D50064C7C9 /* action4_image6.png in Resources */ = {isa = PBXBuildFile; fileRef = B850B096167B25D50064C7C9 /* action4_image6.png */; };
+		B850B09E167B25D50064C7C9 /* action4_image7.png in Resources */ = {isa = PBXBuildFile; fileRef = B850B097167B25D50064C7C9 /* action4_image7.png */; };
 		B857D1BF1672084C00B8DC54 /* MainLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B857D1BE1672084C00B8DC54 /* MainLayer.m */; };
 /* End PBXBuildFile section */
 
@@ -638,6 +647,17 @@
 		B85077351678A182007F31EE /* DrawCanvasLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawCanvasLayer.m; sourceTree = "<group>"; };
 		B850773D1678A660007F31EE /* CCNode+SFGestureRecognizers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CCNode+SFGestureRecognizers.h"; sourceTree = "<group>"; };
 		B850773E1678A660007F31EE /* CCNode+SFGestureRecognizers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CCNode+SFGestureRecognizers.m"; sourceTree = "<group>"; };
+		B850B089167B25840064C7C9 /* VCTest4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCTest4.h; path = Test3D/Action4/VCTest4.h; sourceTree = "<group>"; };
+		B850B08A167B25840064C7C9 /* VCTest4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCTest4.m; path = Test3D/Action4/VCTest4.m; sourceTree = "<group>"; };
+		B850B08D167B25B50064C7C9 /* VCWord4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCWord4.h; path = Test3D/Action4/VCWord4.h; sourceTree = "<group>"; };
+		B850B08E167B25B60064C7C9 /* VCWord4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCWord4.m; path = Test3D/Action4/VCWord4.m; sourceTree = "<group>"; };
+		B850B091167B25D50064C7C9 /* action4_image1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = action4_image1.png; sourceTree = "<group>"; };
+		B850B092167B25D50064C7C9 /* action4_image2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = action4_image2.png; sourceTree = "<group>"; };
+		B850B093167B25D50064C7C9 /* action4_image3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = action4_image3.png; sourceTree = "<group>"; };
+		B850B094167B25D50064C7C9 /* action4_image4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = action4_image4.png; sourceTree = "<group>"; };
+		B850B095167B25D50064C7C9 /* action4_image5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = action4_image5.png; sourceTree = "<group>"; };
+		B850B096167B25D50064C7C9 /* action4_image6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = action4_image6.png; sourceTree = "<group>"; };
+		B850B097167B25D50064C7C9 /* action4_image7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = action4_image7.png; sourceTree = "<group>"; };
 		B857D1BD1672084C00B8DC54 /* MainLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainLayer.h; path = Classes/MainLayer.h; sourceTree = "<group>"; };
 		B857D1BE1672084C00B8DC54 /* MainLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainLayer.m; path = Classes/MainLayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -665,10 +685,8 @@
 		84A1A423166CF138002D4491 = {
 			isa = PBXGroup;
 			children = (
-				84A1A6B5166CF6D3002D4491 /* VCTest3.h */,
-				84A1A6B6166CF6D3002D4491 /* VCTest3.m */,
-				84A1A6B2166CF5DE002D4491 /* HelloViewController.h */,
-				84A1A6B3166CF5DE002D4491 /* HelloViewController.m */,
+				B850B09F167B304C0064C7C9 /* Test4 */,
+				B850B0A0167B305A0064C7C9 /* Test3 */,
 				84A1A442166CF138002D4491 /* Test3D */,
 				84A1A431166CF138002D4491 /* Frameworks */,
 				84A1A42F166CF138002D4491 /* Products */,
@@ -715,6 +733,7 @@
 		84A1A443166CF138002D4491 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B850B090167B25D50064C7C9 /* Action4Image */,
 				B84B11D7167A152800DE4C77 /* pod model */,
 				84A1A444166CF138002D4491 /* Default.png */,
 				84A1A446166CF138002D4491 /* fps_images.png */,
@@ -1332,6 +1351,43 @@
 			path = "CCNode+SFGestureRecognizers";
 			sourceTree = SOURCE_ROOT;
 		};
+		B850B090167B25D50064C7C9 /* Action4Image */ = {
+			isa = PBXGroup;
+			children = (
+				B850B091167B25D50064C7C9 /* action4_image1.png */,
+				B850B092167B25D50064C7C9 /* action4_image2.png */,
+				B850B093167B25D50064C7C9 /* action4_image3.png */,
+				B850B094167B25D50064C7C9 /* action4_image4.png */,
+				B850B095167B25D50064C7C9 /* action4_image5.png */,
+				B850B096167B25D50064C7C9 /* action4_image6.png */,
+				B850B097167B25D50064C7C9 /* action4_image7.png */,
+			);
+			name = Action4Image;
+			path = ../../Action4Image;
+			sourceTree = "<group>";
+		};
+		B850B09F167B304C0064C7C9 /* Test4 */ = {
+			isa = PBXGroup;
+			children = (
+				B850B089167B25840064C7C9 /* VCTest4.h */,
+				B850B08A167B25840064C7C9 /* VCTest4.m */,
+				B850B08D167B25B50064C7C9 /* VCWord4.h */,
+				B850B08E167B25B60064C7C9 /* VCWord4.m */,
+			);
+			name = Test4;
+			sourceTree = "<group>";
+		};
+		B850B0A0167B305A0064C7C9 /* Test3 */ = {
+			isa = PBXGroup;
+			children = (
+				84A1A6B5166CF6D3002D4491 /* VCTest3.h */,
+				84A1A6B6166CF6D3002D4491 /* VCTest3.m */,
+				84A1A6B2166CF5DE002D4491 /* HelloViewController.h */,
+				84A1A6B3166CF5DE002D4491 /* HelloViewController.m */,
+			);
+			name = Test3;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1396,6 +1452,13 @@
 				B84B11DB167A152800DE4C77 /* archc.pod in Resources */,
 				B84B11DC167A152800DE4C77 /* boxc.pod in Resources */,
 				B84B11DD167A152800DE4C77 /* cylinderc.pod in Resources */,
+				B850B098167B25D50064C7C9 /* action4_image1.png in Resources */,
+				B850B099167B25D50064C7C9 /* action4_image2.png in Resources */,
+				B850B09A167B25D50064C7C9 /* action4_image3.png in Resources */,
+				B850B09B167B25D50064C7C9 /* action4_image4.png in Resources */,
+				B850B09C167B25D50064C7C9 /* action4_image5.png in Resources */,
+				B850B09D167B25D50064C7C9 /* action4_image6.png in Resources */,
+				B850B09E167B25D50064C7C9 /* action4_image7.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1590,6 +1653,8 @@
 				B857D1BF1672084C00B8DC54 /* MainLayer.m in Sources */,
 				B85077361678A182007F31EE /* DrawCanvasLayer.m in Sources */,
 				B850773F1678A660007F31EE /* CCNode+SFGestureRecognizers.m in Sources */,
+				B850B08B167B25840064C7C9 /* VCTest4.m in Sources */,
+				B850B08F167B25B60064C7C9 /* VCWord4.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

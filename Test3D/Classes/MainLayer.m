@@ -29,12 +29,12 @@
         [self addChild:backGround];
         //2D 圖層:畫圖
         drawLayer = [[DrawCanvasLayer alloc] init];
-        [self addChild:drawLayer];
+        
         //3D 圖層
         tileLayer = [Test3DLayer layerWithColor: ccc4(0, 0, 0, 0)];
         tileLayer.cc3Scene = [self makeScene];
         [self addChild: tileLayer];
-        
+        [self addChild:drawLayer];
         [self initializeControls];
     }
     return self;

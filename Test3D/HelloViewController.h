@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HelloViewController : UIViewController
+@interface HelloViewController : UIViewController <UIAlertViewDelegate>
 - (IBAction)start:(UIButton *)sender;
 
 @end
