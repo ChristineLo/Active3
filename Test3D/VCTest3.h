@@ -22,6 +22,8 @@
     NSTimer *tCountDownTimer;
     int iActionTime;
 }
-@property (retain, nonatomic) IBOutlet UIView *vEditView;
+@property (retain, nonatomic) IBOutlet UIView *toolBar;
+@property (retain, nonatomic) IBOutlet UILabel *ulCountDownTime;
+@property (retain, nonatomic) IBOutlet UIView *smallView;
 
 @end

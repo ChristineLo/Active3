@@ -25,7 +25,8 @@
 
 -(id) init {
     if (self = [super init]) {
-        CCLayerColor *backGround = [CCLayerColor layerWithColor:ccc4(255, 255, 255, 255)];
+        //背景顏色
+        CCLayerColor *backGround = [CCLayerColor layerWithColor:ccc4(255, 255, 255, 50)];
         [self addChild:backGround];
         //2D 圖層:畫圖
         drawLayer = [[DrawCanvasLayer alloc] init];
@@ -34,7 +35,7 @@
         tileLayer = [Test3DLayer layerWithColor: ccc4(0, 0, 0, 0)];
         tileLayer.cc3Scene = [self makeScene];
         [self addChild: tileLayer];
-        [self addChild:drawLayer];
+        //[self addChild: drawLayer];
         [self initializeControls];
     }
     return self;

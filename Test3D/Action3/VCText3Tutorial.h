@@ -1,8 +1,8 @@
 //
-//  VCTest4.h
+//  VCText3Tutorial.h
 //  Test3D
 //
-//  Created by Mac06 on 12/12/14.
+//  Created by gdlab on 12/12/27.
 //
 //
 
@@ -10,20 +10,32 @@
 #import "SmoothLineView.h"
 #import "UIGlossyButton.h"
 
-#define kFILE_ANS [NSString stringWithFormat:@"Active4-%d",backNum]
-#define kMENU_HEIGHT 54
+#import "Test3DLayer.h"
+#import "Test3DScene.h"
+#import "CC3EAGLView.h"
+#import "MainLayer.h"
 
-@interface VCTest4 : UIViewController <UIPopoverControllerDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
+#define kFILE_ANS [NSString stringWithFormat:@"Active3-%d",backNum]
+#define kMENU_HEIGHT 0
+
+@interface VCText3Tutorial : UIViewController<UIPopoverControllerDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 {
-    #pragma mark 繪圖view
+#pragma mark 繪圖view
     SmoothLineView *slv;
-    
     UIImageView *backImage;
     int backNum;
     
-    UIPopoverController* activePopover;
-    UIPopoverController *popover;
+#pragma mark 3DView    
+    CCDirector *director;
+    UILabel *ulCountDownTime;
+    NSTimer *tCountDownTimer;
+    int iActionTime;
 }
+
+#pragma mark 3DView
+@property (retain, nonatomic) IBOutlet UIView *toolBar;
+@property (retain, nonatomic) IBOutlet UILabel *ulCountDownTime;
+@property (retain, nonatomic) IBOutlet UIView *smallView;
 
 #pragma mark 繪圖view
 @property (nonatomic,retain)  UIColor *curColor;
@@ -31,8 +43,7 @@
 @property (nonatomic, retain) UIGlossyButton *redoButton;
 @property (nonatomic, retain) UIGlossyButton *clearButton;
 @property (nonatomic, retain) UIGlossyButton *eraserButton;
-@property (nonatomic, retain) UIGlossyButton *preButton;
-@property (nonatomic, retain) UIGlossyButton *nextButton;
+
 @property (nonatomic, retain) UIGlossyButton *save2FileButton;
 @property (nonatomic, retain) UIGlossyButton *save2AlbumButton;
 @property (nonatomic, retain) UIGlossyButton *loadFromAlbumButton;

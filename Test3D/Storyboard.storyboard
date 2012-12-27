@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="Ei3-er-vb6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="FUm-8V-Am7">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
@@ -11,11 +11,288 @@
                     <view key="view" contentMode="scaleToFill" id="v4w-Cq-ZvN">
                         <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cge-tB-x6q">
+                                <subviews>
+                                    <button opaque="NO" tag="1004" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d51-vJ-YfO" customClass="UIGlossyButton">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="isl-aL-K6j"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                        <state key="normal" title="橡皮擦">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="disabled">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="eraserButtonClicked:" destination="nmY-me-Jnt" eventType="touchUpInside" id="HyY-82-LIN"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="1003" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r4C-By-3SZ" customClass="UIGlossyButton">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="JNI-Kv-jYK"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                        <state key="normal" title="清除">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="disabled">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="clearButtonClicked:" destination="nmY-me-Jnt" eventType="touchUpInside" id="Dbg-og-1b9"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="1002" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ri7-LI-hos" customClass="UIGlossyButton">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="tif-06-4IC"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                        <state key="normal" title="重畫">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="disabled">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="redoButtonClicked:" destination="nmY-me-Jnt" eventType="touchUpInside" id="VgL-MU-ysY"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="1001" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqh-3X-fsK" customClass="UIGlossyButton">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="eei-eU-8qg"/>
+                                            <constraint firstAttribute="width" constant="80" id="qIZ-hv-fhG"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                        <state key="normal" title="還原">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="disabled">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="undoButtonClicked:" destination="nmY-me-Jnt" eventType="touchUpInside" id="wDL-s6-h2L"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3MP-rn-lzO">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="AlJ-05-iNk"/>
+                                            <constraint firstAttribute="width" constant="114" id="tRR-OI-G7e"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="3MP-rn-lzO" firstAttribute="bottom" secondItem="cge-tB-x6q" secondAttribute="bottom" type="default" id="7qT-yt-z5N"/>
+                                    <constraint firstItem="r4C-By-3SZ" firstAttribute="top" secondItem="d51-vJ-YfO" secondAttribute="top" type="default" id="JDe-52-r8w"/>
+                                    <constraint firstItem="hqh-3X-fsK" firstAttribute="bottom" secondItem="ri7-LI-hos" secondAttribute="bottom" type="default" id="RAH-0Y-g0C"/>
+                                    <constraint firstItem="r4C-By-3SZ" firstAttribute="bottom" secondItem="d51-vJ-YfO" secondAttribute="bottom" type="default" id="Rep-U2-GUP"/>
+                                    <constraint firstItem="ri7-LI-hos" firstAttribute="leading" secondItem="cge-tB-x6q" secondAttribute="leading" constant="101" id="VMa-le-IpL"/>
+                                    <constraint firstItem="r4C-By-3SZ" firstAttribute="leading" secondItem="ri7-LI-hos" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="a3D-o6-KvM"/>
+                                    <constraint firstItem="hqh-3X-fsK" firstAttribute="top" secondItem="ri7-LI-hos" secondAttribute="top" type="default" id="cKm-JQ-exG"/>
+                                    <constraint firstAttribute="trailing" secondItem="3MP-rn-lzO" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="q1r-W2-ldV"/>
+                                    <constraint firstItem="d51-vJ-YfO" firstAttribute="leading" secondItem="cge-tB-x6q" secondAttribute="leading" constant="287" id="qp2-dn-kjB"/>
+                                    <constraint firstItem="ri7-LI-hos" firstAttribute="top" secondItem="r4C-By-3SZ" secondAttribute="top" type="default" id="rIr-rs-zZY"/>
+                                    <constraint firstItem="hqh-3X-fsK" firstAttribute="centerY" secondItem="cge-tB-x6q" secondAttribute="centerY" type="default" id="viT-3l-ItQ"/>
+                                    <constraint firstItem="ri7-LI-hos" firstAttribute="bottom" secondItem="r4C-By-3SZ" secondAttribute="bottom" type="default" id="xvI-12-07x"/>
+                                    <constraint firstItem="hqh-3X-fsK" firstAttribute="leading" secondItem="cge-tB-x6q" secondAttribute="leading" constant="7" id="y4W-KW-2Bc"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t5q-ur-ZK9">
+                                <color key="backgroundColor" red="0.83924987819999997" green="0.89589425229999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="t5q-ur-ZK9" firstAttribute="trailing" secondItem="v4w-Cq-ZvN" secondAttribute="trailing" type="default" id="5tw-5n-Fby"/>
+                            <constraint firstItem="cge-tB-x6q" firstAttribute="trailing" secondItem="v4w-Cq-ZvN" secondAttribute="trailing" type="default" id="6rN-4o-cNX"/>
+                            <constraint firstItem="t5q-ur-ZK9" firstAttribute="bottom" secondItem="v4w-Cq-ZvN" secondAttribute="bottom" type="default" id="JTt-zu-LTW"/>
+                            <constraint firstItem="t5q-ur-ZK9" firstAttribute="top" secondItem="cge-tB-x6q" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="NXE-HN-Jn6"/>
+                            <constraint firstItem="cge-tB-x6q" firstAttribute="top" secondItem="v4w-Cq-ZvN" secondAttribute="top" type="default" id="YSC-KN-NZJ"/>
+                            <constraint firstItem="t5q-ur-ZK9" firstAttribute="leading" secondItem="v4w-Cq-ZvN" secondAttribute="leading" type="default" id="fSo-k1-Sfb"/>
+                            <constraint firstItem="cge-tB-x6q" firstAttribute="leading" secondItem="v4w-Cq-ZvN" secondAttribute="leading" type="default" id="oNf-Gs-TRh"/>
+                            <constraint firstItem="t5q-ur-ZK9" firstAttribute="top" secondItem="v4w-Cq-ZvN" secondAttribute="top" constant="62" id="vpL-Q0-bAy"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="smallView" destination="t5q-ur-ZK9" id="t2e-Lj-joR"/>
+                        <outlet property="toolBar" destination="cge-tB-x6q" id="m2c-tB-aPR"/>
+                        <outlet property="ulCountDownTime" destination="3MP-rn-lzO" id="Hok-Yc-pqe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ybP-Vv-gyW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="779" y="-945"/>
+        </scene>
+        <!--Text3 Tutorial-->
+        <scene sceneID="xIp-YJ-Koy">
+            <objects>
+                <viewController storyboardIdentifier="VT3T" id="FUm-8V-Am7" customClass="VCText3Tutorial" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Df6-4w-XWG">
+                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="活動三操作說明" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H1Y-ji-4wk">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="53" id="2RS-S2-IMT"/>
+                                    <constraint firstAttribute="width" constant="241" id="yh8-Zd-gq9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J8C-Xp-Qz9">
+                                <subviews>
+                                    <button opaque="NO" tag="1004" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xHP-e0-q1n" customClass="UIGlossyButton">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="sxs-f9-9b0"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                        <state key="normal" title="橡皮擦">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="disabled">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="eraserButtonClicked:" destination="nmY-me-Jnt" eventType="touchUpInside" id="EsG-Cx-EtV"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="1003" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bIr-8l-Mb0" customClass="UIGlossyButton">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="chs-pZ-46h"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                        <state key="normal" title="清除">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="disabled">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="clearButtonClicked:" destination="nmY-me-Jnt" eventType="touchUpInside" id="VkL-vg-osN"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="1002" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XXi-35-HzE" customClass="UIGlossyButton">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="66Z-Ec-R1i"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                        <state key="normal" title="重畫">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="disabled">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="redoButtonClicked:" destination="nmY-me-Jnt" eventType="touchUpInside" id="Ps9-H1-oOQ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="1001" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qDf-3X-4VA" customClass="UIGlossyButton">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="eje-Y1-1yQ"/>
+                                            <constraint firstAttribute="height" constant="50" id="xxx-C1-WIt"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                        <state key="normal" title="還原">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="disabled">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="undoButtonClicked:" destination="nmY-me-Jnt" eventType="touchUpInside" id="RDd-Xw-HTB"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KcG-r0-1Az">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="114" id="RZb-Lu-zS6"/>
+                                            <constraint firstAttribute="height" constant="50" id="bpd-er-y2P"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="XXi-35-HzE" firstAttribute="leading" secondItem="J8C-Xp-Qz9" secondAttribute="leading" constant="101" id="3k3-h4-uQi"/>
+                                    <constraint firstItem="XXi-35-HzE" firstAttribute="bottom" secondItem="bIr-8l-Mb0" secondAttribute="bottom" type="default" id="AMG-5B-0RW"/>
+                                    <constraint firstItem="qDf-3X-4VA" firstAttribute="leading" secondItem="J8C-Xp-Qz9" secondAttribute="leading" constant="7" id="AvR-ib-Dbq"/>
+                                    <constraint firstItem="KcG-r0-1Az" firstAttribute="bottom" secondItem="J8C-Xp-Qz9" secondAttribute="bottom" type="default" id="Olm-hy-CrW"/>
+                                    <constraint firstItem="bIr-8l-Mb0" firstAttribute="bottom" secondItem="xHP-e0-q1n" secondAttribute="bottom" type="default" id="SKf-v7-tHM"/>
+                                    <constraint firstItem="qDf-3X-4VA" firstAttribute="bottom" secondItem="XXi-35-HzE" secondAttribute="bottom" type="default" id="b2W-ap-Nqe"/>
+                                    <constraint firstItem="bIr-8l-Mb0" firstAttribute="leading" secondItem="XXi-35-HzE" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="k6u-AN-IWp"/>
+                                    <constraint firstItem="xHP-e0-q1n" firstAttribute="leading" secondItem="J8C-Xp-Qz9" secondAttribute="leading" constant="287" id="mH5-rz-IpE"/>
+                                    <constraint firstItem="XXi-35-HzE" firstAttribute="top" secondItem="bIr-8l-Mb0" secondAttribute="top" type="default" id="pOK-Cy-jA7"/>
+                                    <constraint firstItem="qDf-3X-4VA" firstAttribute="top" secondItem="XXi-35-HzE" secondAttribute="top" type="default" id="sm8-Fd-P0f"/>
+                                    <constraint firstItem="bIr-8l-Mb0" firstAttribute="top" secondItem="xHP-e0-q1n" secondAttribute="top" type="default" id="uaF-rp-Aay"/>
+                                    <constraint firstAttribute="trailing" secondItem="KcG-r0-1Az" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="vJC-xp-jqY"/>
+                                    <constraint firstItem="qDf-3X-4VA" firstAttribute="centerY" secondItem="J8C-Xp-Qz9" secondAttribute="centerY" type="default" id="zYg-Mu-vXE"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d74-qu-omY">
+                                <color key="backgroundColor" red="0.83924987819999997" green="0.89589425229999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="d74-qu-omY" secondAttribute="bottom" constant="-20" id="3ns-z8-k8h"/>
+                            <constraint firstItem="J8C-Xp-Qz9" firstAttribute="centerX" secondItem="H1Y-ji-4wk" secondAttribute="centerX" type="default" id="BXg-XG-3wS"/>
+                            <constraint firstItem="d74-qu-omY" firstAttribute="top" secondItem="Df6-4w-XWG" secondAttribute="top" constant="107" id="FbQ-Gr-4PN"/>
+                            <constraint firstItem="H1Y-ji-4wk" firstAttribute="top" secondItem="Df6-4w-XWG" secondAttribute="top" type="default" id="PRQ-q8-zoA"/>
+                            <constraint firstItem="d74-qu-omY" firstAttribute="top" secondItem="J8C-Xp-Qz9" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Q7X-OI-zsq"/>
+                            <constraint firstItem="J8C-Xp-Qz9" firstAttribute="leading" secondItem="Df6-4w-XWG" secondAttribute="leading" type="default" id="a5N-Ij-QcB"/>
+                            <constraint firstItem="J8C-Xp-Qz9" firstAttribute="trailing" secondItem="Df6-4w-XWG" secondAttribute="trailing" type="default" id="aT1-my-O6q"/>
+                            <constraint firstItem="d74-qu-omY" firstAttribute="leading" secondItem="Df6-4w-XWG" secondAttribute="leading" type="default" id="dcH-52-nXX"/>
+                            <constraint firstItem="J8C-Xp-Qz9" firstAttribute="top" secondItem="Df6-4w-XWG" secondAttribute="top" constant="45" id="vOO-jn-1Mm"/>
+                            <constraint firstItem="d74-qu-omY" firstAttribute="trailing" secondItem="Df6-4w-XWG" secondAttribute="trailing" type="default" id="xsc-Z2-5co"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="smallView" destination="d74-qu-omY" id="EhJ-3T-w3C"/>
+                        <outlet property="toolBar" destination="J8C-Xp-Qz9" id="k91-NC-RQj"/>
+                        <outlet property="ulCountDownTime" destination="KcG-r0-1Az" id="kSI-vE-vFj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="74s-vj-Rn2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-899" y="-945"/>
         </scene>
         <!--Hello View Controller-->
         <scene sceneID="vEK-8W-bwF">
@@ -133,7 +410,173 @@
                     <view key="view" contentMode="scaleToFill" id="Ub5-4j-Su7">
                         <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BYw-2h-6kD">
+                                <subviews>
+                                    <button opaque="NO" tag="1006" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ty9-Qx-a5e" customClass="UIGlossyButton">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="aie-ro-can"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                        <state key="normal" title="下一張">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="nextButtonClicked:" destination="nmY-me-Jnt" eventType="touchUpInside" id="ZDm-hW-nsl"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="1005" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P1g-21-kaR" customClass="UIGlossyButton">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="vNr-pR-lvg"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                        <state key="normal" title="上一張">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="disabled">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="preButtonClicked:" destination="nmY-me-Jnt" eventType="touchUpInside" id="Nu7-Ai-W5G"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="1007" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yzz-j0-YxK" customClass="UIGlossyButton">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="6sa-fn-yUo"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                        <state key="normal" title="儲存">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="disabled">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="save2FileButtonClicked:" destination="nmY-me-Jnt" eventType="touchUpInside" id="OCw-3U-SzB"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="1004" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xz2-Gr-m5W" customClass="UIGlossyButton">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="LjA-fE-feZ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                        <state key="normal" title="橡皮擦">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="disabled">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="eraserButtonClicked:" destination="nmY-me-Jnt" eventType="touchUpInside" id="1IR-MR-5SV"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="1003" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c5I-xm-1K9" customClass="UIGlossyButton">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="bGK-lP-Tgk"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                        <state key="normal" title="清除">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="disabled">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="clearButtonClicked:" destination="nmY-me-Jnt" eventType="touchUpInside" id="SQX-Ne-Q2W"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="1002" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3np-rY-Vkj" customClass="UIGlossyButton">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="XLf-SE-YqI"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                        <state key="normal" title="重畫">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="disabled">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="redoButtonClicked:" destination="nmY-me-Jnt" eventType="touchUpInside" id="AYL-Zm-6FG"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="1001" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YUd-Xk-Eug" customClass="UIGlossyButton">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="EOI-0q-Ja5"/>
+                                            <constraint firstAttribute="width" constant="80" id="Z9o-QO-so8"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                        <state key="normal" title="還原">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="disabled">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="undoButtonClicked:" destination="nmY-me-Jnt" eventType="touchUpInside" id="5PA-Pk-rxu"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="ty9-Qx-a5e" firstAttribute="leading" secondItem="P1g-21-kaR" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="1kC-JB-csu"/>
+                                    <constraint firstItem="YUd-Xk-Eug" firstAttribute="leading" secondItem="BYw-2h-6kD" secondAttribute="leading" constant="7" id="2gX-fh-g1G"/>
+                                    <constraint firstItem="c5I-xm-1K9" firstAttribute="leading" secondItem="BYw-2h-6kD" secondAttribute="leading" constant="189" id="ADX-ZQ-k5L"/>
+                                    <constraint firstItem="P1g-21-kaR" firstAttribute="leading" secondItem="BYw-2h-6kD" secondAttribute="leading" constant="432" id="EJB-By-Kwn"/>
+                                    <constraint firstItem="YUd-Xk-Eug" firstAttribute="bottom" secondItem="3np-rY-Vkj" secondAttribute="bottom" type="default" id="Efu-QS-SOV"/>
+                                    <constraint firstItem="c5I-xm-1K9" firstAttribute="centerY" secondItem="BYw-2h-6kD" secondAttribute="centerY" type="default" id="NeQ-sL-qgr"/>
+                                    <constraint firstItem="YUd-Xk-Eug" firstAttribute="top" secondItem="BYw-2h-6kD" secondAttribute="top" constant="2" id="Ow4-Hn-5VR"/>
+                                    <constraint firstItem="c5I-xm-1K9" firstAttribute="bottom" secondItem="Xz2-Gr-m5W" secondAttribute="bottom" type="default" id="Sex-eJ-7hA"/>
+                                    <constraint firstItem="P1g-21-kaR" firstAttribute="top" secondItem="ty9-Qx-a5e" secondAttribute="top" type="default" id="VHq-Km-uil"/>
+                                    <constraint firstItem="YUd-Xk-Eug" firstAttribute="top" secondItem="3np-rY-Vkj" secondAttribute="top" type="default" id="Wji-IV-zDN"/>
+                                    <constraint firstItem="Xz2-Gr-m5W" firstAttribute="bottom" secondItem="P1g-21-kaR" secondAttribute="bottom" type="default" id="Xbo-Vb-yh3"/>
+                                    <constraint firstItem="Yzz-j0-YxK" firstAttribute="leading" secondItem="BYw-2h-6kD" secondAttribute="leading" constant="685" id="aWm-ux-LPo"/>
+                                    <constraint firstItem="c5I-xm-1K9" firstAttribute="leading" secondItem="3np-rY-Vkj" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="b3n-rU-WjW"/>
+                                    <constraint firstItem="Xz2-Gr-m5W" firstAttribute="leading" secondItem="BYw-2h-6kD" secondAttribute="leading" constant="287" id="bzk-H9-YeU"/>
+                                    <constraint firstItem="3np-rY-Vkj" firstAttribute="bottom" secondItem="c5I-xm-1K9" secondAttribute="bottom" type="default" id="ecW-2V-fxI"/>
+                                    <constraint firstItem="Xz2-Gr-m5W" firstAttribute="top" secondItem="P1g-21-kaR" secondAttribute="top" type="default" id="fga-dH-4GY"/>
+                                    <constraint firstItem="Yzz-j0-YxK" firstAttribute="bottom" secondItem="ty9-Qx-a5e" secondAttribute="bottom" type="default" id="lYx-cY-qQN"/>
+                                    <constraint firstItem="c5I-xm-1K9" firstAttribute="top" secondItem="Xz2-Gr-m5W" secondAttribute="top" type="default" id="moe-nw-UOk"/>
+                                    <constraint firstItem="3np-rY-Vkj" firstAttribute="top" secondItem="c5I-xm-1K9" secondAttribute="top" type="default" id="sQa-hD-QUj"/>
+                                    <constraint firstItem="Yzz-j0-YxK" firstAttribute="top" secondItem="ty9-Qx-a5e" secondAttribute="top" type="default" id="srd-EB-6No"/>
+                                    <constraint firstItem="P1g-21-kaR" firstAttribute="bottom" secondItem="ty9-Qx-a5e" secondAttribute="bottom" type="default" id="zvX-jJ-63y"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="BYw-2h-6kD" firstAttribute="leading" secondItem="Ub5-4j-Su7" secondAttribute="leading" type="default" id="F80-I5-9Zr"/>
+                            <constraint firstItem="BYw-2h-6kD" firstAttribute="top" secondItem="Ub5-4j-Su7" secondAttribute="top" type="default" id="L6M-AR-NRb"/>
+                            <constraint firstAttribute="trailing" secondItem="BYw-2h-6kD" secondAttribute="trailing" constant="-256" id="rVq-nV-7mD"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IRH-Wu-m2i" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -151,14 +594,33 @@
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
         </class>
+        <class className="UIGlossyButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIGlossyButton.h"/>
+        </class>
         <class className="VCTest3" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VCTest3.h"/>
             <relationships>
-                <relationship kind="outlet" name="vEditView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="smallView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="toolBar" candidateClass="UIView"/>
+                <relationship kind="outlet" name="ulCountDownTime" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="VCTest4" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VCTest4.h"/>
+        </class>
+        <class className="VCText3Tutorial" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VCText3Tutorial.h"/>
+            <relationships>
+                <relationship kind="action" name="clearButtonClicked:"/>
+                <relationship kind="action" name="eraserButtonClicked:"/>
+                <relationship kind="action" name="redoButtonClicked:"/>
+                <relationship kind="action" name="save2AlbumButtonClicked:"/>
+                <relationship kind="action" name="save2FileButtonClicked:"/>
+                <relationship kind="action" name="undoButtonClicked:"/>
+                <relationship kind="outlet" name="smallView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="toolBar" candidateClass="UIView"/>
+                <relationship kind="outlet" name="ulCountDownTime" candidateClass="UILabel"/>
+            </relationships>
         </class>
         <class className="VCWord4" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VCWord4.h"/>

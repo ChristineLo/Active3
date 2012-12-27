@@ -16,6 +16,9 @@
 @interface DrawCanvasLayer : CCLayerColor {
     NSMutableArray *panTouchArray;
     NSMutableArray *eraseTouchArray;
+    
+    //int _iDrawMode;
 }
 @property (nonatomic, readwrite) int iDrawMode;
+@property (nonatomic, strong) DrawCanvasLayer *activeLayer;
 @end

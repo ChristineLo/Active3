@@ -13,7 +13,10 @@
 @end
 
 @implementation VCTest3
-@synthesize vEditView;
+
+@synthesize ulCountDownTime;
+@synthesize toolBar;
+@synthesize smallView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,7 +30,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
+    
     [CCDirector setDirectorType:kCCDirectorTypeDisplayLink];
     director = [CCDirector sharedDirector];
     [director setAnimationInterval:1.0/30];
@@ -49,44 +52,25 @@
         CCLOG(@"Retina Display Not supported");
     }
     
-    self.view = glView;
+    [self.smallView addSubview:glView];
     
     [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA8888];
     
     CCScene *scene = [CCScene node];
     [scene addChild:[MainLayer node]];
     [[CCDirector sharedDirector] runWithScene:scene];
-    
-    //uiview 顯示題目
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 768, 200)];
-    view.backgroundColor = [UIColor clearColor];
-    
-    //倒數計時
-    UILabel *label1 = [[UILabel alloc] initWithFrame:CGRectMake(5, 50, 100, 25)];
-    label1.backgroundColor = [UIColor clearColor];
-    label1.textColor = [UIColor blackColor];
-    label1.textAlignment = NSTextAlignmentLeft;
-    label1.text = @"倒數計時:";
-    [view addSubview:label1];
-    
-    ulCountDownTime = [[UILabel alloc] initWithFrame:CGRectMake(90, 50, 300, 25)];
-    ulCountDownTime.backgroundColor = [UIColor clearColor];
-    ulCountDownTime.textColor = [UIColor blackColor];
-    ulCountDownTime.textAlignment = NSTextAlignmentLeft;
-    ulCountDownTime.text = @"";
-    [view addSubview:ulCountDownTime];
-    
-    [self.view addSubview:view];
-    
+        
     //計時器
-    iActionTime = 2;
+    iActionTime = 20;
+    //iActionTime = iActionTime * 60;
     tCountDownTimer = [[NSTimer alloc] init];
     tCountDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(countDownSelector) userInfo:nil repeats:YES];
-    //iActionTime = iActionTime * 60;
 }
 //update count down label
 - (void) countDownSelector
 {
+    
+    
     if (iActionTime == 30) {
         ulCountDownTime.textColor = [UIColor redColor];
     }
@@ -120,15 +104,26 @@
 }
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+    //移除3Dscene
     [director popScene];
     NSLog(@"cancel button index:%d",buttonIndex);
     UIStoryboard *secondStoryboard = self.storyboard;
-    [self presentViewController:[secondStoryboard instantiateViewControllerWithIdentifier:@"HVC"] animated:YES completion:Nil];
+    [self presentViewController:[secondStoryboard instantiateViewControllerWithIdentifier:@"Word4"] animated:YES completion:Nil];
 }
+
+-(IBAction)leafButtonClicked:(id)sender
+{
+    [director popScene];
+    UIStoryboard *secondStoryboard = self.storyboard;
+    [self presentViewController:[secondStoryboard instantiateViewControllerWithIdentifier:@"Word4"] animated:YES completion:Nil];
+}
+
 - (void)dealloc
 {
     NSLog(@"dealloc");
-    [vEditView release];
+    [toolBar release];
+    [ulCountDownTime release];
+    [smallView release];
     [super dealloc];
 }
 

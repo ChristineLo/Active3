@@ -10,11 +10,25 @@
 
 @implementation DrawCanvasLayer
 @synthesize iDrawMode;
+@synthesize activeLayer;
+
 -(id) init {
     if (self = [super init])
     {
         panTouchArray = [[NSMutableArray alloc] init];
         eraseTouchArray = [[NSMutableArray alloc] init];
+        
+        self.isTouchEnabled = YES;
+    }
+    return self;
+}
+
+-(id) initWithColor:(ccColor4B)color width:(GLfloat)w height:(GLfloat)h {
+    if (self = [super initWithColor:color width:w height:h]) {
+        panTouchArray = [[NSMutableArray alloc] init];
+        eraseTouchArray = [[NSMutableArray alloc] init];
+        
+        self.isTouchEnabled = YES;
     }
     return self;
 }
@@ -35,7 +49,7 @@
             ccDrawLine(start, end);
         }
         
-        glColor4f(255, 255, 255, 0);
+        glColor4f(255, 255, 255, 255);
         for(int i = 0; i < [eraseTouchArray count]; i+=2)
         {
             glLineWidth(20.0f);
@@ -49,7 +63,22 @@
 
 #pragma mark - GestureRecognizers
 
+-(void) ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    NSLog(@"Began mode:%d",iDrawMode);
+    self.isTouchEnabled = NO;
+    DrawCanvasLayer *layer = [[DrawCanvasLayer alloc] init];
+    [self addChild:layer];
+    
+    activeLayer = layer;
+    activeLayer.iDrawMode = iDrawMode;
+}
+
+-(void) ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    NSLog(@"Ended");
+}
+
 -(void) ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    
     UITouch *touch = [touches anyObject];
     CGPoint new_location = [touch locationInView: [touch view]];
     new_location = [[CCDirector sharedDirector] convertToGL:new_location];
@@ -59,11 +88,13 @@
     oldTouchLocation = [self convertToNodeSpace:oldTouchLocation];
     // add my touches to the naughty touch array
     if (iDrawMode == EModeDrawPen) {
+        NSLog(@"pen");
         [panTouchArray addObject:NSStringFromCGPoint(new_location)];
         [panTouchArray addObject:NSStringFromCGPoint(oldTouchLocation)];
     }
     else
     {
+        NSLog(@"erase");
         [eraseTouchArray addObject:NSStringFromCGPoint(new_location)];
         [eraseTouchArray addObject:NSStringFromCGPoint(oldTouchLocation)];
     }
