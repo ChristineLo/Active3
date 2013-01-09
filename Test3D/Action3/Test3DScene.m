@@ -77,10 +77,6 @@
     helloTxt.isTouchEnabled = YES;
     
     mainNode = helloTxt;
-    
-	//CC3MeshNode* mdBox = (CC3MeshNode*)[self getNodeNamed: @"Box"];
-    //mdBox.isTouchEnabled = YES;
-    //mainNode = mdBox;
 }
 
 
@@ -154,6 +150,7 @@
  *
  * For more info, read the notes of this method on CC3Scene.
  */
+
 -(void) touchEvent: (uint) touchType at: (CGPoint) touchPoint {
     switch (touchType) {
 		case kCCTouchBegan:
@@ -169,9 +166,6 @@
                     break;
                 case EMode3DZDepth:
                     [self zdepthNodeFromSwipeAt:touchPoint];
-                    break;
-                case EMode3DScale:
-                    [self scaleNodeFromSwipeAt:touchPoint];
                     break;
                 default:
                     break;
@@ -274,21 +268,21 @@
 /**
  *縮放
  */
--(void) scaleNodeFromSwipeAt: (CGPoint) touchPoint {
-    CC3Camera* cam = self.activeCamera;
+-(void) scaleNodeFromSwipeAt: (CGFloat) aScale {
+    //CC3Camera* cam = self.activeCamera;
 	
 	// Get the direction and length of the movement since the last touch move event, in
 	// 2D screen coordinates. The 2D rotation axis is perpendicular to this movement.
-	CGPoint swipe2d = ccpSub(touchPoint, lastTouchEventPoint);
-    swipe2d.y = kTransferScale * swipe2d.y;
-    swipe2d.x = kTransferScale * swipe2d.x;
+
+    //swipe2d.y = kTransferScale * swipe2d.y;
+    //swipe2d.x = kTransferScale * swipe2d.x;
     
     
-    CC3Vector axis = CC3VectorAdd(CC3VectorScaleUniform(cam.rightDirection, swipe2d.y), CC3VectorScaleUniform(cam.upDirection, swipe2d.y));
-    axis = CC3VectorAdd(axis, CC3VectorScaleUniform(cam.forwardDirection, -swipe2d.y));
+    //CC3Vector axis = CC3VectorAdd(CC3VectorScaleUniform(cam.rightDirection, aScale), CC3VectorScaleUniform(cam.upDirection, aScale));
+    //axis = CC3VectorAdd(axis, CC3VectorScaleUniform(cam.forwardDirection, -aScale));
     
 	if (mainNode.scale.x >= 0.5 && mainNode.scale.x >= 0.5 && mainNode.scale.x >= 0.5) {
-        [mainNode setScale:CC3VectorAdd(mainNode.scale, axis)];
+        [mainNode setScale:CC3VectorMake(aScale, aScale, aScale)];
     }
     else
     {

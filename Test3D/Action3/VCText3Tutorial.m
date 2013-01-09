@@ -17,9 +17,12 @@
 @synthesize redoButton;
 @synthesize clearButton;
 @synthesize eraserButton;
-@synthesize save2FileButton;
-@synthesize save2AlbumButton;
-@synthesize loadFromAlbumButton;
+@synthesize whitePenButton;
+@synthesize blackPenButton;
+@synthesize defaultButton;
+@synthesize rotateButton;
+@synthesize depthButton;
+@synthesize switchButton;
 @synthesize curColor;
 
 @synthesize ulCountDownTime;
@@ -29,8 +32,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     [self init3D];
     [self initDraw];
+    
+    [self initButton];
+    
+    editState = TWO_D;
+    [self checkEditState];
 }
 
 - (void)init3D
@@ -60,9 +69,12 @@
     
     [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA8888];
     
+    threeDLayer = [MainLayer node];
     CCScene *scene = [CCScene node];
-    [scene addChild:[MainLayer node]];
+    [scene addChild:threeDLayer];
     [[CCDirector sharedDirector] runWithScene:scene];
+    //一開始的編輯模式
+    [threeDLayer setEditMode:EMode3DTransfer];
 }
 
 - (void)initDraw
@@ -72,18 +84,14 @@
     
     [smallView addSubview:slv];
     
-    [self initButton];
-    [self initQuest];
-    
     self.curColor = [UIColor blackColor];
-    
-    [super viewDidLoad];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [threeDButtons dealloc];
+    [twoDButtons dealloc];
 }
 
 -(void)setButtonAttrib:(UIGlossyButton*)_button
@@ -96,62 +104,94 @@
 
 - (void) initButton
 {
-    undoButton = (UIGlossyButton*) [self.view viewWithTag: 1001];
+    undoButton = (UIGlossyButton*) [self.toolBar viewWithTag: 1001];
     [self setButtonAttrib:undoButton];
     
-    redoButton = (UIGlossyButton*) [self.view viewWithTag: 1002];
+    redoButton = (UIGlossyButton*) [self.toolBar viewWithTag: 1002];
     [self setButtonAttrib:redoButton];
     
-    clearButton = (UIGlossyButton*) [self.view viewWithTag: 1003];
+    clearButton = (UIGlossyButton*) [self.toolBar viewWithTag: 1003];
     [self setButtonAttrib:clearButton];
     
-    eraserButton = (UIGlossyButton*) [self.view viewWithTag: 1004];
+    eraserButton = (UIGlossyButton*) [self.toolBar viewWithTag: 1004];
     [self setButtonAttrib:eraserButton];
         
-    save2FileButton = (UIGlossyButton*) [self.view viewWithTag: 1007];
-    [self setButtonAttrib:save2FileButton];
-}
-
--(void) initQuest {
-    backNum = 1;
-    [self setQuesImage:backNum];
-}
-
--(void)  setQuesImage :(int) Num {
-    UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"action4_image%d.png",backNum]];
+    blackPenButton = (UIGlossyButton*) [self.toolBar viewWithTag: 1005];
+    [self setButtonAttrib:blackPenButton];
     
-    if (backImage != NULL) {
-        [slv clearButtonClicked];
-        [backImage removeFromSuperview];
-        [backImage release];
+    whitePenButton = (UIGlossyButton*) [self.toolBar viewWithTag: 1006];
+    [self setButtonAttrib:whitePenButton];
+    
+    [blackPenButton setEnabled: YES];
+    [whitePenButton setEnabled: YES];
+    
+    if (twoDButtons == NULL) {
+        twoDButtons = [[NSArray arrayWithObjects:undoButton, redoButton, clearButton, eraserButton, blackPenButton, whitePenButton, nil] retain];
     }
     
-    backImage = [[UIImageView alloc] initWithImage:image];
-    [backImage setFrame:CGRectMake(backImage.frame.origin.x, backImage.frame.origin.y+80, backImage.frame.size.width, backImage.frame.size.height)];
-    [slv addSubview:backImage];
-    [image release];
+    defaultButton = (UIGlossyButton*) [self.toolBar viewWithTag: 1008];
+    [self setButtonAttrib:defaultButton];
+    
+    rotateButton = (UIGlossyButton*) [self.toolBar viewWithTag: 1009];
+    [self setButtonAttrib:rotateButton];
+    
+    depthButton = (UIGlossyButton*) [self.toolBar viewWithTag: 1010];
+    [self setButtonAttrib:depthButton];
+    
+    if (threeDButtons == NULL) {
+        threeDButtons = [[NSArray arrayWithObjects:defaultButton, rotateButton, depthButton, nil] retain];
+    }
+    
+    switchButton = (UIGlossyButton*) [self.toolBar viewWithTag: 1007];
+    [self setButtonAttrib:switchButton];
+    [switchButton setEnabled:YES];
 }
 
--(void) nextQuest {
-    if (backNum < 7) {
-        [self save2FileButtonClicked:self];
-        [self setQuesImage:++backNum];
+-(void) setThreeDButtonVisible:(BOOL) isEnable
+{
+    for (UIGlossyButton *aButton in threeDButtons) {
+        [aButton setHidden:!isEnable];
+        [aButton setEnabled:isEnable];
     }
 }
 
--(void) preQuest {
-    if (backNum > 1) {
-        [self setQuesImage:--backNum];
-        
-        NSFileManager *mgr = [[NSFileManager alloc] init];
-        NSString  *pngPath = [NSHomeDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"Documents/Screenshot %@.png",kFILE_ANS]];
-        if([mgr fileExistsAtPath:pngPath isDirectory:NO])
-        {
-            UIImage *image = [UIImage imageWithContentsOfFile:pngPath];
-            [slv loadFromAlbumButtonClicked:image];
-        }
-        [mgr release];
+-(void) setTwoDButtonVisible:(BOOL) isEnable
+{
+    for (UIGlossyButton *aButton in twoDButtons) {
+        [aButton setHidden:!isEnable];
     }
+}
+
+-(void) checkEditState {
+    switch (editState) {
+        case THREE_D:
+            [slv setUserInteractionEnabled:NO];
+            [slv setIsAccessibilityElement:NO];
+
+            [smallView setMultipleTouchEnabled:YES];
+            UIGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchGuestureHandler:)];
+            [smallView addGestureRecognizer:pinch];
+            
+            [self setThreeDButtonVisible:YES];
+            [self setTwoDButtonVisible:NO];
+            break;
+        case TWO_D:
+            [slv setUserInteractionEnabled:YES];
+            [slv setIsAccessibilityElement:YES];
+            [smallView removeGestureRecognizer:[smallView.gestureRecognizers lastObject]];
+            
+            [self setThreeDButtonVisible:NO];
+            [self setTwoDButtonVisible:YES];
+            break;
+        default:
+            break;
+    }
+}
+
+#pragma mark Guesture Movement
+-(void) pinchGuestureHandler:(UIPinchGestureRecognizer*) guesture
+{
+    [threeDLayer scaleModel:guesture.scale];
 }
 
 #pragma mark Button Click Event
@@ -171,18 +211,22 @@
 -(IBAction)clearButtonClicked:(id)sender
 {
     [slv clearButtonClicked];
-    
 }
 
 -(IBAction)eraserButtonClicked:(id)sender
 {
     [slv eraserButtonClicked];
-    if (eraserButton.borderColor == [UIColor redColor]) {
-        eraserButton.borderColor = [UIColor clearColor];
-    }
-    else {
-        eraserButton.borderColor = [UIColor redColor];
-    }
+}
+
+-(IBAction)blackPenButtonClicked:(id)sender
+{
+    
+    slv.lineColor = [UIColor blackColor];
+}
+
+-(IBAction)whitePenButtonClicked:(id)sender
+{
+    slv.lineColor = [UIColor whiteColor];
 }
 
 -(IBAction)save2FileButtonClicked:(id)sender
@@ -191,10 +235,23 @@
     [slv save2File:kFILE_ANS];
 }
 
--(IBAction)save2AlbumButtonClicked:(id)sender
+-(IBAction)defaultButtonClicked:(id)sender
 {
-    [slv save2AlbumButtonClicked];
-    
+    [threeDLayer setEditMode:EMode3DTransfer];
+}
+-(IBAction)rotateButtonClicked:(id)sender
+{
+    [threeDLayer setEditMode:EMode3DRotate];
+}
+-(IBAction)depthButtonClicked:(id)sender
+{
+    [threeDLayer setEditMode:EMode3DZDepth];
+}
+
+-(IBAction)switchEditStateButtonClicked:(id)sender
+{
+    (editState == THREE_D)? (editState = TWO_D): (editState = THREE_D);
+    [self checkEditState];
 }
 
 #pragma mark toolbarDelegate
@@ -214,13 +271,13 @@
 {
     [eraserButton setEnabled:[isEnable boolValue]];
 }
--(void) setSave2FileButtonEnable:(NSNumber*)isEnable
+-(void) setBlackPenButtonEnable:(NSNumber*)isEnable
 {
-    [save2FileButton setEnabled:[isEnable boolValue]];
+    [blackPenButton setEnabled:[isEnable boolValue]];
 }
--(void) setSave2AlbumButtonEnable:(NSNumber*)isEnable
+-(void) setWhitePenButtonEnable:(NSNumber*)isEnable
 {
-    [save2AlbumButton setEnabled:[isEnable boolValue]];
+    [whitePenButton setEnabled:[isEnable boolValue]];
 }
 
 @end

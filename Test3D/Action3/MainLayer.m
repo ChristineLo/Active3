@@ -26,16 +26,18 @@
 -(id) init {
     if (self = [super init]) {
         //背景顏色
-        CCLayerColor *backGround = [CCLayerColor layerWithColor:ccc4(255, 255, 255, 50)];
+        CCLayerColor *backGround = [CCLayerColor layerWithColor:ccc4(255, 255, 255, 255)];
         [self addChild:backGround];
+        
         //2D 圖層:畫圖
-        drawLayer = [[DrawCanvasLayer alloc] init];
+        //drawLayer = [[DrawCanvasLayer alloc] init];
+        //[self addChild: drawLayer];
         
         //3D 圖層
         tileLayer = [Test3DLayer layerWithColor: ccc4(0, 0, 0, 0)];
         tileLayer.cc3Scene = [self makeScene];
         [self addChild: tileLayer];
-        //[self addChild: drawLayer];
+        
         [self initializeControls];
     }
     return self;
@@ -47,12 +49,14 @@
 	// See the notes for the CC3Scene shouldClearDepthBufferBefore2D property for more info.
 	[[CCDirector sharedDirector] setDepthTest: NO];
     
+    /*
     [self addButtons];
     cm3DMenu.visible = k3DMenu;
     cmDrawMenu.visible = !cm3DMenu.visible;
     tileLayer.isTouchEnabled = k3DMenu;
     drawLayer.isTouchEnabled = !tileLayer.isTouchEnabled;
     //[self addLabel];
+     */
     [self scheduleUpdate];
 }
 
@@ -113,24 +117,23 @@
     [self addChild:cm3DMenu];
 }
 
--(void) addLabel {
-    NSString *sActive3Cnt = @"        這裡有一些圖形，現在要請你想出一幅完整的圖畫或是一件新發明，讓它包含下列所有的圖形。\n        你可以將這些圖形轉方向、擴大、縮小或是將幾個圖形組合成一個圖形，但是必須符合這些圖形原來的形狀；除了這些圖形之外，可以加上其他的東西；\n        請你儘量想出別人想不到的圖案、故事或發明，畫完之後幫它取一個名字或下一個標題，寫在底下畫線的地方。同樣的，也請你想出一個特別的標題，讓圖畫變得更有意思，（請你根據下面的圖形，將你要畫的圖案或物品，畫在下一頁的空白處，注意：不能改變下列圖形原有的形狀，並且每個圖形只能出現一次）。（十分鐘）";
-    
-	CCLabelTTF *clTaitle = [CCLabelTTF labelWithString:@"活動三" fontName:@"Arial" fontSize: 32];
-    clTaitle.color = ccc3(0, 0, 0);
-    clTaitle.position = ccp(384, 1024 - 30);
-	[self addChild: clTaitle z: 10];			// Draw on top
-    
-    CCLabelTTF *clContent = [CCLabelTTF labelWithString:sActive3Cnt dimensions:CGSizeMake(740, 300) alignment:NSTextAlignmentLeft lineBreakMode:NSLineBreakByCharWrapping fontName:@"Arial" fontSize:16];
-    clContent.anchorPoint = ccp(0.5, 1);
-    clContent.color = ccc3(0, 0, 0);
-    clContent.position = ccp(384, clTaitle.position.y - 25);
-	[self addChild: clContent z: 10];			// Draw on top
+/**
+ * 設定3D編輯模式 
+ */
+-(void) setEditMode:(int)mode
+{
+    Test3DScene *tileScene = (Test3DScene*)tileLayer.cc3Scene;
+    tileScene.iEditMode = mode;
 }
-
 /**
  * 按鈕動作
  */
+-(void) scaleModel:(CGFloat)scale
+{
+    Test3DScene *tileScene = (Test3DScene*)tileLayer.cc3Scene;
+    [tileScene scaleNodeFromSwipeAt:scale];
+}
+
 -(void) saveScreenShotSelected: (CCMenuItemToggle*) menuItem {
     [self takeScreenShot];
 }

@@ -20,6 +20,9 @@
     CCMenu *cmDrawMenu;
     CCMenu *cmSwitchMenu;
 }
+
 -(CC3Scene*) makeScene;
 -(void) takeScreenShot;
+-(void) scaleModel:(CGFloat)scale;
+-(void) setEditMode:(int)mode;
 @end

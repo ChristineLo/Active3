@@ -21,4 +21,6 @@
     CC3Node* mainNode;
 }
 @property (readwrite, nonatomic) int iEditMode;
+
+-(void) scaleNodeFromSwipeAt: (CGFloat) aScale;
 @end

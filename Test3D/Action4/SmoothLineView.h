@@ -49,13 +49,14 @@ enum
 @property (nonatomic, retain) UIColor *lineColor;
 @property (readwrite) CGFloat lineWidth;
 @property (readwrite) CGFloat lineAlpha;
-@property(assign) id delegate;
+@property (assign) id delegate;
 
 - (void)calculateMinImageArea:(CGPoint)pp1 :(CGPoint)pp2 :(CGPoint)cp;
 - (void)redoButtonClicked;
 - (void)undoButtonClicked;
 - (void)clearButtonClicked;
 - (void)eraserButtonClicked;
+- (void)drawButtonClicked;
 - (void)save2FileButtonClicked;
 - (void)save2AlbumButtonClicked;
 - (void)loadFromAlbumButtonClicked:(UIImage*)_image;

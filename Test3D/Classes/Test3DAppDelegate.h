@@ -14,7 +14,6 @@
 	UIWindow* window;
 	CCNodeController* viewController;
 }
-
+@property (strong,nonatomic) NSString *TestNumberString;
 @property (nonatomic, retain) UIWindow* window;
-
 @end

@@ -16,3 +16,4 @@
 
 #define sLEAF_WORD @"要離開嗎？"
 #define sLEAF_ACTIVE @"作答結束！"
+#define DEBUG_TIME 5

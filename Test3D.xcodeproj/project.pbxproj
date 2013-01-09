@@ -201,13 +201,8 @@
 		84A1A696166CF140002D4491 /* CC3World.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A1A695166CF140002D4491 /* CC3World.m */; };
 		84A1A69B166CF140002D4491 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A1A69A166CF140002D4491 /* main.m */; };
 		84A1A69F166CF140002D4491 /* Test3DAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A1A69E166CF140002D4491 /* Test3DAppDelegate.m */; };
-		84A1A6A2166CF140002D4491 /* Test3DLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A1A6A1166CF140002D4491 /* Test3DLayer.m */; };
-		84A1A6A5166CF140002D4491 /* Test3DScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A1A6A4166CF140002D4491 /* Test3DScene.m */; };
 		84A1A6A7166CF140002D4491 /* hello-world.pod in Resources */ = {isa = PBXBuildFile; fileRef = 84A1A6A6166CF140002D4491 /* hello-world.pod */; };
 		84A1A6AE166CF1F4002D4491 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84A1A6AD166CF1F4002D4491 /* Storyboard.storyboard */; };
-		84A1A6B4166CF5DE002D4491 /* HelloViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A1A6B3166CF5DE002D4491 /* HelloViewController.m */; };
-		84A1A6B7166CF6D3002D4491 /* VCTest3.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A1A6B6166CF6D3002D4491 /* VCTest3.m */; };
-		84A1A6B9166CF87B002D4491 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A1A6B8166CF87B002D4491 /* GLKit.framework */; };
 		84BCCE14168A1AFE00E94037 /* action4_image1.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BCCE0D168A1AFE00E94037 /* action4_image1.png */; };
 		84BCCE15168A1AFE00E94037 /* action4_image2.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BCCE0E168A1AFE00E94037 /* action4_image2.png */; };
 		84BCCE16168A1AFE00E94037 /* action4_image3.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BCCE0F168A1AFE00E94037 /* action4_image3.png */; };
@@ -218,7 +213,6 @@
 		84BCCE1F168A1D6700E94037 /* archc.pod in Resources */ = {isa = PBXBuildFile; fileRef = 84BCCE1C168A1D6700E94037 /* archc.pod */; };
 		84BCCE20168A1D6700E94037 /* boxc.pod in Resources */ = {isa = PBXBuildFile; fileRef = 84BCCE1D168A1D6700E94037 /* boxc.pod */; };
 		84BCCE21168A1D6700E94037 /* cylinderc.pod in Resources */ = {isa = PBXBuildFile; fileRef = 84BCCE1E168A1D6700E94037 /* cylinderc.pod */; };
-		84CBBA6C168C24D800D9FDFD /* VCText3Tutorial.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CBBA6B168C24D800D9FDFD /* VCText3Tutorial.m */; };
 		84D8D7F1168B3E3E00DC33E9 /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D8D7D8168B3E3E00DC33E9 /* ALAssetsLibrary+CustomPhotoAlbum.m */; };
 		84D8D7F2168B3E3E00DC33E9 /* BezierCurve.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D8D7DB168B3E3E00DC33E9 /* BezierCurve.m */; };
 		84D8D7F3168B3E3E00DC33E9 /* CatmullRomSpline.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D8D7DD168B3E3E00DC33E9 /* CatmullRomSpline.m */; };
@@ -232,11 +226,47 @@
 		84D8D7FB168B3E3E00DC33E9 /* UIImage-Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D8D7F0168B3E3E00DC33E9 /* UIImage-Extensions.m */; };
 		84D8D7FE168B3E6A00DC33E9 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84D8D7FD168B3E6A00DC33E9 /* AssetsLibrary.framework */; };
 		84D8D805168B3F8500DC33E9 /* SmoothLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D8D804168B3F8500DC33E9 /* SmoothLineView.m */; };
-		B85077361678A182007F31EE /* DrawCanvasLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B85077351678A182007F31EE /* DrawCanvasLayer.m */; };
+		B80C01B7169D9F8600CBBE9D /* Action2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B80C01B6169D9F8600CBBE9D /* Action2ViewController.m */; };
+		B80C01BA169D9FA600CBBE9D /* Action5ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B80C01B9169D9FA600CBBE9D /* Action5ViewController.m */; };
 		B850773F1678A660007F31EE /* CCNode+SFGestureRecognizers.m in Sources */ = {isa = PBXBuildFile; fileRef = B850773E1678A660007F31EE /* CCNode+SFGestureRecognizers.m */; };
 		B850B08B167B25840064C7C9 /* VCTest4.m in Sources */ = {isa = PBXBuildFile; fileRef = B850B08A167B25840064C7C9 /* VCTest4.m */; };
 		B850B08F167B25B60064C7C9 /* VCWord4.m in Sources */ = {isa = PBXBuildFile; fileRef = B850B08E167B25B60064C7C9 /* VCWord4.m */; };
-		B857D1BF1672084C00B8DC54 /* MainLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B857D1BE1672084C00B8DC54 /* MainLayer.m */; };
+		B8C37D1F169D904D007FB26A /* DrawCanvasLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C37D12169D904D007FB26A /* DrawCanvasLayer.m */; };
+		B8C37D20169D904D007FB26A /* HelloViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C37D14169D904D007FB26A /* HelloViewController.m */; };
+		B8C37D21169D904D007FB26A /* MainLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C37D16169D904D007FB26A /* MainLayer.m */; };
+		B8C37D22169D904D007FB26A /* Test3DLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C37D18169D904D007FB26A /* Test3DLayer.m */; };
+		B8C37D23169D904D007FB26A /* Test3DScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C37D1A169D904D007FB26A /* Test3DScene.m */; };
+		B8C37D24169D904D007FB26A /* VCTest3.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C37D1C169D904D007FB26A /* VCTest3.m */; };
+		B8C37D25169D904D007FB26A /* VCText3Tutorial.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C37D1E169D904D007FB26A /* VCText3Tutorial.m */; };
+		B8C37FEF169D97D7007FB26A /* ActionQuestion1.png in Resources */ = {isa = PBXBuildFile; fileRef = B8C37FE6169D97D7007FB26A /* ActionQuestion1.png */; };
+		B8C37FF0169D97D7007FB26A /* ActionQuestion2.png in Resources */ = {isa = PBXBuildFile; fileRef = B8C37FE7169D97D7007FB26A /* ActionQuestion2.png */; };
+		B8C37FF1169D97D7007FB26A /* ActionQuestion5.png in Resources */ = {isa = PBXBuildFile; fileRef = B8C37FE8169D97D7007FB26A /* ActionQuestion5.png */; };
+		B8C37FF2169D97D7007FB26A /* TeachingWord1.png in Resources */ = {isa = PBXBuildFile; fileRef = B8C37FE9169D97D7007FB26A /* TeachingWord1.png */; };
+		B8C37FF3169D97D7007FB26A /* TeachingWord2.png in Resources */ = {isa = PBXBuildFile; fileRef = B8C37FEA169D97D7007FB26A /* TeachingWord2.png */; };
+		B8C37FF4169D97D7007FB26A /* 封面個人資料.png in Resources */ = {isa = PBXBuildFile; fileRef = B8C37FEB169D97D7007FB26A /* 封面個人資料.png */; };
+		B8C37FF5169D97D7007FB26A /* 封面個人資料2.png in Resources */ = {isa = PBXBuildFile; fileRef = B8C37FEC169D97D7007FB26A /* 封面個人資料2.png */; };
+		B8C37FF6169D97D7007FB26A /* 螢幕快照 2012-11-20 下午3.53.25.png in Resources */ = {isa = PBXBuildFile; fileRef = B8C37FED169D97D7007FB26A /* 螢幕快照 2012-11-20 下午3.53.25.png */; };
+		B8C37FF7169D97D7007FB26A /* 螢幕快照 2012-11-20 下午4.03.20.png in Resources */ = {isa = PBXBuildFile; fileRef = B8C37FEE169D97D7007FB26A /* 螢幕快照 2012-11-20 下午4.03.20.png */; };
+		B8C3801E169D98C3007FB26A /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C38001169D98C3007FB26A /* NSObject+SBJson.m */; };
+		B8C3801F169D98C3007FB26A /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C38004169D98C3007FB26A /* SBJsonParser.m */; };
+		B8C38020169D98C3007FB26A /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C38006169D98C3007FB26A /* SBJsonStreamParser.m */; };
+		B8C38021169D98C3007FB26A /* SBJsonStreamParserAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C38008169D98C3007FB26A /* SBJsonStreamParserAccumulator.m */; };
+		B8C38022169D98C3007FB26A /* SBJsonStreamParserAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C3800A169D98C3007FB26A /* SBJsonStreamParserAdapter.m */; };
+		B8C38023169D98C3007FB26A /* SBJsonStreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C3800C169D98C3007FB26A /* SBJsonStreamParserState.m */; };
+		B8C38024169D98C3007FB26A /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C3800E169D98C3007FB26A /* SBJsonStreamWriter.m */; };
+		B8C38025169D98C3007FB26A /* SBJsonStreamWriterAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C38010169D98C3007FB26A /* SBJsonStreamWriterAccumulator.m */; };
+		B8C38026169D98C3007FB26A /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C38012169D98C3007FB26A /* SBJsonStreamWriterState.m */; };
+		B8C38027169D98C3007FB26A /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C38014169D98C3007FB26A /* SBJsonTokeniser.m */; };
+		B8C38028169D98C3007FB26A /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C38016169D98C3007FB26A /* SBJsonUTF8Stream.m */; };
+		B8C38029169D98C3007FB26A /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C38018169D98C3007FB26A /* SBJsonWriter.m */; };
+		B8C3802A169D98C3007FB26A /* RadioButton-Selected.png in Resources */ = {isa = PBXBuildFile; fileRef = B8C3801A169D98C3007FB26A /* RadioButton-Selected.png */; };
+		B8C3802B169D98C3007FB26A /* RadioButton-Unselected.png in Resources */ = {isa = PBXBuildFile; fileRef = B8C3801B169D98C3007FB26A /* RadioButton-Unselected.png */; };
+		B8C3802C169D98C3007FB26A /* RadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C3801D169D98C3007FB26A /* RadioButton.m */; };
+		B8C38033169D9A1F007FB26A /* ActionCover.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C38032169D9A1F007FB26A /* ActionCover.m */; };
+		B8C3803B169D9B3B007FB26A /* Action1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C3803A169D9B3B007FB26A /* Action1ViewController.m */; };
+		B8C3803E169D9D00007FB26A /* FileOPs.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C3803D169D9CFF007FB26A /* FileOPs.m */; };
+		B8C38048169D9E67007FB26A /* addTeachWord.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C38045169D9E67007FB26A /* addTeachWord.m */; };
+		B8C38049169D9E67007FB26A /* CountdownTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C38047169D9E67007FB26A /* CountdownTimer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -643,16 +673,8 @@
 		84A1A69A166CF140002D4491 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		84A1A69D166CF140002D4491 /* Test3DAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Test3DAppDelegate.h; path = Classes/Test3DAppDelegate.h; sourceTree = "<group>"; };
 		84A1A69E166CF140002D4491 /* Test3DAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Test3DAppDelegate.m; path = Classes/Test3DAppDelegate.m; sourceTree = "<group>"; };
-		84A1A6A0166CF140002D4491 /* Test3DLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Test3DLayer.h; path = Classes/Test3DLayer.h; sourceTree = "<group>"; };
-		84A1A6A1166CF140002D4491 /* Test3DLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Test3DLayer.m; path = Classes/Test3DLayer.m; sourceTree = "<group>"; };
-		84A1A6A3166CF140002D4491 /* Test3DScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Test3DScene.h; path = Classes/Test3DScene.h; sourceTree = "<group>"; };
-		84A1A6A4166CF140002D4491 /* Test3DScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Test3DScene.m; path = Classes/Test3DScene.m; sourceTree = "<group>"; };
 		84A1A6A6166CF140002D4491 /* hello-world.pod */ = {isa = PBXFileReference; lastKnownFileType = file; name = "hello-world.pod"; path = "Resources/hello-world.pod"; sourceTree = "<group>"; };
 		84A1A6AD166CF1F4002D4491 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
-		84A1A6B2166CF5DE002D4491 /* HelloViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HelloViewController.h; path = Test3D/HelloViewController.h; sourceTree = "<group>"; };
-		84A1A6B3166CF5DE002D4491 /* HelloViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HelloViewController.m; path = Test3D/HelloViewController.m; sourceTree = "<group>"; };
-		84A1A6B5166CF6D3002D4491 /* VCTest3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCTest3.h; path = Test3D/VCTest3.h; sourceTree = "<group>"; };
-		84A1A6B6166CF6D3002D4491 /* VCTest3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCTest3.m; path = Test3D/VCTest3.m; sourceTree = "<group>"; };
 		84A1A6B8166CF87B002D4491 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		84BCCE0D168A1AFE00E94037 /* action4_image1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = action4_image1.png; sourceTree = "<group>"; };
 		84BCCE0E168A1AFE00E94037 /* action4_image2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = action4_image2.png; sourceTree = "<group>"; };
@@ -664,8 +686,6 @@
 		84BCCE1C168A1D6700E94037 /* archc.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = archc.pod; sourceTree = "<group>"; };
 		84BCCE1D168A1D6700E94037 /* boxc.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = boxc.pod; sourceTree = "<group>"; };
 		84BCCE1E168A1D6700E94037 /* cylinderc.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = cylinderc.pod; sourceTree = "<group>"; };
-		84CBBA6A168C24D800D9FDFD /* VCText3Tutorial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCText3Tutorial.h; path = Test3D/Action3/VCText3Tutorial.h; sourceTree = "<group>"; };
-		84CBBA6B168C24D800D9FDFD /* VCText3Tutorial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCText3Tutorial.m; path = Test3D/Action3/VCText3Tutorial.m; sourceTree = "<group>"; };
 		84D8D7D7168B3E3E00DC33E9 /* ALAssetsLibrary+CustomPhotoAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALAssetsLibrary+CustomPhotoAlbum.h"; sourceTree = "<group>"; };
 		84D8D7D8168B3E3E00DC33E9 /* ALAssetsLibrary+CustomPhotoAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ALAssetsLibrary+CustomPhotoAlbum.m"; sourceTree = "<group>"; };
 		84D8D7DA168B3E3E00DC33E9 /* BezierCurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BezierCurve.h; sourceTree = "<group>"; };
@@ -692,16 +712,78 @@
 		84D8D7FD168B3E6A00DC33E9 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		84D8D803168B3F8500DC33E9 /* SmoothLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SmoothLineView.h; path = Test3D/Action4/SmoothLineView.h; sourceTree = "<group>"; };
 		84D8D804168B3F8500DC33E9 /* SmoothLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SmoothLineView.m; path = Test3D/Action4/SmoothLineView.m; sourceTree = "<group>"; };
-		B85077341678A182007F31EE /* DrawCanvasLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawCanvasLayer.h; sourceTree = "<group>"; };
-		B85077351678A182007F31EE /* DrawCanvasLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawCanvasLayer.m; sourceTree = "<group>"; };
+		B80C01B5169D9F8600CBBE9D /* Action2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Action2ViewController.h; sourceTree = "<group>"; };
+		B80C01B6169D9F8600CBBE9D /* Action2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Action2ViewController.m; sourceTree = "<group>"; };
+		B80C01B8169D9FA600CBBE9D /* Action5ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Action5ViewController.h; path = Test3D/Action5/Action5ViewController.h; sourceTree = "<group>"; };
+		B80C01B9169D9FA600CBBE9D /* Action5ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Action5ViewController.m; path = Test3D/Action5/Action5ViewController.m; sourceTree = "<group>"; };
 		B850773D1678A660007F31EE /* CCNode+SFGestureRecognizers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CCNode+SFGestureRecognizers.h"; sourceTree = "<group>"; };
 		B850773E1678A660007F31EE /* CCNode+SFGestureRecognizers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CCNode+SFGestureRecognizers.m"; sourceTree = "<group>"; };
 		B850B089167B25840064C7C9 /* VCTest4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCTest4.h; path = Test3D/Action4/VCTest4.h; sourceTree = "<group>"; };
 		B850B08A167B25840064C7C9 /* VCTest4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCTest4.m; path = Test3D/Action4/VCTest4.m; sourceTree = "<group>"; };
 		B850B08D167B25B50064C7C9 /* VCWord4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCWord4.h; path = Test3D/Action4/VCWord4.h; sourceTree = "<group>"; };
 		B850B08E167B25B60064C7C9 /* VCWord4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCWord4.m; path = Test3D/Action4/VCWord4.m; sourceTree = "<group>"; };
-		B857D1BD1672084C00B8DC54 /* MainLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainLayer.h; path = Classes/MainLayer.h; sourceTree = "<group>"; };
-		B857D1BE1672084C00B8DC54 /* MainLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainLayer.m; path = Classes/MainLayer.m; sourceTree = "<group>"; };
+		B8C37D11169D904D007FB26A /* DrawCanvasLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawCanvasLayer.h; sourceTree = "<group>"; };
+		B8C37D12169D904D007FB26A /* DrawCanvasLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawCanvasLayer.m; sourceTree = "<group>"; };
+		B8C37D13169D904D007FB26A /* HelloViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelloViewController.h; sourceTree = "<group>"; };
+		B8C37D14169D904D007FB26A /* HelloViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelloViewController.m; sourceTree = "<group>"; };
+		B8C37D15169D904D007FB26A /* MainLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainLayer.h; sourceTree = "<group>"; };
+		B8C37D16169D904D007FB26A /* MainLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainLayer.m; sourceTree = "<group>"; };
+		B8C37D17169D904D007FB26A /* Test3DLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test3DLayer.h; sourceTree = "<group>"; };
+		B8C37D18169D904D007FB26A /* Test3DLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test3DLayer.m; sourceTree = "<group>"; };
+		B8C37D19169D904D007FB26A /* Test3DScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test3DScene.h; sourceTree = "<group>"; };
+		B8C37D1A169D904D007FB26A /* Test3DScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test3DScene.m; sourceTree = "<group>"; };
+		B8C37D1B169D904D007FB26A /* VCTest3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCTest3.h; sourceTree = "<group>"; };
+		B8C37D1C169D904D007FB26A /* VCTest3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCTest3.m; sourceTree = "<group>"; };
+		B8C37D1D169D904D007FB26A /* VCText3Tutorial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCText3Tutorial.h; sourceTree = "<group>"; };
+		B8C37D1E169D904D007FB26A /* VCText3Tutorial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCText3Tutorial.m; sourceTree = "<group>"; };
+		B8C37FE6169D97D7007FB26A /* ActionQuestion1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ActionQuestion1.png; sourceTree = "<group>"; };
+		B8C37FE7169D97D7007FB26A /* ActionQuestion2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ActionQuestion2.png; sourceTree = "<group>"; };
+		B8C37FE8169D97D7007FB26A /* ActionQuestion5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ActionQuestion5.png; sourceTree = "<group>"; };
+		B8C37FE9169D97D7007FB26A /* TeachingWord1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TeachingWord1.png; sourceTree = "<group>"; };
+		B8C37FEA169D97D7007FB26A /* TeachingWord2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TeachingWord2.png; sourceTree = "<group>"; };
+		B8C37FEB169D97D7007FB26A /* 封面個人資料.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "封面個人資料.png"; sourceTree = "<group>"; };
+		B8C37FEC169D97D7007FB26A /* 封面個人資料2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "封面個人資料2.png"; sourceTree = "<group>"; };
+		B8C37FED169D97D7007FB26A /* 螢幕快照 2012-11-20 下午3.53.25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "螢幕快照 2012-11-20 下午3.53.25.png"; sourceTree = "<group>"; };
+		B8C37FEE169D97D7007FB26A /* 螢幕快照 2012-11-20 下午4.03.20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "螢幕快照 2012-11-20 下午4.03.20.png"; sourceTree = "<group>"; };
+		B8C38000169D98C3007FB26A /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJson.h"; sourceTree = "<group>"; };
+		B8C38001169D98C3007FB26A /* NSObject+SBJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJson.m"; sourceTree = "<group>"; };
+		B8C38002169D98C3007FB26A /* SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson.h; sourceTree = "<group>"; };
+		B8C38003169D98C3007FB26A /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		B8C38004169D98C3007FB26A /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		B8C38005169D98C3007FB26A /* SBJsonStreamParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParser.h; sourceTree = "<group>"; };
+		B8C38006169D98C3007FB26A /* SBJsonStreamParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParser.m; sourceTree = "<group>"; };
+		B8C38007169D98C3007FB26A /* SBJsonStreamParserAccumulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserAccumulator.h; sourceTree = "<group>"; };
+		B8C38008169D98C3007FB26A /* SBJsonStreamParserAccumulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserAccumulator.m; sourceTree = "<group>"; };
+		B8C38009169D98C3007FB26A /* SBJsonStreamParserAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserAdapter.h; sourceTree = "<group>"; };
+		B8C3800A169D98C3007FB26A /* SBJsonStreamParserAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserAdapter.m; sourceTree = "<group>"; };
+		B8C3800B169D98C3007FB26A /* SBJsonStreamParserState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserState.h; sourceTree = "<group>"; };
+		B8C3800C169D98C3007FB26A /* SBJsonStreamParserState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserState.m; sourceTree = "<group>"; };
+		B8C3800D169D98C3007FB26A /* SBJsonStreamWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriter.h; sourceTree = "<group>"; };
+		B8C3800E169D98C3007FB26A /* SBJsonStreamWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriter.m; sourceTree = "<group>"; };
+		B8C3800F169D98C3007FB26A /* SBJsonStreamWriterAccumulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriterAccumulator.h; sourceTree = "<group>"; };
+		B8C38010169D98C3007FB26A /* SBJsonStreamWriterAccumulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriterAccumulator.m; sourceTree = "<group>"; };
+		B8C38011169D98C3007FB26A /* SBJsonStreamWriterState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriterState.h; sourceTree = "<group>"; };
+		B8C38012169D98C3007FB26A /* SBJsonStreamWriterState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriterState.m; sourceTree = "<group>"; };
+		B8C38013169D98C3007FB26A /* SBJsonTokeniser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonTokeniser.h; sourceTree = "<group>"; };
+		B8C38014169D98C3007FB26A /* SBJsonTokeniser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonTokeniser.m; sourceTree = "<group>"; };
+		B8C38015169D98C3007FB26A /* SBJsonUTF8Stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonUTF8Stream.h; sourceTree = "<group>"; };
+		B8C38016169D98C3007FB26A /* SBJsonUTF8Stream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonUTF8Stream.m; sourceTree = "<group>"; };
+		B8C38017169D98C3007FB26A /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		B8C38018169D98C3007FB26A /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		B8C3801A169D98C3007FB26A /* RadioButton-Selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RadioButton-Selected.png"; sourceTree = "<group>"; };
+		B8C3801B169D98C3007FB26A /* RadioButton-Unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RadioButton-Unselected.png"; sourceTree = "<group>"; };
+		B8C3801C169D98C3007FB26A /* RadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioButton.h; sourceTree = "<group>"; };
+		B8C3801D169D98C3007FB26A /* RadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioButton.m; sourceTree = "<group>"; };
+		B8C38031169D9A1F007FB26A /* ActionCover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionCover.h; sourceTree = "<group>"; };
+		B8C38032169D9A1F007FB26A /* ActionCover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionCover.m; sourceTree = "<group>"; };
+		B8C38039169D9B3B007FB26A /* Action1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Action1ViewController.h; sourceTree = "<group>"; };
+		B8C3803A169D9B3B007FB26A /* Action1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Action1ViewController.m; sourceTree = "<group>"; };
+		B8C3803C169D9CFF007FB26A /* FileOPs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileOPs.h; path = ../../CreatTest/CreatTest/FileOPs.h; sourceTree = "<group>"; };
+		B8C3803D169D9CFF007FB26A /* FileOPs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileOPs.m; path = ../../CreatTest/CreatTest/FileOPs.m; sourceTree = "<group>"; };
+		B8C38044169D9E67007FB26A /* addTeachWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = addTeachWord.h; path = ../../CreatTest/CreatTest/addTeachWord.h; sourceTree = "<group>"; };
+		B8C38045169D9E67007FB26A /* addTeachWord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = addTeachWord.m; path = ../../CreatTest/CreatTest/addTeachWord.m; sourceTree = "<group>"; };
+		B8C38046169D9E67007FB26A /* CountdownTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CountdownTimer.h; path = ../../CreatTest/CreatTest/CountdownTimer.h; sourceTree = "<group>"; };
+		B8C38047169D9E67007FB26A /* CountdownTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CountdownTimer.m; path = ../../CreatTest/CreatTest/CountdownTimer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -711,7 +793,6 @@
 			files = (
 				84D8D7FE168B3E6A00DC33E9 /* AssetsLibrary.framework in Frameworks */,
 				84A1A433166CF138002D4491 /* QuartzCore.framework in Frameworks */,
-				84A1A6B9166CF87B002D4491 /* GLKit.framework in Frameworks */,
 				84A1A435166CF138002D4491 /* OpenGLES.framework in Frameworks */,
 				84A1A437166CF138002D4491 /* OpenAL.framework in Frameworks */,
 				84A1A439166CF138002D4491 /* AudioToolbox.framework in Frameworks */,
@@ -728,8 +809,13 @@
 		84A1A423166CF138002D4491 = {
 			isa = PBXGroup;
 			children = (
-				B850B09F167B304C0064C7C9 /* Test4 */,
-				B850B0A0167B305A0064C7C9 /* Test3 */,
+				B80C01B8169D9FA600CBBE9D /* Action5ViewController.h */,
+				B80C01B9169D9FA600CBBE9D /* Action5ViewController.m */,
+				B80C01B4169D9F8600CBBE9D /* Action2 */,
+				B8C38038169D9B3B007FB26A /* Action1 */,
+				B8C38030169D99F7007FB26A /* ActionCover */,
+				B8C37D10169D904D007FB26A /* Action3 */,
+				B850B09F167B304C0064C7C9 /* Action4 */,
 				84A1A442166CF138002D4491 /* Test3D */,
 				84A1A431166CF138002D4491 /* Frameworks */,
 				84A1A42F166CF138002D4491 /* Products */,
@@ -778,6 +864,7 @@
 		84A1A443166CF138002D4491 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B8C37FE5169D97D7007FB26A /* image */,
 				84BCCE1B168A1D6700E94037 /* pod model */,
 				84BCCE0C168A1AFE00E94037 /* Action4Image */,
 				84A1A444166CF138002D4491 /* Default.png */,
@@ -1361,17 +1448,17 @@
 		84A1A69C166CF140002D4491 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				B8C38044169D9E67007FB26A /* addTeachWord.h */,
+				B8C38045169D9E67007FB26A /* addTeachWord.m */,
+				B8C38046169D9E67007FB26A /* CountdownTimer.h */,
+				B8C38047169D9E67007FB26A /* CountdownTimer.m */,
+				B8C3803C169D9CFF007FB26A /* FileOPs.h */,
+				B8C3803D169D9CFF007FB26A /* FileOPs.m */,
+				B8C37FFE169D98C3007FB26A /* JSON */,
+				B8C38019169D98C3007FB26A /* Radiobutton */,
 				84A1A69D166CF140002D4491 /* Test3DAppDelegate.h */,
 				84A1A69E166CF140002D4491 /* Test3DAppDelegate.m */,
-				84A1A6A0166CF140002D4491 /* Test3DLayer.h */,
-				84A1A6A1166CF140002D4491 /* Test3DLayer.m */,
-				84A1A6A3166CF140002D4491 /* Test3DScene.h */,
-				84A1A6A4166CF140002D4491 /* Test3DScene.m */,
 				84A1A6AD166CF1F4002D4491 /* Storyboard.storyboard */,
-				B857D1BD1672084C00B8DC54 /* MainLayer.h */,
-				B857D1BE1672084C00B8DC54 /* MainLayer.m */,
-				B85077341678A182007F31EE /* DrawCanvasLayer.h */,
-				B85077351678A182007F31EE /* DrawCanvasLayer.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1455,6 +1542,16 @@
 			path = "Test3D/Action4/UIImage-Extensions";
 			sourceTree = "<group>";
 		};
+		B80C01B4169D9F8600CBBE9D /* Action2 */ = {
+			isa = PBXGroup;
+			children = (
+				B80C01B5169D9F8600CBBE9D /* Action2ViewController.h */,
+				B80C01B6169D9F8600CBBE9D /* Action2ViewController.m */,
+			);
+			name = Action2;
+			path = Test3D/Action2;
+			sourceTree = "<group>";
+		};
 		B850773C1678A660007F31EE /* CCNode+SFGestureRecognizers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1464,7 +1561,7 @@
 			path = "CCNode+SFGestureRecognizers";
 			sourceTree = SOURCE_ROOT;
 		};
-		B850B09F167B304C0064C7C9 /* Test4 */ = {
+		B850B09F167B304C0064C7C9 /* Action4 */ = {
 			isa = PBXGroup;
 			children = (
 				84D8D803168B3F8500DC33E9 /* SmoothLineView.h */,
@@ -1477,20 +1574,119 @@
 				B850B08D167B25B50064C7C9 /* VCWord4.h */,
 				B850B08E167B25B60064C7C9 /* VCWord4.m */,
 			);
-			name = Test4;
+			name = Action4;
 			sourceTree = "<group>";
 		};
-		B850B0A0167B305A0064C7C9 /* Test3 */ = {
+		B8C37D10169D904D007FB26A /* Action3 */ = {
 			isa = PBXGroup;
 			children = (
-				84A1A6B5166CF6D3002D4491 /* VCTest3.h */,
-				84A1A6B6166CF6D3002D4491 /* VCTest3.m */,
-				84A1A6B2166CF5DE002D4491 /* HelloViewController.h */,
-				84A1A6B3166CF5DE002D4491 /* HelloViewController.m */,
-				84CBBA6A168C24D800D9FDFD /* VCText3Tutorial.h */,
-				84CBBA6B168C24D800D9FDFD /* VCText3Tutorial.m */,
+				B8C37D11169D904D007FB26A /* DrawCanvasLayer.h */,
+				B8C37D12169D904D007FB26A /* DrawCanvasLayer.m */,
+				B8C37D13169D904D007FB26A /* HelloViewController.h */,
+				B8C37D14169D904D007FB26A /* HelloViewController.m */,
+				B8C37D15169D904D007FB26A /* MainLayer.h */,
+				B8C37D16169D904D007FB26A /* MainLayer.m */,
+				B8C37D17169D904D007FB26A /* Test3DLayer.h */,
+				B8C37D18169D904D007FB26A /* Test3DLayer.m */,
+				B8C37D19169D904D007FB26A /* Test3DScene.h */,
+				B8C37D1A169D904D007FB26A /* Test3DScene.m */,
+				B8C37D1B169D904D007FB26A /* VCTest3.h */,
+				B8C37D1C169D904D007FB26A /* VCTest3.m */,
+				B8C37D1D169D904D007FB26A /* VCText3Tutorial.h */,
+				B8C37D1E169D904D007FB26A /* VCText3Tutorial.m */,
 			);
-			name = Test3;
+			name = Action3;
+			path = Test3D/Action3;
+			sourceTree = "<group>";
+		};
+		B8C37FE5169D97D7007FB26A /* image */ = {
+			isa = PBXGroup;
+			children = (
+				B8C37FE6169D97D7007FB26A /* ActionQuestion1.png */,
+				B8C37FE7169D97D7007FB26A /* ActionQuestion2.png */,
+				B8C37FE8169D97D7007FB26A /* ActionQuestion5.png */,
+				B8C37FE9169D97D7007FB26A /* TeachingWord1.png */,
+				B8C37FEA169D97D7007FB26A /* TeachingWord2.png */,
+				B8C37FEB169D97D7007FB26A /* 封面個人資料.png */,
+				B8C37FEC169D97D7007FB26A /* 封面個人資料2.png */,
+				B8C37FED169D97D7007FB26A /* 螢幕快照 2012-11-20 下午3.53.25.png */,
+				B8C37FEE169D97D7007FB26A /* 螢幕快照 2012-11-20 下午4.03.20.png */,
+			);
+			name = image;
+			path = ../../CreatTest/CreatTest/image;
+			sourceTree = "<group>";
+		};
+		B8C37FFE169D98C3007FB26A /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				B8C37FFF169D98C3007FB26A /* Classes */,
+			);
+			name = JSON;
+			path = ../../CreatTest/CreatTest/JSON;
+			sourceTree = "<group>";
+		};
+		B8C37FFF169D98C3007FB26A /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				B8C38000169D98C3007FB26A /* NSObject+SBJson.h */,
+				B8C38001169D98C3007FB26A /* NSObject+SBJson.m */,
+				B8C38002169D98C3007FB26A /* SBJson.h */,
+				B8C38003169D98C3007FB26A /* SBJsonParser.h */,
+				B8C38004169D98C3007FB26A /* SBJsonParser.m */,
+				B8C38005169D98C3007FB26A /* SBJsonStreamParser.h */,
+				B8C38006169D98C3007FB26A /* SBJsonStreamParser.m */,
+				B8C38007169D98C3007FB26A /* SBJsonStreamParserAccumulator.h */,
+				B8C38008169D98C3007FB26A /* SBJsonStreamParserAccumulator.m */,
+				B8C38009169D98C3007FB26A /* SBJsonStreamParserAdapter.h */,
+				B8C3800A169D98C3007FB26A /* SBJsonStreamParserAdapter.m */,
+				B8C3800B169D98C3007FB26A /* SBJsonStreamParserState.h */,
+				B8C3800C169D98C3007FB26A /* SBJsonStreamParserState.m */,
+				B8C3800D169D98C3007FB26A /* SBJsonStreamWriter.h */,
+				B8C3800E169D98C3007FB26A /* SBJsonStreamWriter.m */,
+				B8C3800F169D98C3007FB26A /* SBJsonStreamWriterAccumulator.h */,
+				B8C38010169D98C3007FB26A /* SBJsonStreamWriterAccumulator.m */,
+				B8C38011169D98C3007FB26A /* SBJsonStreamWriterState.h */,
+				B8C38012169D98C3007FB26A /* SBJsonStreamWriterState.m */,
+				B8C38013169D98C3007FB26A /* SBJsonTokeniser.h */,
+				B8C38014169D98C3007FB26A /* SBJsonTokeniser.m */,
+				B8C38015169D98C3007FB26A /* SBJsonUTF8Stream.h */,
+				B8C38016169D98C3007FB26A /* SBJsonUTF8Stream.m */,
+				B8C38017169D98C3007FB26A /* SBJsonWriter.h */,
+				B8C38018169D98C3007FB26A /* SBJsonWriter.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		B8C38019169D98C3007FB26A /* Radiobutton */ = {
+			isa = PBXGroup;
+			children = (
+				B8C3801A169D98C3007FB26A /* RadioButton-Selected.png */,
+				B8C3801B169D98C3007FB26A /* RadioButton-Unselected.png */,
+				B8C3801C169D98C3007FB26A /* RadioButton.h */,
+				B8C3801D169D98C3007FB26A /* RadioButton.m */,
+			);
+			name = Radiobutton;
+			path = ../../CreatTest/CreatTest/Radiobutton;
+			sourceTree = "<group>";
+		};
+		B8C38030169D99F7007FB26A /* ActionCover */ = {
+			isa = PBXGroup;
+			children = (
+				B8C38031169D9A1F007FB26A /* ActionCover.h */,
+				B8C38032169D9A1F007FB26A /* ActionCover.m */,
+			);
+			name = ActionCover;
+			path = Test3D/ActionCover;
+			sourceTree = "<group>";
+		};
+		B8C38038169D9B3B007FB26A /* Action1 */ = {
+			isa = PBXGroup;
+			children = (
+				B8C38039169D9B3B007FB26A /* Action1ViewController.h */,
+				B8C3803A169D9B3B007FB26A /* Action1ViewController.m */,
+			);
+			name = Action1;
+			path = Test3D/Action1;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1564,6 +1760,17 @@
 				84BCCE1F168A1D6700E94037 /* archc.pod in Resources */,
 				84BCCE20168A1D6700E94037 /* boxc.pod in Resources */,
 				84BCCE21168A1D6700E94037 /* cylinderc.pod in Resources */,
+				B8C37FEF169D97D7007FB26A /* ActionQuestion1.png in Resources */,
+				B8C37FF0169D97D7007FB26A /* ActionQuestion2.png in Resources */,
+				B8C37FF1169D97D7007FB26A /* ActionQuestion5.png in Resources */,
+				B8C37FF2169D97D7007FB26A /* TeachingWord1.png in Resources */,
+				B8C37FF3169D97D7007FB26A /* TeachingWord2.png in Resources */,
+				B8C37FF4169D97D7007FB26A /* 封面個人資料.png in Resources */,
+				B8C37FF5169D97D7007FB26A /* 封面個人資料2.png in Resources */,
+				B8C37FF6169D97D7007FB26A /* 螢幕快照 2012-11-20 下午3.53.25.png in Resources */,
+				B8C37FF7169D97D7007FB26A /* 螢幕快照 2012-11-20 下午4.03.20.png in Resources */,
+				B8C3802A169D98C3007FB26A /* RadioButton-Selected.png in Resources */,
+				B8C3802B169D98C3007FB26A /* RadioButton-Unselected.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1751,12 +1958,6 @@
 				84A1A696166CF140002D4491 /* CC3World.m in Sources */,
 				84A1A69B166CF140002D4491 /* main.m in Sources */,
 				84A1A69F166CF140002D4491 /* Test3DAppDelegate.m in Sources */,
-				84A1A6A2166CF140002D4491 /* Test3DLayer.m in Sources */,
-				84A1A6A5166CF140002D4491 /* Test3DScene.m in Sources */,
-				84A1A6B4166CF5DE002D4491 /* HelloViewController.m in Sources */,
-				84A1A6B7166CF6D3002D4491 /* VCTest3.m in Sources */,
-				B857D1BF1672084C00B8DC54 /* MainLayer.m in Sources */,
-				B85077361678A182007F31EE /* DrawCanvasLayer.m in Sources */,
 				B850773F1678A660007F31EE /* CCNode+SFGestureRecognizers.m in Sources */,
 				B850B08B167B25840064C7C9 /* VCTest4.m in Sources */,
 				B850B08F167B25B60064C7C9 /* VCWord4.m in Sources */,
@@ -1772,7 +1973,33 @@
 				84D8D7FA168B3E3E00DC33E9 /* UIView+LayerEffects.m in Sources */,
 				84D8D7FB168B3E3E00DC33E9 /* UIImage-Extensions.m in Sources */,
 				84D8D805168B3F8500DC33E9 /* SmoothLineView.m in Sources */,
-				84CBBA6C168C24D800D9FDFD /* VCText3Tutorial.m in Sources */,
+				B8C37D1F169D904D007FB26A /* DrawCanvasLayer.m in Sources */,
+				B8C37D20169D904D007FB26A /* HelloViewController.m in Sources */,
+				B8C37D21169D904D007FB26A /* MainLayer.m in Sources */,
+				B8C37D22169D904D007FB26A /* Test3DLayer.m in Sources */,
+				B8C37D23169D904D007FB26A /* Test3DScene.m in Sources */,
+				B8C37D24169D904D007FB26A /* VCTest3.m in Sources */,
+				B8C37D25169D904D007FB26A /* VCText3Tutorial.m in Sources */,
+				B8C3801E169D98C3007FB26A /* NSObject+SBJson.m in Sources */,
+				B8C3801F169D98C3007FB26A /* SBJsonParser.m in Sources */,
+				B8C38020169D98C3007FB26A /* SBJsonStreamParser.m in Sources */,
+				B8C38021169D98C3007FB26A /* SBJsonStreamParserAccumulator.m in Sources */,
+				B8C38022169D98C3007FB26A /* SBJsonStreamParserAdapter.m in Sources */,
+				B8C38023169D98C3007FB26A /* SBJsonStreamParserState.m in Sources */,
+				B8C38024169D98C3007FB26A /* SBJsonStreamWriter.m in Sources */,
+				B8C38025169D98C3007FB26A /* SBJsonStreamWriterAccumulator.m in Sources */,
+				B8C38026169D98C3007FB26A /* SBJsonStreamWriterState.m in Sources */,
+				B8C38027169D98C3007FB26A /* SBJsonTokeniser.m in Sources */,
+				B8C38028169D98C3007FB26A /* SBJsonUTF8Stream.m in Sources */,
+				B8C38029169D98C3007FB26A /* SBJsonWriter.m in Sources */,
+				B8C3802C169D98C3007FB26A /* RadioButton.m in Sources */,
+				B8C38033169D9A1F007FB26A /* ActionCover.m in Sources */,
+				B8C3803B169D9B3B007FB26A /* Action1ViewController.m in Sources */,
+				B8C3803E169D9D00007FB26A /* FileOPs.m in Sources */,
+				B8C38048169D9E67007FB26A /* addTeachWord.m in Sources */,
+				B8C38049169D9E67007FB26A /* CountdownTimer.m in Sources */,
+				B80C01B7169D9F8600CBBE9D /* Action2ViewController.m in Sources */,
+				B80C01BA169D9FA600CBBE9D /* Action5ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

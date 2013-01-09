@@ -458,7 +458,9 @@ CGPoint midPoint(CGPoint p1, CGPoint p2)
 }
 
 -(void)eraserButtonClicked
-{    
+{
+    drawStep = ERASE;
+    /*
     if(drawStep!=ERASE)
     {
         drawStep = ERASE;
@@ -466,7 +468,12 @@ CGPoint midPoint(CGPoint p1, CGPoint p2)
     else 
     {
         drawStep = DRAW;
-    }
+    }*/
+}
+
+- (void)drawButtonClicked
+{
+    drawStep = DRAW;
 }
 
 -(void)setColor:(float)r g:(float)g b:(float)b a:(float)a
@@ -585,13 +592,6 @@ CGPoint midPoint(CGPoint p1, CGPoint p2)
         [delegate performSelectorOnMainThread:@selector(setEraserButtonEnable:)
 								   withObject:[NSNumber numberWithBool:YES]
 								waitUntilDone:NO];
-        [delegate performSelectorOnMainThread:@selector(setSave2FileButtonEnable:)
-								   withObject:[NSNumber numberWithBool:YES]
-								waitUntilDone:NO];
-        [delegate performSelectorOnMainThread:@selector(setSave2AlbumButtonEnable:)
-								   withObject:[NSNumber numberWithBool:YES]
-								waitUntilDone:NO];
-        
     }
     else 
     {
@@ -604,12 +604,14 @@ CGPoint midPoint(CGPoint p1, CGPoint p2)
         [delegate performSelectorOnMainThread:@selector(setEraserButtonEnable:)
 								   withObject:[NSNumber numberWithBool:NO]
 								waitUntilDone:NO];
+        /*
         [delegate performSelectorOnMainThread:@selector(setSave2FileButtonEnable:)
 								   withObject:[NSNumber numberWithBool:NO]
 								waitUntilDone:NO];
         [delegate performSelectorOnMainThread:@selector(setSave2AlbumButtonEnable:)
 								   withObject:[NSNumber numberWithBool:NO]
 								waitUntilDone:NO];
+         */
     }
 #if PUSHTOFILE
     if(redoIndex > 0)
