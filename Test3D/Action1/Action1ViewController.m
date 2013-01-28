@@ -28,8 +28,7 @@
     [super viewDidLoad];
     
     minutes = seconds= PressCount =0;
-    secondsLeft = DEBUG_TIME;
-    //secondsLeft = 10;
+    secondsLeft = 300;
     
     AnswerDic = [[NSMutableDictionary alloc]init];
     saveFile = [[FileOPs alloc]init];
@@ -38,6 +37,17 @@
     addTeachingWord.delegate = self;
     [self.view addSubview:addTeachingWord.view];
     [self addChildViewController:addTeachingWord];
+#if DEMO
+    UIButton *skipButton = (UIButton*) [self.view viewWithTag: 2001];
+    [skipButton addTarget:self action:@selector(OkBtnAddToView) forControlEvents:UIControlEventTouchUpInside];
+    if (skipButton == NULL) {
+        NSLog(@"button is null");
+    }
+    
+#else
+    UIButton *skipButton = (UIButton*) [self.view viewWithTag: 2001];
+    [skipButton removeFromSuperview];
+#endif
 }
 
 //按下後開始計時

@@ -88,6 +88,9 @@ CGPoint midPoint(CGPoint p1, CGPoint p2);
     }
     return self;
 }
+- (void) dealloc{
+    [super dealloc];
+}
 
 - (void)drawRect:(CGRect)rect
 {
@@ -460,15 +463,18 @@ CGPoint midPoint(CGPoint p1, CGPoint p2)
 -(void)eraserButtonClicked
 {
     drawStep = ERASE;
-    /*
-    if(drawStep!=ERASE)
-    {
-        drawStep = ERASE;
-    }
-    else 
-    {
-        drawStep = DRAW;
-    }*/
+}
+
+-(void)eraserButtonSwitchClicked
+{
+     if(drawStep!=ERASE)
+     {
+         drawStep = ERASE;
+     }
+     else
+     {
+         drawStep = DRAW;
+     }
 }
 
 - (void)drawButtonClicked
@@ -491,6 +497,8 @@ CGPoint midPoint(CGPoint p1, CGPoint p2)
     UIImage *saveImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     error = [UIImagePNGRepresentation(saveImage) writeToFile:pngPath atomically:YES];
+    
+        NSLog(@"SaveSuccessMessage:%@", pngPath);
 }
 
 -(void)save2FileButtonClicked

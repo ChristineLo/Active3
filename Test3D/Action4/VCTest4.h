@@ -9,12 +9,18 @@
 #import <UIKit/UIKit.h>
 #import "SmoothLineView.h"
 #import "UIGlossyButton.h"
+#import "addTeachWord.h"
 
 #define kFILE_ANS [NSString stringWithFormat:@"Active4-%d",backNum]
 #define kMENU_HEIGHT 54
 
-@interface VCTest4 : UIViewController <UIPopoverControllerDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
+@interface VCTest4 : UIViewController <UIPopoverControllerDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,addTeachWordDelegate>
 {
+    addTeachWord *addTeachingWord;
+    UILabel *ulCountDownTime;
+    NSTimer *tCountDownTimer;
+    int iActionTime;
+    
     #pragma mark 繪圖view
     SmoothLineView *slv;
     
@@ -24,7 +30,7 @@
     UIPopoverController* activePopover;
     UIPopoverController *popover;
 }
-
+@property (retain, nonatomic) IBOutlet UILabel *ulCountDownTime;
 #pragma mark 繪圖view
 @property (nonatomic,retain)  UIColor *curColor;
 @property (nonatomic, retain) UIGlossyButton *undoButton;

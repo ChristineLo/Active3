@@ -16,6 +16,7 @@
         if (fileMgr == Nil) {
             fileMgr = [NSFileManager defaultManager];
             
+            //資料夾暫存
             delegate = (Test3DAppDelegate*)[[UIApplication sharedApplication] delegate];
             
             TestNumberFilepath = [[NSString alloc]init];
@@ -23,6 +24,7 @@
             
             JsonWriter = [[SBJsonWriter alloc]init];
             JsonParser = [[SBJsonParser alloc]init];
+            //資料夾名稱
             TestNumberFilepath = [HOME_PATH stringByAppendingPathComponent:delegate.TestNumberString];
             NSLog(@"TestNumberFilepath %@ ",TestNumberFilepath);
             

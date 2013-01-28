@@ -9,7 +9,7 @@
 #import "VCTest4.h"
 
 @implementation VCTest4
-
+@synthesize ulCountDownTime;
 @synthesize undoButton;
 @synthesize redoButton;
 @synthesize clearButton;
@@ -33,7 +33,74 @@
     self.curColor = [UIColor blackColor];
     
     [super viewDidLoad];
+    addTeachingWord = [[addTeachWord alloc] init];
+    [addTeachingWord addTeachingWordImage:@"TeachingWord4.png" :120 :30 :620 :160];
+    addTeachingWord.delegate = self;
+    [self.view addSubview:addTeachingWord.view];
+    [self addChildViewController:addTeachingWord];
     
+#if DEMO
+    UIButton *skipButton = (UIButton*) [self.view viewWithTag: 2001];
+    [skipButton addTarget:self action:@selector(switchNextAction) forControlEvents:UIControlEventTouchUpInside];
+    if (skipButton == NULL) {
+        NSLog(@"button is null");
+    }
+#endif
+}
+
+-(void)StartCountDownTimer:(id)sender {
+    [addTeachingWord.view removeFromSuperview];
+    [addTeachingWord removeFromParentViewController];
+    [addTeachingWord release];
+    
+    iActionTime = 600;
+    //[ulCountDownTime setTextColor:[UIColor whiteColor]];
+    [self setCoundDownLabel];
+    tCountDownTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(setCoundDownLabel) userInfo:NULL repeats:YES];
+}
+
+//到數計時
+-(void) setCoundDownLabel {
+    NSLog(@"timer %d",iActionTime);
+    [ulCountDownTime setText:[NSString stringWithFormat:@"%02d:%02d",iActionTime/60,iActionTime%60]];
+    if (iActionTime == 10) {
+        [ulCountDownTime setTextColor:[UIColor redColor]];
+    }
+    else if (iActionTime < 1) {
+        NSLog(@"timer remove");
+        [tCountDownTimer invalidate];
+        [self timeIsUpHandle];
+    }
+    --iActionTime;
+}
+
+//填寫完成，時間停止
+-(void) timeIsUpHandle{
+    
+    UIAlertView *tellTimeStop = [[UIAlertView alloc] initWithTitle:@"活動三" message:@"時間到，停止作答!!\n進入下一活動" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil];
+    tellTimeStop.tag = 1;
+    [tellTimeStop show];
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    switch (buttonIndex) {
+        case 0:
+            [self save2FileButtonClicked:NULL];
+            [self switchNextAction];
+            //[self saveAnswerText];
+            break;
+    }
+}
+
+//進入活動三頁面
+-(void) viewDidDisappear:(BOOL)animated {
+    [tCountDownTimer invalidate];
+}
+
+-(void)switchNextAction{
+    
+    UIStoryboard *secondStoryboard = self.storyboard;
+    [self presentViewController:[secondStoryboard instantiateViewControllerWithIdentifier:@"ACT5"] animated:YES completion:Nil];
 }
 
 -(void)setButtonAttrib:(UIGlossyButton*)_button
@@ -74,7 +141,7 @@
 }
 
 -(void)  setQuesImage :(int) Num {
-    UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"action4_image%d.png",backNum]];
+    UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"action4%02d.png",backNum]];
     
     if (backImage != NULL) {
         [slv clearButtonClicked];
@@ -89,12 +156,12 @@
     
     (Num == 1) ? [self setPreButtonEnable:[NSNumber numberWithBool:NO]] : [self setPreButtonEnable:[NSNumber numberWithBool:YES]];
 
-    (Num == 7) ? [self setNextButtonEnable:[NSNumber numberWithBool:NO]] : [self setNextButtonEnable:[NSNumber numberWithBool:YES]];
+    (Num == 14) ? [self setNextButtonEnable:[NSNumber numberWithBool:NO]] : [self setNextButtonEnable:[NSNumber numberWithBool:YES]];
 
 }
 
 -(void) nextQuest {
-    if (backNum < 7) {
+    if (backNum < 14) {
         [self save2FileButtonClicked:self];
         [self setQuesImage:++backNum];
     }
@@ -234,7 +301,7 @@
 
 -(IBAction)eraserButtonClicked:(id)sender
 {
-    [slv eraserButtonClicked];
+    [slv eraserButtonSwitchClicked];
     (eraserButton.tintColor == [UIColor redColor])?[eraserButton setTintColor:redoButton.tintColor]:[eraserButton setTintColor:[UIColor redColor]];
 }
 

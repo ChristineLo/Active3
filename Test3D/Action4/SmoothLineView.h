@@ -56,6 +56,7 @@ enum
 - (void)undoButtonClicked;
 - (void)clearButtonClicked;
 - (void)eraserButtonClicked;
+-(void)eraserButtonSwitchClicked;
 - (void)drawButtonClicked;
 - (void)save2FileButtonClicked;
 - (void)save2AlbumButtonClicked;

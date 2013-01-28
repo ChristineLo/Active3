@@ -40,6 +40,20 @@
     
     editState = TWO_D;
     [self checkEditState];
+    
+    UIButton *skipButton = (UIButton*) [self.view viewWithTag: 2001];
+    [skipButton addTarget:self action:@selector(switchNextAction) forControlEvents:UIControlEventTouchUpInside];
+    if (skipButton == NULL) {
+        NSLog(@"button is null");
+    }
+}
+
+//進入活動三頁面
+-(void)switchNextAction{
+    [director popScene];
+    
+    UIStoryboard *secondStoryboard = self.storyboard;
+    [self presentViewController:[secondStoryboard instantiateViewControllerWithIdentifier:@"ACT3"] animated:YES completion:Nil];
 }
 
 - (void)init3D
@@ -47,7 +61,7 @@
     [CCDirector setDirectorType:kCCDirectorTypeDisplayLink];
     director = [CCDirector sharedDirector];
     [director setAnimationInterval:1.0/30];
-    [director setDisplayFPS:YES];
+    [director setDisplayFPS:NO];
     
     EAGLView *glView = [CC3EAGLView viewWithFrame:self.view.frame
                                       pixelFormat:kEAGLColorFormatRGBA8
@@ -92,6 +106,10 @@
     [super didReceiveMemoryWarning];
     [threeDButtons dealloc];
     [twoDButtons dealloc];
+    [director dealloc];
+    [slv dealloc];
+    [tCountDownTimer dealloc];
+    [ulCountDownTime dealloc];
 }
 
 -(void)setButtonAttrib:(UIGlossyButton*)_button
@@ -220,12 +238,13 @@
 
 -(IBAction)blackPenButtonClicked:(id)sender
 {
-    
+    [slv drawButtonClicked];
     slv.lineColor = [UIColor blackColor];
 }
 
 -(IBAction)whitePenButtonClicked:(id)sender
 {
+    [slv drawButtonClicked];
     slv.lineColor = [UIColor whiteColor];
 }
 

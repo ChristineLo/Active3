@@ -66,6 +66,7 @@
 /**
  * UI 物件
  */
+#if 0
 #define kMenuFontSize 38
 -(void) addButtons {
     //切換與截圖
@@ -116,7 +117,7 @@
     [cm3DMenu setColor:ccBLACK];
     [self addChild:cm3DMenu];
 }
-
+#endif
 /**
  * 設定3D編輯模式 
  */
@@ -143,7 +144,7 @@
     tileScene.iEditMode = menuItem.tag;
     NSLog(@"main layer click, EditMode:%d",menuItem.tag);
 }
-
+#if 0
 -(void) drawModeSelected: (CCMenuItemToggle*) menuItem {
     drawLayer.iDrawMode = menuItem.tag;
     NSLog(@"main layer click, EditMode:%d",menuItem.tag);
@@ -167,6 +168,8 @@
         drawLayer.isTouchEnabled = NO;
     }
 }
+#endif
+
 #pragma mark Updating
 -(void) update: (ccTime)dt {
     [tileLayer update: dt];

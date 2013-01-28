@@ -18,8 +18,7 @@
 {
     [super viewDidLoad];
     minutes = seconds =0;
-    secondsLeft = DEBUG_TIME;
-    //secondsLeft = 10;
+    secondsLeft = 300;
     
     saveFile = [[FileOPs alloc]init];
     AnswerDic = [[NSMutableDictionary alloc]init];
@@ -28,7 +27,17 @@
     addTeachingWord.delegate = self;
     [self.view addSubview:addTeachingWord.view];
     [self addChildViewController:addTeachingWord];
+#if DEMO
+    UIButton *skipButton = (UIButton*) [self.view viewWithTag: 2001];
+    [skipButton addTarget:self action:@selector(OkBtnAddToView) forControlEvents:UIControlEventTouchUpInside];
+    if (skipButton == NULL) {
+        NSLog(@"button is null");
+    }
     
+#else
+    UIButton *skipButton = (UIButton*) [self.view viewWithTag: 2001];
+    [skipButton removeFromSuperview];
+#endif
 }
 
 //按下後開始計時
@@ -189,11 +198,8 @@
 
 //進入活動三頁面
 -(void)switchToAction3{
-    
     secondStoryboard = self.storyboard;
-    //[self presentViewController:[secondStoryboard instantiateViewControllerWithIdentifier:@"ACT5"] animated:YES completion:Nil];
-    [self presentViewController:[secondStoryboard instantiateViewControllerWithIdentifier:@"HVC"] animated:YES completion:Nil];
-    //[self presentViewController:[secondStoryboard instantiateViewControllerWithIdentifier:@"VT3T"] animated:YES completion:Nil];
+    [self presentViewController:[secondStoryboard instantiateViewControllerWithIdentifier:@"VT3T"] animated:YES completion:Nil];
 }
 -(void)dealloc{
     NSLog(@"Action2 release");
