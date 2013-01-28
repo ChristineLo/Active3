@@ -19,6 +19,7 @@
     [super viewDidLoad];
     minutes = seconds =0;
     secondsLeft = DEBUG_TIME;
+    //secondsLeft = 10;
     
     saveFile = [[FileOPs alloc]init];
     AnswerDic = [[NSMutableDictionary alloc]init];
@@ -32,7 +33,7 @@
 
 //按下後開始計時
 -(void)StartCountDownTimer:(id)sender{
-    UIAlertView *tellTimeStart = [[UIAlertView alloc] initWithTitle:@"活動二" message:@"五分鐘計時開始!!" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"確定",nil];
+    tellTimeStart = [[UIAlertView alloc] initWithTitle:@"活動二" message:@"五分鐘計時開始!!" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"確定",nil];
     tellTimeStart.tag = 0;
     [tellTimeStart show];
 }
@@ -45,11 +46,11 @@
     imageView.frame = CGRectMake(110, 70, 540, 250);
     [self.view addSubview:imageView];
     
-    UILabel *tip = [[UILabel alloc]initWithFrame:CGRectMake(100, 720, 350, 40)];
+    tip = [[UILabel alloc]initWithFrame:CGRectMake(100, 720, 600, 40)];
     tip.backgroundColor = [UIColor clearColor];
     tip.textColor = [UIColor redColor];
     tip.font = [UIFont systemFontOfSize:18];
-    tip.text = @"填寫格可用手指往上拖移,下面還有喔!!!";
+    tip.text = @"請按照順序填寫，填寫格可用手指往上拖移,下面還有喔!!!";
     [self.view addSubview:tip];
     
     countdownLabel = [[UILabel alloc] initWithFrame:CGRectMake(350, 20, 200, 60)];
@@ -90,6 +91,7 @@
         UILabel *Number = [[UILabel alloc]initWithFrame:CGRectMake(0, 0+i*dis, 40, 50)];
         Number.text=[NSString stringWithFormat:@"%d.",i+1];
         [scrollView addSubview:Number];
+        [Number release];
         
         UITextView *QText = [[UITextView alloc]initWithFrame:CGRectMake(40, 0+i*dis, 600, 50)];
         //QText.borderStyle = UITextBorderStyleBezel;
@@ -107,18 +109,9 @@
 //填寫完成，時間停止
 -(void) OkBtnAddToView{
     
-    UIAlertView *tellTimeStop = [[UIAlertView alloc] initWithTitle:@"活動二" message:@"時間到，停止作答!!\n進入下一活動" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil];
+    tellTimeStop = [[UIAlertView alloc] initWithTitle:@"活動二" message:@"時間到，停止作答!!\n進入下一活動" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil];
     tellTimeStop.tag = 1;
     [tellTimeStop show];
-    
-    /*[self checkAnswerText];
-     
-     OkBtn=[UIButton buttonWithType:UIButtonTypeRoundedRect];
-     OkBtn.frame = CGRectMake(300, 750, 180, 40);
-     [OkBtn setTitle:@"填寫完成，進入下一活動" forState:UIControlStateNormal];
-     [self.view addSubview:OkBtn];
-     [OkBtn addTarget:self action:@selector(saveAnswerText:) forControlEvents:UIControlEventTouchUpInside];
-     */
 }
 
 //將個人資料、活動一資料取出，整合活動二資料存檔，並跳到活動三
@@ -127,10 +120,27 @@
     tempDic = [saveFile readFromJsonFile];//取出個人資料、活動一資料
     [AnswerDic setDictionary:tempDic];
     
-    for (int i=0; i<42; i++) {
-        UITextField *QText = (UITextField*)[scrollView viewWithTag:i+1];
-        if (![QText.text isEqualToString:@""] && QText.text != NULL) {
-            [AnswerDic setObject:QText.text forKey:[NSString stringWithFormat:@"Ac2Q%d",i+1]];
+    UITextField *QText1 = (UITextField*)[scrollView viewWithTag:1];
+    
+    if ([QText1.text isEqualToString:@""] || QText1.text ==NULL) {
+        [AnswerDic setObject:@"無" forKey:@"Ac2Q1"];
+        [QText1 release];
+        
+        for (int i=1; i<41; i++) {
+            UITextField *QText = (UITextField*)[scrollView viewWithTag:i+1];
+            if (![QText.text isEqualToString:@""] && QText.text != NULL) {
+                [AnswerDic setObject:QText.text forKey:[NSString stringWithFormat:@"Ac2Q%d",i+1]];
+            }
+            [QText release];
+        }
+    }
+    else{
+        for (int i=0; i<42; i++) {
+            UITextField *QText = (UITextField*)[scrollView viewWithTag:i+1];
+            if (![QText.text isEqualToString:@""] && QText.text != NULL) {
+                [AnswerDic setObject:QText.text forKey:[NSString stringWithFormat:@"Ac2Q%d",i+1]];
+            }
+            [QText release];
         }
     }
     
@@ -139,22 +149,14 @@
     }
     
     [saveFile saveToJsonFile:AnswerDic];//將上述資料存檔
-    tempDic = nil;
-    
+    [tempDic release];
+    [self switchToAction3];//跳到活動三
 }
-/*
- -(void) checkAnswerText{
- for (int i=0; i<42; i++) {
- UITextField *QText = (UITextField*)[scrollView viewWithTag:i+1];
- if ([QText.text isEqualToString:@""] || QText.text == NULL) {
- [QText setUserInteractionEnabled:NO];
- }
- }
- }*/
+
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     switch (alertView.tag) {
         case 0:
-            printf("alertView tag 0 ");
+            //printf("alertView tag 0 ");
             switch (buttonIndex) {
                 case 0:
                     break;
@@ -170,11 +172,11 @@
             }
             break;
         case 1:
-            printf("alertView tag 1 ");
+            //printf("alertView tag 1 ");
             switch (buttonIndex) {
                 case 0:
-                    //[self saveAnswerText];
-                    [self switchToAction3];//跳到活動三
+                    [self saveAnswerText];
+                    
                     break;
             }
             
@@ -188,14 +190,33 @@
 //進入活動三頁面
 -(void)switchToAction3{
     
-    UIStoryboard *secondStoryboard = self.storyboard;
+    secondStoryboard = self.storyboard;
     //[self presentViewController:[secondStoryboard instantiateViewControllerWithIdentifier:@"ACT5"] animated:YES completion:Nil];
-    [self presentViewController:[secondStoryboard instantiateViewControllerWithIdentifier:@"VT3T"] animated:YES completion:Nil];
+    [self presentViewController:[secondStoryboard instantiateViewControllerWithIdentifier:@"HVC"] animated:YES completion:Nil];
+    //[self presentViewController:[secondStoryboard instantiateViewControllerWithIdentifier:@"VT3T"] animated:YES completion:Nil];
+}
+-(void)dealloc{
+    NSLog(@"Action2 release");
+    [scrollView release];
+    [countdownLabel release];
+    [imageView release];
+    [image release];
+    [StartBtn release];
+    [OkBtn release];
+    [saveFile release];
+    [AnswerDic release];
+    [addTeachingWord release];
+    [tip release];
+    [tellTimeStart release];
+    [tellTimeStop release];
+    [super dealloc];
 }
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+-(void)viewDidUnload{
+    [super viewDidUnload];
+}
 @end

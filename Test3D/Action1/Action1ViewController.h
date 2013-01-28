@@ -21,11 +21,14 @@
     UIButton *OkBtn;
     NSTimer *timer;
     FileOPs *saveFile;
+    UIAlertView *tellTimeStart;
+    UIAlertView *tellTimeStop;
+    UILabel *tip;
     int minutes;
     int seconds;
     int secondsLeft;
     int PressCount;
-    
+    UIStoryboard *Storyboard;
     NSMutableDictionary *AnswerDic;
     
     addTeachWord *addTeachingWord;

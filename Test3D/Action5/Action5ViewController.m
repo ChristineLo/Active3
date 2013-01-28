@@ -1,9 +1,9 @@
 //
 //  Action5ViewController.m
-//  Test3D
+//  CreatTest
 //
-//  Created by Mac06 on 13/1/9.
-//
+//  Created by Mac04 on 13/1/3.
+//  Copyright (c) 2013年 Mac04. All rights reserved.
 //
 
 #import "Action5ViewController.h"
@@ -29,38 +29,54 @@
     saveFile = [[FileOPs alloc]init];
     _dic = [[NSMutableDictionary alloc] initWithCapacity:15];
     AnswerDic = [[NSMutableDictionary alloc]init];
-    disX = 32;
-    disY = 30;
-    startX =505;
-    int startY =568;
+    disX = 40;
+    disY = 38;
+    startX =523;
+    int startY3=500;
+    int startY2=295;
+    int startY1=85;
+    [self setQusetionImage];
 	// Do any additional setup after loading the view.
-    [self setRadioBtn:@"Ac5Q1" :355];
-    [self setRadioBtn:@"Ac5Q2" :415];
-    [self setRadioBtn:@"Ac5Q3" :415+disY];
-    [self setRadioBtn:@"Ac5Q4" :415+2*disY];
-    [self setRadioBtn:@"Ac5Q5" :415+3*disY];
-    [self setRadioBtn:@"Ac5Q6" :startY];
-    [self setRadioBtn:@"Ac5Q7" :startY+disY];
-    [self setRadioBtn:@"Ac5Q8" :startY+2*disY];
-    [self setRadioBtn:@"Ac5Q9" :startY+3*disY];
-    [self setRadioBtn:@"Ac5Q10" :startY+4*disY];
-    [self setRadioBtn:@"Ac5Q11" :startY+5*disY];
-    [self setRadioBtn:@"Ac5Q12" :startY+6*disY];
-    [self setRadioBtn:@"Ac5Q13" :startY+7*disY];
-    [self setRadioBtn:@"Ac5Q14" :startY+8*disY];
-    [self setRadioBtn:@"Ac5Q15" :startY+9*disY];
+    [self setRadioBtn:@"Ac5Q1" :0];
+    [self setRadioBtn:@"Ac5Q2" :startY1];
+    [self setRadioBtn:@"Ac5Q3" :startY1+disY];
+    [self setRadioBtn:@"Ac5Q4" :startY1+2*disY];
+    [self setRadioBtn:@"Ac5Q5" :startY1+3*disY];
+    [self setRadioBtn:@"Ac5Q6" :startY2];
+    [self setRadioBtn:@"Ac5Q7" :startY2+disY];
+    [self setRadioBtn:@"Ac5Q8" :startY2+2*disY];
+    [self setRadioBtn:@"Ac5Q9" :startY2+3*disY];
+    [self setRadioBtn:@"Ac5Q10" :startY2+4*disY];
+    
+    [self setRadioBtn:@"Ac5Q11" :startY3];
+    [self setRadioBtn:@"Ac5Q12" :startY3+disY];
+    [self setRadioBtn:@"Ac5Q13" :startY3+2*disY];
+    [self setRadioBtn:@"Ac5Q14" :startY3+3*disY];
+    [self setRadioBtn:@"Ac5Q15" :startY3+4*disY];
+        
+}
+-(void)setQusetionImage{
+    scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 430, 764, 400)];
+    scrollView.contentSize = CGSizeMake(764, 800);
+    scrollView.pagingEnabled = YES;
+    [self.view addSubview:scrollView];
+    
+    image = [UIImage imageNamed:@"ActionQuestion5_2.png"];
+    imageView = [[UIImageView alloc]initWithImage:image];
+    imageView.frame = CGRectMake(0, 0, 764, 697);
+    [scrollView addSubview:imageView];
     
 }
 -(void)setRadioBtn:(NSString *)groupId :(int)startY{
     
     for (int i=0; i<6;i++) {
         RadioButton *rb = [[RadioButton alloc]initWithGroupId:groupId index:i];
-        rb.frame = CGRectMake(startX+i*disX, startY, 22, 22);
-        [self.view addSubview:rb];
+        rb.frame = CGRectMake(startX+i*disX, startY, 33, 33);
+        [scrollView addSubview:rb];
     }
     
     [RadioButton addObserverForGroupId:groupId observer:self];
-    
+
 }
 
 -(void)radioButtonSelectedAtIndex:(NSUInteger)index inGroup:(NSString *)groupId{
@@ -80,34 +96,43 @@
     NSMutableDictionary *tempDic = [[NSMutableDictionary alloc]init];
     tempDic = [saveFile readFromJsonFile];
     [AnswerDic setDictionary:tempDic];
+    
     for (int i=0; i<[_dic count]; i++) {
         [AnswerDic setObject:[[_dic allValues] objectAtIndex:i] forKey:[[_dic allKeys] objectAtIndex:i]];
     }
-    
+
     [saveFile saveToJsonFile:AnswerDic];
     for (int i = 0; i<[AnswerDic count]; i++) {
         NSLog(@"%@ = %@", [[AnswerDic allKeys] objectAtIndex:i], [[AnswerDic allValues] objectAtIndex:i]);
     }
     
-    tempDic=nil;
+    [tempDic release];
+    
+    Storyboard = self.storyboard;
+    [self presentViewController:[Storyboard instantiateViewControllerWithIdentifier:@"ACTend"] animated:YES completion:Nil];
+    
 }
 
 - (IBAction)OK:(id)sender {
     if ([_dic count]==15) {
-        //[self saveToDic];
-        
-        
-        UIStoryboard *secondStoryboard = self.storyboard;
-        [self presentViewController:[secondStoryboard instantiateViewControllerWithIdentifier:@"ACTend"] animated:YES completion:Nil];
-        /*
-         UIAlertView *Writedown = [[UIAlertView alloc] initWithTitle:@"活動五" message:@"測驗結束，謝謝您的填答!!" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil];
-         Writedown.tag = 0;
-         [Writedown show];*/
+        [self saveToDic];
     }
     else{
-        UIAlertView *notWritedown = [[UIAlertView alloc] initWithTitle:@"活動五" message:@"未填寫完成喔!!" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil];
+        notWritedown = [[UIAlertView alloc] initWithTitle:@"活動五" message:@"未填寫完成喔!!" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil];
         [notWritedown show];
     }
     
+}
+-(void)dealloc{
+    [image release];
+    [imageView release];
+    [AnswerDic release];
+    [scrollView release];
+    [saveFile release];
+    [notWritedown release];
+    [super dealloc];
+}
+-(void)viewDidUnload{
+    [super viewDidUnload];
 }
 @end

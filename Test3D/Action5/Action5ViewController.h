@@ -1,9 +1,9 @@
 //
 //  Action5ViewController.h
-//  Test3D
+//  CreatTest
 //
-//  Created by Mac06 on 13/1/9.
-//
+//  Created by Mac04 on 13/1/3.
+//  Copyright (c) 2013年 Mac04. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -14,10 +14,14 @@
     int disX;
     int disY;
     int startX;
+    UIImage *image;
+    UIImageView *imageView;
     NSMutableDictionary *AnswerDic;
     FileOPs *saveFile;
+    UIScrollView *scrollView;
+    UIAlertView *notWritedown;
+    UIStoryboard *Storyboard;
 }
 @property (nonatomic,retain) NSMutableDictionary *dic;
--(IBAction)OK:(id)sender;
-
+- (IBAction)OK:(id)sender;
 @end

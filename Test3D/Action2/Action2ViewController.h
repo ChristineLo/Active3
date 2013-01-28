@@ -18,12 +18,14 @@
     UIButton *StartBtn;
     UIButton *OkBtn;
     NSTimer *timer;
+    UILabel *tip;
     FileOPs *saveFile;
     int minutes;
     int seconds;
     int secondsLeft;
     NSMutableDictionary *AnswerDic;
-    
+    UIAlertView *tellTimeStart,*tellTimeStop;
+    UIStoryboard *secondStoryboard;
     addTeachWord *addTeachingWord;
 }
 -(void)StartCountDownTimer:(id)sender;

@@ -18,7 +18,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    T0=FALSE;
+    
     T1=FALSE;
     T2=FALSE;
     T3=FALSE;
@@ -27,12 +27,12 @@
     checkS=FALSE;
     sexstring = @"";//記錄是男生還是女生
     persondata = [[NSMutableDictionary alloc]init];
+    df = [[NSDateFormatter alloc] init];
+    male = [[RadioButton alloc]initWithGroupId:@"sex group" index:0];
+    female = [[RadioButton alloc]initWithGroupId:@"sex group" index:1];
     
-    RadioButton *male = [[RadioButton alloc]initWithGroupId:@"sex group" index:0];
-    RadioButton *female = [[RadioButton alloc]initWithGroupId:@"sex group" index:1];
-    
-    male.frame = CGRectMake(190, 135, 22, 22);
-    female.frame = CGRectMake(250, 135, 22, 22);
+    male.frame = CGRectMake(185, 130, 33, 33);
+    female.frame = CGRectMake(240, 130, 33, 33);
     
     
     [self.view addSubview:male];
@@ -40,14 +40,14 @@
     
     [RadioButton addObserverForGroupId:@"sex group" observer:self]; //設定"性別"group
     
-    UIButton *submitBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    submitBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     submitBtn.frame = CGRectMake(280, 340, 200, 40);
     [submitBtn setTitle:@"提交答案" forState:UIControlStateNormal];
     [submitBtn addTarget:self action:@selector(submitClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:submitBtn];
     
     _dic = [[NSMutableDictionary alloc] initWithCapacity:16];
-    delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    delegate = (Test3DAppDelegate*)[[UIApplication sharedApplication] delegate];
     
 	
     
@@ -63,6 +63,9 @@
     [_dic setObject:[NSString stringWithFormat:@"%d",index+1] forKey:groupId];
     
     for (NSString *string in[self.dic allValues]) {
+        sexstring = string;
+        NSLog(@"性別：%@",sexstring);
+        /*
         if ([string isEqualToString:@"1"]) {
             sexstring = @"男生";
             NSLog(@"性別：%@",sexstring);
@@ -70,7 +73,7 @@
         else if ([string isEqualToString:@"2"]){
             sexstring = @"女生";
             NSLog(@"性別：%@",sexstring);
-        }
+        }*/
         
         
     }
@@ -80,7 +83,6 @@
 -(void)savePersonData:(NSString*)object :(NSString*)key{
     
     [persondata setObject:object forKey:key];
-    //NSLog(@"%@-----------------------------",persondata);
     
 }
 
@@ -95,8 +97,8 @@
 
 //存入個人資料到dictionary
 -(void)setPersonData{
-    [self savePersonData:_TestNumber.text :@"TestNumber"];
-    delegate.TestNumberString = _TestNumber.text;
+    
+    delegate.TestNumberString = [NSString stringWithFormat:@"%@%@",[self setOnlyNumber],_StudentName.text];
     //NSLog(@"delegate testNumber %@",delegate.TestNumberString);
     [self savePersonData:_StudentName.text :@"StudentName"];
     [self savePersonData:sexstring :@"Sex"];
@@ -108,7 +110,7 @@
 
 //確認每一格都有填到
 -(void)checkAllwrite{
-    T0 = [self checkwrite:_TestNumber.text];
+    
     T1 = [self checkwrite:_StudentName.text];
     T2 = [self checkwrite:_SchoolName.text];
     T3 = [self checkwrite:_GradeYear.text];
@@ -121,15 +123,15 @@
 -(void)submitClick:(id)sender{
     [self checkAllwrite];
     //[self switchToAction1];
-    if (T0 &T1 &T2 &T3 &T4 &T5 &checkS) {
+    if (T1 &T2 &T3 &T4 &T5 &checkS) {
         NSLog(@"write down");
-        UIAlertView *tellNext = [[UIAlertView alloc] initWithTitle:@"填寫個人資料" message:@"確定要下一頁" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"確定",nil];
+        tellNext = [[UIAlertView alloc] initWithTitle:@"填寫個人資料" message:@"確定要下一頁" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"確定",nil];
         tellNext.tag = 1;
         [tellNext show];
         
     }
     else{
-        UIAlertView *tellErr = [[UIAlertView alloc] initWithTitle:@"填寫個人資料" message:@"未填寫完成" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil];
+        tellErr = [[UIAlertView alloc] initWithTitle:@"填寫個人資料" message:@"未填寫完成" delegate:self cancelButtonTitle:@"確定" otherButtonTitles:nil];
         tellErr.tag=2;
         [tellErr show];
     }
@@ -138,15 +140,21 @@
     
     UIStoryboard *secondStoryboard = self.storyboard;
     [self presentViewController:[secondStoryboard instantiateViewControllerWithIdentifier:@"ACT1"] animated:YES completion:Nil];
+    
 }
-
+-(void)switchToActionEnd{
+    
+    UIStoryboard *secondStoryboard = self.storyboard;
+    [self presentViewController:[secondStoryboard instantiateViewControllerWithIdentifier:@"ACTend"] animated:YES completion:Nil];
+    
+}
 -(void)datePickerAddToView{
     
     datePicker =[[UIDatePicker alloc]init];
     datePicker.frame = CGRectMake(20, 80, 240, 150);
     datePicker.datePickerMode = UIDatePickerModeDate;
     
-    UIAlertView *dAlert = [[UIAlertView alloc] initWithTitle:@"日期" message:@"請選擇出生日期\n\n\n\n\n\n\n\n\n" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil];
+    dAlert = [[UIAlertView alloc] initWithTitle:@"日期" message:@"請選擇出生日期\n\n\n\n\n\n\n\n\n" delegate:self cancelButtonTitle:@"確定" otherButtonTitles:nil];
     dAlert.frame = CGRectMake(0, 0, 600, 600);
     dAlert.delegate = self;
     dAlert.tag = 0;
@@ -181,6 +189,17 @@
             break;
         case 2:
             break;
+        case 3:
+            switch (buttonIndex) {
+                case 0:
+                    break;
+                case 1:
+                    [self switchToActionEnd];
+                    break;
+                default:
+                    break;
+            }
+            break;
         default:
             break;
     }
@@ -188,15 +207,25 @@
 
 //按鈕按下後設定生日日期
 -(void)SetBirthday{
-    NSDate *date  = [datePicker date];
-    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init] ;
-    [dateFormatter setDateFormat:(NSString*) @"yyyy-MM-dd "];
-    _Birthday.text = [dateFormatter stringFromDate:date];
+    date  = [datePicker date];
+    [df setDateFormat:(NSString*) @"yyyy-MM-dd "];
+    _Birthday.text = [df stringFromDate:date];
     
 }
+//設定檔案名稱不重複
+-(NSString *)setOnlyNumber{
+    [df setDateFormat:(NSString*) @"yyyy-MM-ddHHmmssSS"];
+    TestNumber = [df stringFromDate:[NSDate date]];
+    NSLog(@"TestNumberstring %@,",TestNumber);
+    return TestNumber;
+}
+- (IBAction)GoToUploadBtn:(id)sender {
+    GoToUploadAlert = [[UIAlertView alloc] initWithTitle:@"上傳資料" message:@"確定前往上傳資料頁面" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"確定",nil];
+    GoToUploadAlert.tag = 3;
+    [GoToUploadAlert show];
+}
+
 - (IBAction)TestDayBtn:(id)sender {
-    //[self datePickerAddToView:_TestYear];
-    NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setDateFormat:(NSString*) @"yyyy-MM-dd "];
     _TestDay.text =[df stringFromDate:[NSDate date]];
 }
@@ -204,5 +233,24 @@
 - (IBAction)BirthDayBtn:(id)sender {
     [self datePickerAddToView];
 }
-
+-(void)dealloc{
+    NSLog(@"ActionCover release");
+    [persondata release];
+    [sexstring release];
+    [datePicker release];
+    [datestring release];
+    [submitBtn release];
+    [male release];
+    [female release];
+    [saveFile release];
+    [df release];
+    [date release];
+    [tellErr release];
+    [tellNext release];
+    [dAlert release];
+    [super dealloc];
+}
+-(void)viewDidUnload{
+    [super viewDidUnload];
+}
 @end
