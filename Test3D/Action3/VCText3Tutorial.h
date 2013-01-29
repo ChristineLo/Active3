@@ -31,6 +31,7 @@ enum
     int editState;
     NSArray *twoDButtons;
     NSArray *threeDButtons;
+    UIImageView *teach;
     
 #pragma mark 繪圖view
     SmoothLineView *slv;

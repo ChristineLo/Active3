@@ -31,6 +31,10 @@
 
 - (void)viewDidLoad
 {
+    [self showTeachImage];
+}
+
+- (void) initAct3t{
     [super viewDidLoad];
     
     [self init3D];
@@ -48,8 +52,31 @@
     }
 }
 
--(void) viewDidDisappear:(BOOL)animated {
-    //[threeDLayer release];
+-(void) showTeachImage {
+    backNum = 0;
+    teach = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"act3t%d",backNum]]];
+    [self.view addSubview:teach];
+    
+    UIButton *skipButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [skipButton setTag:5001];
+    [skipButton setFrame: CGRectMake(300, 950, 200, 40)];
+    [skipButton setTitle:@"下一個" forState:UIControlStateNormal];
+    [skipButton addTarget:self action:@selector(nextTeachImage) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:skipButton];
+}
+
+-(void) nextTeachImage {
+    ++backNum;
+    if (backNum < 3) {
+        [teach setImage:[UIImage imageNamed:[NSString stringWithFormat:@"act3t%d",backNum]]];
+    }
+    else {
+        id ob = [self.view viewWithTag:5001];
+        [ob removeFromSuperview];
+        [teach removeFromSuperview];
+        [self initAct3t];
+        //[teach release];
+    }
 }
 
 //進入活動三頁面
