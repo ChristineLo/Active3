@@ -488,10 +488,10 @@ CGPoint midPoint(CGPoint p1, CGPoint p2)
     self.lineAlpha = a;
 }
 
--(void)save2File:(NSString*)fileName {
+-(void)save2File:(NSString*)fileName filefolder:(NSString*)foler{
     BOOL error;
     
-    NSString  *pngPath = [NSHomeDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"Documents/Screenshot %@.png",fileName]];
+    NSString  *pngPath = [NSHomeDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"Documents/%@/%@.png",foler,fileName]];
     UIGraphicsBeginImageContext(self.bounds.size);
     [self.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage *saveImage = UIGraphicsGetImageFromCurrentImageContext();

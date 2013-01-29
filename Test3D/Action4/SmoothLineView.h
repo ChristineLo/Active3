@@ -62,6 +62,7 @@ enum
 - (void)save2AlbumButtonClicked;
 - (void)loadFromAlbumButtonClicked:(UIImage*)_image;
 - (void)save2File:(NSString*)fileName;
+-(void)save2File:(NSString*)fileName filefolder:(NSString*)foler;
 
 - (void)setColor:(float)r g:(float)g b:(float)b a:(float)a;
 

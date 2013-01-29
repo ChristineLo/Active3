@@ -20,4 +20,5 @@
 -(void) takeScreenShot;
 -(void) scaleModel:(CGFloat)scale;
 -(void) setEditMode:(int)mode;
+-(UIImage*) takeScreenShotReturn;
 @end

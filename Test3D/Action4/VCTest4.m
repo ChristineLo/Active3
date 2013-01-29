@@ -41,7 +41,7 @@
     
 #if DEMO
     UIButton *skipButton = (UIButton*) [self.view viewWithTag: 2001];
-    [skipButton addTarget:self action:@selector(switchNextAction) forControlEvents:UIControlEventTouchUpInside];
+    [skipButton addTarget:self action:@selector(timeIsUpHandle) forControlEvents:UIControlEventTouchUpInside];
     if (skipButton == NULL) {
         NSLog(@"button is null");
     }
@@ -49,6 +49,12 @@
 }
 
 -(void)StartCountDownTimer:(id)sender {
+    UIAlertView *tellTimeStart = [[UIAlertView alloc] initWithTitle:@"活動四" message:@"十分鐘計時開始!!" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"確定",nil];
+    tellTimeStart.tag = 0;
+    [tellTimeStart show];
+}
+
+-(void) startAction{
     [addTeachingWord.view removeFromSuperview];
     [addTeachingWord removeFromParentViewController];
     [addTeachingWord release];
@@ -57,11 +63,37 @@
     //[ulCountDownTime setTextColor:[UIColor whiteColor]];
     [self setCoundDownLabel];
     tCountDownTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(setCoundDownLabel) userInfo:NULL repeats:YES];
+    
+    int w,h,dx,dy;
+    w = 250;
+    h = 40;
+    dx = 450;
+    dy = 370;
+
+    UITextField *tmp = [[UITextField alloc] initWithFrame:CGRectMake(20, 300, w, h)];
+    [tmp setTag:3001];
+    [tmp setBorderStyle:UITextBorderStyleLine];
+    [tmp setFont:[UIFont fontWithName:@"ArialMT" size:30]];
+    [slv addSubview:tmp];
+    tmp = [[UITextField alloc] initWithFrame:CGRectMake(20+dx, 300, w, h)];
+    [tmp setTag:3002];
+    [tmp setBorderStyle:UITextBorderStyleLine];
+    [tmp setFont:[UIFont fontWithName:@"ArialMT" size:30]];
+    [slv addSubview:tmp];
+    tmp = [[UITextField alloc] initWithFrame:CGRectMake(20, 300+dy, w, h)];
+    [tmp setTag:3003];
+    [tmp setBorderStyle:UITextBorderStyleLine];
+    [tmp setFont:[UIFont fontWithName:@"ArialMT" size:30]];
+    [slv addSubview:tmp];
+    tmp = [[UITextField alloc] initWithFrame:CGRectMake(20+dx, 300+dy, w, h)];
+    [tmp setTag:3004];
+    [tmp setBorderStyle:UITextBorderStyleLine];
+    [tmp setFont:[UIFont fontWithName:@"ArialMT" size:30]];
+    [slv addSubview:tmp];
 }
 
 //到數計時
 -(void) setCoundDownLabel {
-    NSLog(@"timer %d",iActionTime);
     [ulCountDownTime setText:[NSString stringWithFormat:@"%02d:%02d",iActionTime/60,iActionTime%60]];
     if (iActionTime == 10) {
         [ulCountDownTime setTextColor:[UIColor redColor]];
@@ -81,13 +113,20 @@
     tellTimeStop.tag = 1;
     [tellTimeStop show];
 }
-
+//alert view
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    switch (buttonIndex) {
+    switch (alertView.tag) {
         case 0:
-            [self save2FileButtonClicked:NULL];
-            [self switchNextAction];
-            //[self saveAnswerText];
+            if (buttonIndex == 1) {
+                [self startAction];
+            }
+            break;
+        case 1:
+            //結束
+            if(buttonIndex == 0) {
+                [self save2FileButtonClicked:NULL];
+                [self switchNextAction];
+            }
             break;
     }
 }
@@ -109,6 +148,14 @@
     _button.buttonCornerRadius = 2.0; _button.buttonBorderWidth = 1.0f;
 	[_button setStrokeType: kUIGlossyButtonStrokeTypeBevelUp];
     _button.tintColor = _button.borderColor = [UIColor colorWithRed:70.0f/255.0f green:105.0f/255.0f blue:192.0f/255.0f alpha:1.0f];
+}
+
+- (void) initTextFeild
+{
+    UITextField *tmp = (UITextField*) [self.view viewWithTag:3001];
+    [tmp removeFromSuperview];
+    [tmp setText:@""];
+    [self.view addSubview:tmp];
 }
 
 - (void) initButton
@@ -324,7 +371,9 @@
 -(IBAction)save2FileButtonClicked:(id)sender
 {
     //[slv save2FileButtonClicked];
-    [slv save2File:kFILE_ANS];
+    Test3DAppDelegate *delegate = (Test3DAppDelegate*)[[UIApplication sharedApplication] delegate];
+    NSLog(@"%@",delegate.TestNumberString);
+    [slv save2File:kFILE_ANS filefolder:delegate.TestNumberString];
 }
 
 -(IBAction)save2AlbumButtonClicked:(id)sender

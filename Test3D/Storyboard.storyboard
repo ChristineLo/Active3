@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="jyv-78-nic">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="pUb-46-UEo">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
@@ -731,7 +731,7 @@
                             </view>
                             <button opaque="NO" tag="2001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQ2-cl-VP7">
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="下一步">
+                                <state key="normal" title="開始測驗">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -972,7 +972,6 @@
                                     <constraint firstItem="QwU-17-K4L" firstAttribute="bottom" secondItem="GxB-WL-4gR" secondAttribute="bottom" type="default" id="0P3-dc-EGC"/>
                                     <constraint firstItem="QwU-17-K4L" firstAttribute="baseline" secondItem="GxB-WL-4gR" secondAttribute="baseline" type="default" id="2Sx-sZ-APN"/>
                                     <constraint firstItem="niv-BU-qXv" firstAttribute="top" secondItem="Q9Q-LP-y7d" secondAttribute="top" type="default" id="5lM-qL-OvW"/>
-                                    <constraint firstItem="pik-Ez-xuF" firstAttribute="top" secondItem="eFC-sN-MM9" secondAttribute="top" constant="6" id="BMp-v0-l5O"/>
                                     <constraint firstItem="Q9Q-LP-y7d" firstAttribute="leading" secondItem="eFC-sN-MM9" secondAttribute="leading" constant="287" id="F9I-d3-FWJ"/>
                                     <constraint firstItem="Kyi-Sb-JlL" firstAttribute="leading" secondItem="eFC-sN-MM9" secondAttribute="leading" constant="7" id="Hv4-do-XGh"/>
                                     <constraint firstItem="niv-BU-qXv" firstAttribute="baseline" secondItem="FCx-PP-un2" secondAttribute="baseline" type="default" id="J49-rX-n3j"/>
@@ -1005,6 +1004,7 @@
                             <constraint firstItem="eFC-sN-MM9" firstAttribute="leading" secondItem="PPj-hC-zjT" secondAttribute="leading" type="default" id="6bZ-Ey-w7U"/>
                             <constraint firstItem="eFC-sN-MM9" firstAttribute="top" secondItem="PPj-hC-zjT" secondAttribute="top" type="default" id="bYg-JC-D5g"/>
                             <constraint firstAttribute="trailing" secondItem="eFC-sN-MM9" secondAttribute="trailing" constant="-256" id="c4r-01-T6Z"/>
+                            <constraint firstAttribute="bottom" secondItem="eFC-sN-MM9" secondAttribute="bottom" constant="949" id="ySu-xw-duE"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1073,10 +1073,17 @@
         <class className="VCTest3" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VCTest3.h"/>
             <relationships>
+                <relationship kind="action" name="blackPenButtonClicked:"/>
+                <relationship kind="action" name="clearButtonClicked:"/>
+                <relationship kind="action" name="defaultButtonClicked:"/>
                 <relationship kind="action" name="depthButtonClicked:"/>
+                <relationship kind="action" name="eraserButtonClicked:"/>
+                <relationship kind="action" name="redoButtonClicked:"/>
                 <relationship kind="action" name="rotateButtonClicked:"/>
                 <relationship kind="action" name="save2FileButtonClicked:"/>
                 <relationship kind="action" name="switchEditStateButtonClicked:"/>
+                <relationship kind="action" name="undoButtonClicked:"/>
+                <relationship kind="action" name="whitePenButtonClicked:"/>
                 <relationship kind="outlet" name="smallView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="toolBar" candidateClass="UIView"/>
                 <relationship kind="outlet" name="ulCountDownTime" candidateClass="UILabel"/>

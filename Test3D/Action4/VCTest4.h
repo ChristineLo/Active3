@@ -10,6 +10,7 @@
 #import "SmoothLineView.h"
 #import "UIGlossyButton.h"
 #import "addTeachWord.h"
+#import "Test3DAppDelegate.h"
 
 #define kFILE_ANS [NSString stringWithFormat:@"Active4-%d",backNum]
 #define kMENU_HEIGHT 54

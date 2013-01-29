@@ -40,7 +40,7 @@
     [self addChildViewController:addTeachingWord];
 #if DEMO
     UIButton *skipButton = (UIButton*) [self.view viewWithTag: 2001];
-    [skipButton addTarget:self action:@selector(switchNextAction) forControlEvents:UIControlEventTouchUpInside];
+    [skipButton addTarget:self action:@selector(timeIsUpHandle) forControlEvents:UIControlEventTouchUpInside];
     if (skipButton == NULL) {
         NSLog(@"button is null");
     }
@@ -48,6 +48,12 @@
 }
 
 -(void)StartCountDownTimer:(id)sender {
+    UIAlertView *tellTimeStart = [[UIAlertView alloc] initWithTitle:@"活動三" message:@"十分鐘計時開始!!" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"確定",nil];
+    tellTimeStart.tag = 0;
+    [tellTimeStart show];
+}
+
+-(void) startAction{
     [addTeachingWord.view removeFromSuperview];
     [addTeachingWord removeFromParentViewController];
     [addTeachingWord release];
@@ -88,18 +94,25 @@
 }
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    switch (buttonIndex) {
+    switch (alertView.tag) {
         case 0:
-            [self save2FileButtonClicked:NULL];
-            [self switchNextAction];
-            //[self saveAnswerText];
+            if (buttonIndex == 1) {
+                [self startAction];
+            }
+            break;
+        case 1:
+            //結束
+            if(buttonIndex == 0) {
+                    [self save2FileButtonClicked:NULL];
+                    [self switchNextAction];
+            }
             break;
     }
 }
 
 //進入活動三頁面
 -(void)switchNextAction{
-    
+    [director popScene];
     UIStoryboard *secondStoryboard = self.storyboard;
     //[self presentViewController:[secondStoryboard instantiateViewControllerWithIdentifier:@"ACT5"] animated:YES completion:Nil];
     [self presentViewController:[secondStoryboard instantiateViewControllerWithIdentifier:@"ACT4"] animated:YES completion:Nil];
@@ -319,27 +332,35 @@
 
 -(IBAction)save2FileButtonClicked:(id)sender
 {
-    //[slv save2FileButtonClicked];
-    //[slv save2File:kFILE_ANS];
-    
-    [threeDLayer takeScreenShot];
-    
-    //UIColor* color=self.smallView.backgroundColor;
-    //self.smallView.backgroundColor=[UIColor clearColor];
+    //資料夾暫存
+    Test3DAppDelegate *delegate = (Test3DAppDelegate*)[[UIApplication sharedApplication] delegate];
     
     UIGraphicsBeginImageContext(self.smallView.bounds.size);
     [self.smallView.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage* image1 = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
-    UIImage *image2 = [UIImage imageWithContentsOfFile:[NSHomeDirectory() stringByAppendingPathComponent:@"tmp/Active3.jpg"]];
+    //cocos2d截圖
+    [CCDirector sharedDirector].nextDeltaTimeZero = YES;
+    CGSize winSize = [CCDirector sharedDirector].winSize;
+    CCRenderTexture* rtx =
+    [CCRenderTexture renderTextureWithWidth:winSize.width
+                                     height:winSize.height];
+    [rtx begin];
+    [threeDLayer visit];
+    [rtx end];
+    UIImage *image2 = [rtx getUIImageFromBuffer];
+    
     
     UIImage *resultImg = [self addImage:image2 toImage:image1];
+    
+    
+    NSLog(@"%@",delegate.TestNumberString);
     NSData *imageData = UIImagePNGRepresentation(resultImg);
-    NSString  *pngPath = [NSHomeDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"Documents/Active3.jpg",@"uiview"]];
+    NSString  *pngPath = [NSHomeDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"Documents/%@/Active3.jpg",delegate.TestNumberString]];
     [imageData writeToFile:pngPath atomically:YES];
     
-    //self.smallView.backgroundColor=color;
+    //[delegate release];
 }
 
 -(IBAction)defaultButtonClicked:(id)sender

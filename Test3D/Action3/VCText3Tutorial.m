@@ -48,6 +48,10 @@
     }
 }
 
+-(void) viewDidDisappear:(BOOL)animated {
+    //[threeDLayer release];
+}
+
 //進入活動三頁面
 -(void)switchNextAction{
     [director popScene];
@@ -110,6 +114,7 @@
     [slv dealloc];
     [tCountDownTimer dealloc];
     [ulCountDownTime dealloc];
+    [threeDLayer dealloc];
 }
 
 -(void)setButtonAttrib:(UIGlossyButton*)_button

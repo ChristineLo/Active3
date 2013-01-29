@@ -8,7 +8,7 @@
 
 #import "MainLayer.h"
 
-#define kSnapShopImageName @"Documents/Active3.jpg"
+#define kSnapShopImageName @"Active3.jpg"
 #define kMenuPosY 1000
 #define k3DMenu YES
 
@@ -258,7 +258,7 @@
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     //儲存圖片
     if (image) {
-        NSString *path = [NSHomeDirectory() stringByAppendingPathComponent:kSnapShopImageName];
+        NSString *path = [NSTemporaryDirectory() stringByAppendingPathComponent:kSnapShopImageName];
         [UIImageJPEGRepresentation(image, 1.0) writeToFile:path atomically:YES];
         NSLog(@"%@",path);
     }

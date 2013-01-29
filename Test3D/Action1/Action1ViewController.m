@@ -195,11 +195,9 @@
             }
             break;
         case 1:
-            //printf("alertView tag 1 ");
             switch (buttonIndex) {
                 case 0:
                     [self saveAnswerText];
-                    
                     break;
             }
             break;

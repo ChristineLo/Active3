@@ -2125,8 +2125,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Hunag kiki (H4X28N2W4V)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Hunag kiki (H4X28N2W4V)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: yating lo (T3GD3KLT45)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2136,8 +2136,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "44E15CB8-61E7-485D-A586-293226C27E55";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "44E15CB8-61E7-485D-A586-293226C27E55";
+				PROVISIONING_PROFILE = "74E60F9F-54B2-4501-947B-B4FFC03F44EA";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2146,8 +2146,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Hunag kiki (H4X28N2W4V)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Hunag kiki (H4X28N2W4V)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: yating lo (T3GD3KLT45)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Test3D/Prefix.pch;
@@ -2156,8 +2156,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "44E15CB8-61E7-485D-A586-293226C27E55";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "44E15CB8-61E7-485D-A586-293226C27E55";
+				PROVISIONING_PROFILE = "74E60F9F-54B2-4501-947B-B4FFC03F44EA";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};

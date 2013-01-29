@@ -15,6 +15,7 @@
 #import "Test3DScene.h"
 #import "CC3EAGLView.h"
 #import "MainLayer.h"
+#import "Test3DAppDelegate.h"
 
 enum
 {
