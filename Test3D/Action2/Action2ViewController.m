@@ -40,6 +40,10 @@
 #endif
 }
 
+-(void) viewDidDisappear:(BOOL)animated {
+    [timer invalidate];
+}
+
 //按下後開始計時
 -(void)StartCountDownTimer:(id)sender{
     tellTimeStart = [[UIAlertView alloc] initWithTitle:@"活動二" message:@"五分鐘計時開始!!" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"確定",nil];

@@ -57,6 +57,10 @@
     [tellTimeStart show];
 }
 
+-(void) viewDidDisappear:(BOOL)animated {
+    [timer invalidate];
+}
+
 //顯示題目一，時間
 -(void)Question1AddToView{
     
