@@ -121,57 +121,57 @@
     if (numOfFile>0) {
         [ReturnBtn setHidden:YES];
         ActDicArray =[readFile getQuizFileList];
-            //for (NSString *tmpFile in ActDicArray) {
+
         NSString *tmpFile = [[ActDicArray lastObject] autorelease];
-                //NSLog(@"待傳資料%@",tmpFile);
-                NSMutableDictionary *tmpDic = [readFile TurnJsonToDic:tmpFile];
-                //NSLog(@"%@",tmpDic.description);
-                
-                up.POSTDictionary = tmpDic;
-                
-                up.uploadProgressBlock = ^(NSInteger bytesWritten, NSInteger totalBytesWritten, NSInteger totalBytesExpectedToWrite) {
-                    NSLog(@"-- %d / %d / %d", bytesWritten, totalBytesWritten, totalBytesExpectedToWrite);
-                    [UploadBtn setHidden:YES];
-                    networkLabel.text =@"資料正在傳送中…";
-                    [networkLabel setHidden:NO];
-                    [giveupLabel setHidden:YES];
-                    
-                };
-                
-                up.completionBlock = ^(NSDictionary *headers, NSString *body) {
-                    NSLog(@"-- body: %@", body);
-                    [UploadBtn setHidden:YES];
-                    [giveupLabel setHidden:YES];
-                    if (body) {
-                        //刪除檔案
-                        //NSLog(@"刪除資料%@",tmpFile);
-                        BOOL success = [readFile DeleteFile:tmpFile];
-                        if (success) {
-                            //NSLog(@"Delete file success");
-                            [UploadArray addObject:body];
-                            NSLog(@"已傳完檔案數 %i",[UploadArray count]);
-                            [up release];
-                            [self sendToServer:NULL];
-                        }
-                        if(!success){
-                            NSLog(@"Delete file fail");
-                        }
-                    }
-                    
-                };
-                
-                up.errorBlock = ^(NSError *error) {
-                    NSLog(@"-- error%@", [error localizedDescription]);
-                    [networkLabel setHidden:YES];
-                    //若id值為空值也不能刪資料，出現錯誤要讓小朋友選擇是否要再上傳一次或是跳出，回來後再請老師自己上傳,封面再多一個buttn
-                    tellError = [[UIAlertView alloc] initWithTitle:@"錯誤" message:@"傳送失敗!\n請先檢查平板電腦網路\n或是伺服器是否連線" delegate:self cancelButtonTitle:@"重新上傳" otherButtonTitles:@"放棄",nil];
-                    tellError.tag = 0;
-                    [tellError show];
-                    
-                };
-                
-                [up startAsynchronous];
-        //}
+        //NSLog(@"待傳資料%@",tmpFile);
+        NSMutableDictionary *tmpDic = [readFile TurnJsonToDic:tmpFile];
+        //NSLog(@"%@",tmpDic.description);
+        
+        up.POSTDictionary = tmpDic;
+        
+        up.uploadProgressBlock = ^(NSInteger bytesWritten, NSInteger totalBytesWritten, NSInteger totalBytesExpectedToWrite) {
+            NSLog(@"-- %d / %d / %d", bytesWritten, totalBytesWritten, totalBytesExpectedToWrite);
+            [UploadBtn setHidden:YES];
+            networkLabel.text =@"資料正在傳送中…";
+            [networkLabel setHidden:NO];
+            [giveupLabel setHidden:YES];
+            
+        };
+        
+        up.completionBlock = ^(NSDictionary *headers, NSString *body) {
+            NSLog(@"-- body: %@", body);
+            [UploadBtn setHidden:YES];
+            [giveupLabel setHidden:YES];
+            if (body) {
+                //刪除檔案
+                //NSLog(@"刪除資料%@",tmpFile);
+                BOOL success = [readFile DeleteFile:tmpFile];
+                if (success) {
+                    //NSLog(@"Delete file success");
+                    [UploadArray addObject:body];
+                    NSLog(@"已傳完檔案數 %i",[UploadArray count]);
+                    [up release];
+                    //傳下一個檔案
+                    [self sendToServer:NULL];
+                }
+                if(!success){
+                    NSLog(@"Delete file fail");
+                }
+            }
+            
+        };
+        
+        up.errorBlock = ^(NSError *error) {
+            NSLog(@"-- error%@", [error localizedDescription]);
+            [networkLabel setHidden:YES];
+            //若id值為空值也不能刪資料，出現錯誤要讓小朋友選擇是否要再上傳一次或是跳出，回來後再請老師自己上傳,封面再多一個buttn
+            tellError = [[UIAlertView alloc] initWithTitle:@"錯誤" message:@"傳送失敗!\n請先檢查平板電腦網路\n或是伺服器是否連線" delegate:self cancelButtonTitle:@"重新上傳" otherButtonTitles:@"放棄",nil];
+            tellError.tag = 0;
+            [tellError show];
+            
+        };
+        
+        [up startAsynchronous];
     }
     else if (numOfFile ==0 & fileCount ==[UploadArray count]& fileCount>0 & [UploadArray count]>0){
         fileCount = 0;

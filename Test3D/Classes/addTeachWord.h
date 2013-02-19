@@ -20,5 +20,6 @@
 @property (strong, nonatomic) id<addTeachWordDelegate> delegate;
 
 -(void)addTeachingWordImage:(NSString *)teachingwordimageName :(int)x :(int)y :(int)width :(int)height;
+-(void)addTeachingWordString:(NSString *)content title:(NSString*)title;
 
 @end

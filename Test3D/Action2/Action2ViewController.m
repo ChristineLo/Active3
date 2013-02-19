@@ -23,7 +23,8 @@
     saveFile = [[FileOPs alloc]init];
     AnswerDic = [[NSMutableDictionary alloc]init];
     addTeachingWord = [[addTeachWord alloc] init];
-    [addTeachingWord addTeachingWordImage:@"TeachingWord2.png" :90 :300 :620 :160];
+    [addTeachingWord addTeachingWordString:@"    假想這是一個真實發生的情境：「這時候正在下大雨，但是路上的行人們走在雨中，且沒有拿任何雨具（雨衣或雨傘）或遮蔽物，卻沒有淋溼。」是什麼原因，才會導致這樣的情形發生呢？請你儘量列出各種可能的原因，寫在下面的格子中;請你儘可能猜測各種原因，而不必擔心這個想法不好。\n\n這個活動時間是五分鐘。" title:@"活動二"];
+    //[addTeachingWord addTeachingWordImage:@"TeachingWord2.png" :90 :300 :620 :160];
     addTeachingWord.delegate = self;
     [self.view addSubview:addTeachingWord.view];
     [self addChildViewController:addTeachingWord];

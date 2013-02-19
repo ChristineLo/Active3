@@ -231,6 +231,7 @@
 		B84B81C016B8EF49001070E0 /* icon-114.png in Resources */ = {isa = PBXBuildFile; fileRef = B84B81BF16B8EF48001070E0 /* icon-114.png */; };
 		B850773F1678A660007F31EE /* CCNode+SFGestureRecognizers.m in Sources */ = {isa = PBXBuildFile; fileRef = B850773E1678A660007F31EE /* CCNode+SFGestureRecognizers.m */; };
 		B850B08B167B25840064C7C9 /* VCTest4.m in Sources */ = {isa = PBXBuildFile; fileRef = B850B08A167B25840064C7C9 /* VCTest4.m */; };
+		B886D75A16D38591003F02FF /* ac3img.png in Resources */ = {isa = PBXBuildFile; fileRef = B886D75916D38591003F02FF /* ac3img.png */; };
 		B8C37D21169D904D007FB26A /* MainLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C37D16169D904D007FB26A /* MainLayer.m */; };
 		B8C37D22169D904D007FB26A /* Test3DLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C37D18169D904D007FB26A /* Test3DLayer.m */; };
 		B8C37D23169D904D007FB26A /* Test3DScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C37D1A169D904D007FB26A /* Test3DScene.m */; };
@@ -729,6 +730,7 @@
 		B850773E1678A660007F31EE /* CCNode+SFGestureRecognizers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CCNode+SFGestureRecognizers.m"; sourceTree = "<group>"; };
 		B850B089167B25840064C7C9 /* VCTest4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCTest4.h; path = Test3D/Action4/VCTest4.h; sourceTree = "<group>"; };
 		B850B08A167B25840064C7C9 /* VCTest4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCTest4.m; path = Test3D/Action4/VCTest4.m; sourceTree = "<group>"; };
+		B886D75916D38591003F02FF /* ac3img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ac3img.png; sourceTree = "<group>"; };
 		B8C37D15169D904D007FB26A /* MainLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainLayer.h; sourceTree = "<group>"; };
 		B8C37D16169D904D007FB26A /* MainLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainLayer.m; sourceTree = "<group>"; };
 		B8C37D17169D904D007FB26A /* Test3DLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test3DLayer.h; sourceTree = "<group>"; };
@@ -1704,6 +1706,7 @@
 		E86B581B16A54C99008860D0 /* Action1_2_5_Image */ = {
 			isa = PBXGroup;
 			children = (
+				B886D75916D38591003F02FF /* ac3img.png */,
 				B8D3C3A116B7FD7B007FF5F2 /* TeachingWord3.png */,
 				B8D3C3A216B7FD7B007FF5F2 /* TeachingWord4.png */,
 				E86B581C16A54C99008860D0 /* ActionQuestion1.png */,
@@ -1839,6 +1842,7 @@
 				B84B81BC16B8EC29001070E0 /* action414.png in Resources */,
 				B84B81BE16B8EF1E001070E0 /* icon-57.png in Resources */,
 				B84B81C016B8EF49001070E0 /* icon-114.png in Resources */,
+				B886D75A16D38591003F02FF /* ac3img.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

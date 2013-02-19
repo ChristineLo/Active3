@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="pUb-46-UEo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C60" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="pUb-46-UEo">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
         <!--Test3-->
@@ -1073,16 +1073,10 @@
         <class className="VCTest3" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VCTest3.h"/>
             <relationships>
-                <relationship kind="action" name="blackPenButtonClicked:"/>
-                <relationship kind="action" name="clearButtonClicked:"/>
-                <relationship kind="action" name="defaultButtonClicked:"/>
                 <relationship kind="action" name="depthButtonClicked:"/>
-                <relationship kind="action" name="eraserButtonClicked:"/>
-                <relationship kind="action" name="redoButtonClicked:"/>
                 <relationship kind="action" name="rotateButtonClicked:"/>
                 <relationship kind="action" name="save2FileButtonClicked:"/>
                 <relationship kind="action" name="switchEditStateButtonClicked:"/>
-                <relationship kind="action" name="undoButtonClicked:"/>
                 <relationship kind="outlet" name="smallView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="toolBar" candidateClass="UIView"/>
                 <relationship kind="outlet" name="ulCountDownTime" candidateClass="UILabel"/>
@@ -1097,17 +1091,6 @@
         <class className="VCText3Tutorial" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VCText3Tutorial.h"/>
             <relationships>
-                <relationship kind="action" name="blackPenButtonClicked:"/>
-                <relationship kind="action" name="clearButtonClicked:"/>
-                <relationship kind="action" name="defaultButtonClicked:"/>
-                <relationship kind="action" name="depthButtonClicked:"/>
-                <relationship kind="action" name="eraserButtonClicked:"/>
-                <relationship kind="action" name="redoButtonClicked:"/>
-                <relationship kind="action" name="rotateButtonClicked:"/>
-                <relationship kind="action" name="save2FileButtonClicked:"/>
-                <relationship kind="action" name="switchEditStateButtonClicked:"/>
-                <relationship kind="action" name="undoButtonClicked:"/>
-                <relationship kind="action" name="whitePenButtonClicked:"/>
                 <relationship kind="outlet" name="smallView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="toolBar" candidateClass="UIView"/>
                 <relationship kind="outlet" name="ulCountDownTime" candidateClass="UILabel"/>

@@ -33,7 +33,8 @@
     AnswerDic = [[NSMutableDictionary alloc]init];
     saveFile = [[FileOPs alloc]init];
     addTeachingWord = [[addTeachWord alloc] init];
-    [addTeachingWord addTeachingWordImage:@"TeachingWord1.png" :70 :350 :620 :120];
+    [addTeachingWord addTeachingWordString:@"    假想你能夠直接跟這個世界上各種動物溝通，你可能會碰到什麼樣的問題？請列舉越多問題越好。請特別注意！你是跟動物溝通發生問題，而不是「你要問動物什麼問題」或是「動物要問你什麼問題」。\n\n這個活動時間是五分鐘。" title:@"活動一"];
+    //[addTeachingWord addTeachingWordImage:@"TeachingWord1.png" :70 :350 :620 :120];
     addTeachingWord.delegate = self;
     [self.view addSubview:addTeachingWord.view];
     [self addChildViewController:addTeachingWord];

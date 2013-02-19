@@ -225,14 +225,14 @@
  */
 -(void) transferMainNodeFromSwipeAt: (CGPoint) touchPoint {
     CC3Camera* cam = self.activeCamera;
-	
+    
 	// Get the direction and length of the movement since the last touch move event, in
 	// 2D screen coordinates. The 2D rotation axis is perpendicular to this movement.
 	CGPoint swipe2d = ccpSub(touchPoint, lastTouchEventPoint);
 	swipe2d.x = kTransferScale * swipe2d.x;
     swipe2d.y = kTransferScale * swipe2d.y;
     
-
+    
     CC3Vector axis = CC3VectorAdd(CC3VectorScaleUniform(cam.rightDirection, swipe2d.x),
 								  CC3VectorScaleUniform(cam.upDirection, swipe2d.y));
 	
@@ -240,7 +240,13 @@
 	// and axis determined by the swipe. If the die cube is just to be directly controlled
 	// by finger movement, and is not to freewheel, this is all we have to do.
     //[mainNode rotateByAngle: angle aroundAxis: axis];
-    [mainNode setLocation:CC3VectorAdd(mainNode.location, axis)];
+    
+    CC3Vector tmp = CC3VectorAdd(mainNode.location, axis);
+    if (tmp.x < 3 && tmp.x > -3 && tmp.y < 4 && tmp.y > -4) {
+        [mainNode setLocation:tmp];
+    }
+    //[mainNode setLocation:CC3VectorAdd(mainNode.location, axis)];
+    //NSLog(@"main Node Location X:%f Y:%f",mainNode.location.x, mainNode.location.y);
 }
 
 /**
@@ -281,12 +287,10 @@
     //CC3Vector axis = CC3VectorAdd(CC3VectorScaleUniform(cam.rightDirection, aScale), CC3VectorScaleUniform(cam.upDirection, aScale));
     //axis = CC3VectorAdd(axis, CC3VectorScaleUniform(cam.forwardDirection, -aScale));
     
-	if (mainNode.scale.x >= 0.5 && mainNode.scale.x >= 0.5 && mainNode.scale.x >= 0.5) {
-        [mainNode setScale:CC3VectorMake(aScale, aScale, aScale)];
-    }
-    else
-    {
-        mainNode.scale = cc3v(0.5, 0.5, 0.5);
+    CC3Vector tmp = CC3VectorMake(aScale, aScale, aScale);
+    
+	if (tmp.x >= 0.5) {
+        [mainNode setScale:tmp];
     }
 }
 

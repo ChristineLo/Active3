@@ -34,7 +34,8 @@
     
     [super viewDidLoad];
     addTeachingWord = [[addTeachWord alloc] init];
-    [addTeachingWord addTeachingWordImage:@"TeachingWord4.png" :120 :30 :620 :160];
+    [addTeachingWord addTeachingWordString:@"     「人」是個文字也是個圖形，在這個測驗裡是要你把「人」當成圖形而不是文字看待。下面總共有五十七個大小不盡相同的「人」形，看你在十分鐘之內能畫出多少的圖畫，人形必須是你所畫圖畫中的一部份，畫好之後請在每一幅圖畫下面畫線處寫出所畫圖形的名稱。記住，你所畫的圖畫不能是中文字。(十分鐘)" title:@"活動四"];
+    //[addTeachingWord addTeachingWordImage:@"TeachingWord4.png" :120 :30 :620 :160];
     addTeachingWord.delegate = self;
     [self.view addSubview:addTeachingWord.view];
     [self addChildViewController:addTeachingWord];
