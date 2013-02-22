@@ -57,13 +57,13 @@
     
     image = [UIImage imageNamed:@"ActionQuestion2.png"];
     imageView = [[UIImageView alloc]initWithImage:image];
-    imageView.frame = CGRectMake(110, 70, 540, 250);
+    imageView.frame = CGRectMake(10, 70, 750, 325);
     [self.view addSubview:imageView];
     
-    tip = [[UILabel alloc]initWithFrame:CGRectMake(100, 720, 600, 40)];
+    tip = [[UILabel alloc]initWithFrame:CGRectMake(50, 810, 700, 60)];
     tip.backgroundColor = [UIColor clearColor];
     tip.textColor = [UIColor redColor];
-    tip.font = [UIFont systemFontOfSize:18];
+    tip.font = [UIFont systemFontOfSize:25];
     tip.text = @"請按照順序填寫，填寫格可用手指往上拖移,下面還有喔!!!";
     [self.view addSubview:tip];
     
@@ -96,7 +96,7 @@
 -(void) setAnswerText {
     int dis = 60;
     
-    scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(90, 320, 650, 400)];
+    scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(70, 400, 650, 400)];
     scrollView.contentSize = CGSizeMake(650, 2600);
     scrollView.pagingEnabled = YES;
     [self.view addSubview:scrollView];
@@ -110,7 +110,7 @@
         UITextView *QText = [[UITextView alloc]initWithFrame:CGRectMake(40, 0+i*dis, 600, 50)];
         //QText.borderStyle = UITextBorderStyleBezel;
         [QText setBackgroundColor:[UIColor colorWithRed:240.0f/255.0f green:240.0f/255.0f blue:240.0f/255.0f alpha:1]];
-        QText.font = [UIFont systemFontOfSize:18];
+        QText.font = [UIFont systemFontOfSize:20];
         QText.tag = i+1;
         //NSLog(@"QText tag :%i\n",QText.tag);
         [scrollView addSubview:QText];
