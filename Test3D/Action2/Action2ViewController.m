@@ -176,7 +176,7 @@
                     break;
                 case 1:
                     timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateCountDownTimer) userInfo:nil repeats:YES];
-                    //NSLog(@"timer start");
+                    [[NSRunLoop mainRunLoop]addTimer:timer forMode:NSRunLoopCommonModes];
                     [addTeachingWord.view removeFromSuperview];
                     [addTeachingWord removeFromParentViewController];
                     [self Question1AddToView];

@@ -37,7 +37,7 @@
     [addTeachingWord addTeachingWordString:@"     這裡有一些圖形，現在要請你想出一幅完整的圖畫或是一件新發明，讓它包含下列所有的圖形。\n\n     你可以將這些圖形轉方向、擴大、縮小或是將幾個圖形組合成一個圖形，但是必須符合這些圖形原來的形狀；除了這些圖形之外，可以加上其他的東\n\n     請你儘量想出別人想不到的圖案、故事或發明，畫完之後幫它取一個名字或下一個標題，寫在底下畫線的地方。同樣的，也請你想出一個特別的標題，讓圖畫變得更有意思，（請你根據下面的圖形，將你要畫的圖案或物品，畫在下一頁的空白處，注意：不能改變下列圖形原有的形狀，並且每個圖形只能出現一次）。（十分鐘）" title:@"活動三"];
     UIImageView *img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ac3img.png"]];
     [img setAutoresizesSubviews:YES];
-    [img setFrame:CGRectMake(250, 610, 340, 340)];
+    [img setFrame:CGRectMake(284, 750, 200, 200)];
     [addTeachingWord.view addSubview:img];
     //[addTeachingWord addTeachingWordImage:@"TeachingWord3.png" :120 :30 :620 :160];
     addTeachingWord.delegate = self;
