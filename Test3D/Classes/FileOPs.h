@@ -27,6 +27,7 @@
 -(void)saveToJsonFile:(NSMutableDictionary *)ActionData;
 -(NSMutableDictionary *)readFromJsonFile;
 -(NSMutableArray *)getQuizFileList;
+-(NSArray *) getImageFiles: (NSString*) folderName;
 -(int) numOfQuizFiles;
 -(NSMutableDictionary *)TurnJsonToDic:(NSString *)filepath;
 -(BOOL) DeleteFile:(NSString *)file;

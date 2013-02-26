@@ -26,7 +26,7 @@
             JsonParser = [[SBJsonParser alloc]init];
             //資料夾名稱
             TestNumberFilepath = [HOME_PATH stringByAppendingPathComponent:delegate.TestNumberString];
-            NSLog(@"TestNumberFilepath %@ ",TestNumberFilepath);
+            //NSLog(@"TestNumberFilepath %@ ",TestNumberFilepath);
             
             if ([fileMgr fileExistsAtPath:TestNumberFilepath]) {
                 [fileMgr createDirectoryAtPath:TestNumberFilepath withIntermediateDirectories:YES attributes:Nil error:Nil];
@@ -81,13 +81,30 @@
     for (NSString *file in fileList) {
         
         BOOL other = NO;
-        other = [file isEqualToString:@".DS_Store"]; 
+        other = [file isEqualToString:@".DS_Store"];
         if (!other) {
             [dirList addObject:file];
             //NSLog(@"get QuizFileList %@",file);
         }
         //NSLog(@"not in %@",file);
     }
+    return dirList;
+}
+//取得"圖片"檔案列表並存在Array裡
+-(NSArray *) getImageFiles: (NSString*) folderName {
+    NSString *tmpPath = [HOME_PATH stringByAppendingPathComponent:folderName];//文件夾加上使用者資料夾
+    NSError *error=nil;
+    NSArray *fileList = [fileMgr contentsOfDirectoryAtPath:tmpPath error:&error];//取得使用者資料夾下的檔案列表
+    
+    NSMutableArray *dirList = [[NSMutableArray alloc]init];
+    for (NSString *file in fileList) {
+        BOOL isImage = [self isImage:file];
+        if (isImage) {
+            NSString *path = [tmpPath stringByAppendingPathComponent:file];
+            [dirList addObject:path];
+        }
+    }
+    NSLog(@"file list%@",dirList.description);
     return dirList;
 }
 
@@ -110,9 +127,10 @@
     }
     return JsonToDicFile;
 }
+
 -(BOOL) DeleteFile:(NSString *)file{
     NSError *error;
-    BOOL deleteSuccess;
+    BOOL deleteSuccess = YES;
     NSString *tmpPath = [HOME_PATH stringByAppendingPathComponent:file];
     if (file) {
         NSLog(@"刪除檔案：%@",file);
@@ -127,5 +145,18 @@
 
     TestNumberFilepath = [HOME_PATH stringByAppendingPathComponent:delegate.TestNumberString];
     NSLog(@"TestNumberFilepath %@ ",TestNumberFilepath);
+}
+
+-(BOOL) isImage:(NSString*) fileName
+{
+    BOOL     result;
+    NSString *extension = [fileName pathExtension];
+    result = NO;
+    if (extension != nil) {
+        result = ([extension caseInsensitiveCompare:@"gif"] == NSOrderedSame)
+        || ([extension caseInsensitiveCompare:@"png"] == NSOrderedSame)
+        || ([extension caseInsensitiveCompare:@"jpg"] == NSOrderedSame);
+    }
+    return result;
 }
 @end

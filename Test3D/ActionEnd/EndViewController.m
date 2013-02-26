@@ -111,18 +111,20 @@
 }
 -(void)sendToServer:(id)sender{
     
+    NSString *tmpFile;
+    
     numOfFile = [readFile numOfQuizFiles];
-    //NSLog(@"number of QuizFiles %i",numOfFile);
+    NSLog(@"number of QuizFiles %i",numOfFile);
     
    __block STHTTPRequest *up = [[STHTTPRequest requestWithURLString:@"http://dtd.ntue.edu.tw/questionnaire/UploadUser.php"] retain];
    
     
     //NSLog(@"-- url%@", [self urlEncodedString]);
-    if (numOfFile>0) {
+    if (numOfFile > 0) {
         [ReturnBtn setHidden:YES];
         ActDicArray =[readFile getQuizFileList];
 
-        NSString *tmpFile = [[ActDicArray lastObject] autorelease];
+        tmpFile = [[ActDicArray lastObject] retain];
         //NSLog(@"待傳資料%@",tmpFile);
         NSMutableDictionary *tmpDic = [readFile TurnJsonToDic:tmpFile];
         //NSLog(@"%@",tmpDic.description);
@@ -143,19 +145,29 @@
             [UploadBtn setHidden:YES];
             [giveupLabel setHidden:YES];
             if (body) {
-                //刪除檔案
-                //NSLog(@"刪除資料%@",tmpFile);
-                BOOL success = [readFile DeleteFile:tmpFile];
-                if (success) {
-                    //NSLog(@"Delete file success");
-                    [UploadArray addObject:body];
-                    NSLog(@"已傳完檔案數 %i",[UploadArray count]);
-                    [up release];
-                    //傳下一個檔案
-                    [self sendToServer:NULL];
-                }
-                if(!success){
-                    NSLog(@"Delete file fail");
+                //取得圖片列表
+                NSArray *imgArray = [readFile getImageFiles:tmpFile];
+                if ([imgArray count] > 0) {
+                    //ftp圖片上傳
+                    PutController *putFtp = [[PutController alloc] init];
+                    [putFtp sendImageFile:imgArray body:body];
+                    putFtp.completionBlock = ^(NSDictionary *headers, NSString *hello) {
+                        //NSLog(@"end view ftp complete");
+                        
+                        //ftp全部完成後的處理
+                        //刪除檔案
+                        BOOL success = [readFile DeleteFile:tmpFile];
+                        if (success) {
+                            [UploadArray addObject:body];
+                            NSLog(@"已傳完檔案數 %i",[UploadArray count]);
+                            [up release];
+                            [ActDicArray release];
+                            [self sendToServer:NULL];
+                        }
+                        if(!success){
+                            NSLog(@"Delete file fail");
+                        }
+                    };
                 }
             }
             
@@ -171,29 +183,45 @@
             
         };
         
-        [up startAsynchronous];
+        //先判斷是否有圖片答案，有兩張以上則上傳，否則刪除
+        NSArray *imgArray = [readFile getImageFiles:tmpFile];
+        if ([imgArray count] > 1) {
+            [up startAsynchronous];
+        }
+        else {
+            //刪除檔案
+            BOOL success = [readFile DeleteFile:tmpFile];
+            if (success) {
+                NSLog(@"直接刪除");
+                [self sendToServer:NULL];
+            }
+            if(!success){
+                NSLog(@"Delete file fail");
+            }
+        }
     }
-    else if (numOfFile ==0 & fileCount ==[UploadArray count]& fileCount>0 & [UploadArray count]>0){
-        fileCount = 0;
-        [UploadArray removeAllObjects];
-        [timer invalidate];
-        [UploadBtn setHidden:YES];
-        [networkLabel setHidden:YES];
-        [giveupLabel setHidden:YES];
-        [ReturnBtn setHidden:NO];
-        successLabel = [[UILabel alloc]initWithFrame:CGRectMake(120, 350, 650, 40)];
-        successLabel.font = [UIFont systemFontOfSize:25];
-        successLabel.text = @"資料上傳成功，測驗到此結束，感謝你的填答!!!";
-        [self.view addSubview:successLabel];
+    else if (numOfFile < 1 && [UploadArray count] > 0){
+        [self sendEndShow];
     }
     else{
         [ReturnBtn setHidden:NO];
         tellNoData = [[UIAlertView alloc] initWithTitle:@"上傳資料" message:@"沒有資料要上傳" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil];
         [tellNoData show];
-        
     }
-    
-    
+}
+
+- (void) sendEndShow {
+    fileCount = 0;
+    [UploadArray removeAllObjects];
+    [timer invalidate];
+    [UploadBtn setHidden:YES];
+    [networkLabel setHidden:YES];
+    [giveupLabel setHidden:YES];
+    [ReturnBtn setHidden:NO];
+    successLabel = [[UILabel alloc]initWithFrame:CGRectMake(120, 350, 650, 40)];
+    successLabel.font = [UIFont systemFontOfSize:25];
+    successLabel.text = @"資料上傳成功，測驗到此結束，感謝你的填答!!!";
+    [self.view addSubview:successLabel];
 }
 
 - (NSString *)urlEncodedString {

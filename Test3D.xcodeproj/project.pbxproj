@@ -230,6 +230,9 @@
 		B8D3C39F16B7F577007FF5F2 /* act3t1.png in Resources */ = {isa = PBXBuildFile; fileRef = B8D3C39C16B7F577007FF5F2 /* act3t1.png */; };
 		B8D3C3A016B7F577007FF5F2 /* act3t2.png in Resources */ = {isa = PBXBuildFile; fileRef = B8D3C39D16B7F577007FF5F2 /* act3t2.png */; };
 		B8D3C3A416B7FD7B007FF5F2 /* TeachingWord4.png in Resources */ = {isa = PBXBuildFile; fileRef = B8D3C3A216B7FD7B007FF5F2 /* TeachingWord4.png */; };
+		B8FF3F6216DB4429007E6B91 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8FF3F6116DB4429007E6B91 /* CFNetwork.framework */; };
+		B8FF3F6516DB7E0A007E6B91 /* PutController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8FF3F5F16DB43F1007E6B91 /* PutController.m */; };
+		B8FF3F6616DB7E12007E6B91 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B8FF3F6416DB4A45007E6B91 /* NetworkManager.m */; };
 		E86B57F316A54BAA008860D0 /* addTeachWord.m in Sources */ = {isa = PBXBuildFile; fileRef = E86B57A816A54BAA008860D0 /* addTeachWord.m */; };
 		E86B57F416A54BAA008860D0 /* FileOPs.m in Sources */ = {isa = PBXBuildFile; fileRef = E86B57AA16A54BAA008860D0 /* FileOPs.m */; };
 		E86B57F516A54BAA008860D0 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = E86B57AE16A54BAA008860D0 /* NSObject+SBJson.m */; };
@@ -734,6 +737,11 @@
 		B8D3C39C16B7F577007FF5F2 /* act3t1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = act3t1.png; sourceTree = "<group>"; };
 		B8D3C39D16B7F577007FF5F2 /* act3t2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = act3t2.png; sourceTree = "<group>"; };
 		B8D3C3A216B7FD7B007FF5F2 /* TeachingWord4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TeachingWord4.png; sourceTree = "<group>"; };
+		B8FF3F5E16DB43F1007E6B91 /* PutController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PutController.h; sourceTree = "<group>"; };
+		B8FF3F5F16DB43F1007E6B91 /* PutController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PutController.m; sourceTree = "<group>"; };
+		B8FF3F6116DB4429007E6B91 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		B8FF3F6316DB4A45007E6B91 /* NetworkManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
+		B8FF3F6416DB4A45007E6B91 /* NetworkManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
 		E86B57A716A54BAA008860D0 /* addTeachWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = addTeachWord.h; path = Classes/addTeachWord.h; sourceTree = "<group>"; };
 		E86B57A816A54BAA008860D0 /* addTeachWord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = addTeachWord.m; path = Classes/addTeachWord.m; sourceTree = "<group>"; };
 		E86B57A916A54BAA008860D0 /* FileOPs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileOPs.h; path = Classes/FileOPs.h; sourceTree = "<group>"; };
@@ -805,6 +813,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8FF3F6216DB4429007E6B91 /* CFNetwork.framework in Frameworks */,
 				E86B583D16A55C16008860D0 /* SystemConfiguration.framework in Frameworks */,
 				84D8D7FE168B3E6A00DC33E9 /* AssetsLibrary.framework in Frameworks */,
 				84A1A433166CF138002D4491 /* QuartzCore.framework in Frameworks */,
@@ -824,6 +833,7 @@
 		84A1A423166CF138002D4491 = {
 			isa = PBXGroup;
 			children = (
+				B8FF3F6016DB43F9007E6B91 /* FTP */,
 				B84B81BF16B8EF48001070E0 /* icon-114.png */,
 				B84B81BD16B8EF1E001070E0 /* icon-57.png */,
 				B8D3C39816B7D8CD007FF5F2 /* icon.png */,
@@ -853,6 +863,7 @@
 		84A1A431166CF138002D4491 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B8FF3F6116DB4429007E6B91 /* CFNetwork.framework */,
 				E86B583C16A55C16008860D0 /* SystemConfiguration.framework */,
 				84D8D7D9168B3E3E00DC33E9 /* spline */,
 				84D8D7FD168B3E6A00DC33E9 /* AssetsLibrary.framework */,
@@ -1621,6 +1632,17 @@
 			path = teachImage;
 			sourceTree = SOURCE_ROOT;
 		};
+		B8FF3F6016DB43F9007E6B91 /* FTP */ = {
+			isa = PBXGroup;
+			children = (
+				B8FF3F6316DB4A45007E6B91 /* NetworkManager.h */,
+				B8FF3F6416DB4A45007E6B91 /* NetworkManager.m */,
+				B8FF3F5E16DB43F1007E6B91 /* PutController.h */,
+				B8FF3F5F16DB43F1007E6B91 /* PutController.m */,
+			);
+			name = FTP;
+			sourceTree = "<group>";
+		};
 		E86B57AB16A54BAA008860D0 /* JSON */ = {
 			isa = PBXGroup;
 			children = (
@@ -2061,6 +2083,8 @@
 				E86B583316A54D66008860D0 /* Action5ViewController.m in Sources */,
 				E86B584816A55FCE008860D0 /* EndViewController.m in Sources */,
 				E86B585716A5625E008860D0 /* STHTTPRequest.m in Sources */,
+				B8FF3F6516DB7E0A007E6B91 /* PutController.m in Sources */,
+				B8FF3F6616DB7E12007E6B91 /* NetworkManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
