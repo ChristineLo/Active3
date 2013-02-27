@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C60" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="NXt-4h-ZC6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C60" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="pUb-46-UEo">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -1027,7 +1027,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LFV-1v-PYQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="841" y="652"/>
+            <point key="canvasLocation" x="799" y="652"/>
         </scene>
     </scenes>
     <resources>
@@ -1035,6 +1035,76 @@
         <image name="封面個人資料2.png" width="632" height="288"/>
         <image name="螢幕快照 2012-11-20 下午3.53.25.png" width="585" height="659"/>
     </resources>
+    <classes>
+        <class className="Action1ViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/Action1ViewController.h"/>
+        </class>
+        <class className="Action2ViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/Action2ViewController.h"/>
+        </class>
+        <class className="Action5ViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/Action5ViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="OK:"/>
+            </relationships>
+        </class>
+        <class className="ActionCover" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ActionCover.h"/>
+            <relationships>
+                <relationship kind="action" name="BirthDayBtn:"/>
+                <relationship kind="action" name="GoToUploadBtn:"/>
+                <relationship kind="action" name="TestDayBtn:"/>
+                <relationship kind="outlet" name="Birthday" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="GradeYear" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="SchoolName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="StudentName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="TestDay" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="EndViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EndViewController.h"/>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="UIGlossyButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIGlossyButton.h"/>
+        </class>
+        <class className="VCTest3" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VCTest3.h"/>
+            <relationships>
+                <relationship kind="action" name="depthButtonClicked:"/>
+                <relationship kind="action" name="rotateButtonClicked:"/>
+                <relationship kind="action" name="save2FileButtonClicked:"/>
+                <relationship kind="action" name="switchEditStateButtonClicked:"/>
+                <relationship kind="outlet" name="smallView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="toolBar" candidateClass="UIView"/>
+                <relationship kind="outlet" name="ulCountDownTime" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="VCTest4" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VCTest4.h"/>
+            <relationships>
+                <relationship kind="action" name="clearButtonClicked:"/>
+                <relationship kind="action" name="eraserButtonClicked:"/>
+                <relationship kind="action" name="loadFromAlbumButtonClicked:"/>
+                <relationship kind="action" name="preButtonClicked:"/>
+                <relationship kind="action" name="redoButtonClicked:"/>
+                <relationship kind="action" name="save2AlbumButtonClicked:"/>
+                <relationship kind="action" name="save2FileButtonClicked:"/>
+                <relationship kind="action" name="undoButtonClicked:"/>
+                <relationship kind="outlet" name="ulCountDownTime" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="VCText3Tutorial" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VCText3Tutorial.h"/>
+            <relationships>
+                <relationship kind="outlet" name="smallView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="toolBar" candidateClass="UIView"/>
+                <relationship kind="outlet" name="ulCountDownTime" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -51,6 +51,8 @@ enum
 @property (readwrite) CGFloat lineAlpha;
 @property (assign) id delegate;
 
+-(NSString*)getImgPath:(int)imgNum;
+
 - (void)calculateMinImageArea:(CGPoint)pp1 :(CGPoint)pp2 :(CGPoint)cp;
 - (void)redoButtonClicked;
 - (void)undoButtonClicked;

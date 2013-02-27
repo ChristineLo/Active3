@@ -80,9 +80,10 @@
     NSMutableArray *dirList = [[NSMutableArray alloc]init];
     for (NSString *file in fileList) {
         
-        BOOL other = NO;
+        BOOL other = NO, other2 = NO;
         other = [file isEqualToString:@".DS_Store"];
-        if (!other) {
+        other2 = [self isImage:file];
+        if (!other && !other2) {
             [dirList addObject:file];
             //NSLog(@"get QuizFileList %@",file);
         }

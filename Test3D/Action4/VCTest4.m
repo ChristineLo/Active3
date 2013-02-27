@@ -24,11 +24,13 @@
 - (void)viewDidLoad
 {
     slv = [[[SmoothLineView alloc] initWithFrame:CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y + kMENU_HEIGHT, self.view.bounds.size.width, self.view.bounds.size.height - kMENU_HEIGHT)] autorelease];
+    //slv = [[SmoothLineView alloc] initWithFrame:CGRectMake(0, 0, 768, 970)];
     slv.delegate = self;
     [self.view addSubview:slv];
     
-    [self initButton];
+    
     [self initQuest];
+    [self initButton];
     
     self.curColor = [UIColor blackColor];
     
@@ -65,12 +67,15 @@
     [self setCoundDownLabel];
     tCountDownTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(setCoundDownLabel) userInfo:NULL repeats:YES];
     
+    [self addTextField];
+}
+
+-(void) addTextField {
     int w,h,dx,dy;
     w = 250;
     h = 40;
     dx = 450;
     dy = 370;
-
     UITextField *tmp = [[UITextField alloc] initWithFrame:CGRectMake(20, 300, w, h)];
     [tmp setTag:3001];
     [tmp setBorderStyle:UITextBorderStyleLine];
@@ -91,6 +96,13 @@
     [tmp setBorderStyle:UITextBorderStyleLine];
     [tmp setFont:[UIFont fontWithName:@"ArialMT" size:30]];
     [slv addSubview:tmp];
+}
+
+-(void) cleanTextField {
+    for (int i = 3001; i < 3005; ++i) {
+        UITextField *tmp = (UITextField*)[self.view viewWithTag:3001];
+        tmp.text = @"";
+    }
 }
 
 //到數計時
@@ -189,16 +201,32 @@
 }
 
 -(void)  setQuesImage :(int) Num {
-    UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"action4%02d.png",backNum]];
+    //NSFileManager *fileMgr = [[NSFileManager alloc] init];
+    Test3DAppDelegate *delegate = (Test3DAppDelegate*)[[UIApplication sharedApplication] delegate];
+    NSString  *pngPath = [NSHomeDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"Documents/%@/%@.png",delegate.TestNumberString,[NSString stringWithFormat:@"Active4-%d",Num]]];
+    UIImage *image;
     
     if (backImage != NULL) {
-        [slv clearButtonClicked];
+        [slv removeFromSuperview];
+        slv = [[[SmoothLineView alloc] initWithFrame:CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y + kMENU_HEIGHT, self.view.bounds.size.width, self.view.bounds.size.height - kMENU_HEIGHT)] autorelease];
+        slv.delegate = self;
+        [self.view addSubview:slv];
         [backImage removeFromSuperview];
-        [backImage release];
+        //[backImage release];
     }
     
+    image = [UIImage imageNamed:[NSString stringWithFormat:@"action4%02d.png",Num]];
+    UIImage *imageSaved = [UIImage imageWithContentsOfFile:pngPath];
+    if (imageSaved)
+        [slv loadFromAlbumButtonClicked:imageSaved];
+    else{
+        [slv loadFromAlbumButtonClicked:image];
+    }
+    
+    [self addTextField];
+    
     backImage = [[UIImageView alloc] initWithImage:image];
-    [backImage setFrame:CGRectMake(backImage.frame.origin.x, backImage.frame.origin.y+80, backImage.frame.size.width, backImage.frame.size.height)];
+    [backImage setFrame:CGRectMake(backImage.frame.origin.x, backImage.frame.origin.y, backImage.frame.size.width, backImage.frame.size.height)];
     [slv addSubview:backImage];
     [image release];
     
@@ -212,13 +240,16 @@
     if (backNum < 14) {
         [self save2FileButtonClicked:self];
         [self setQuesImage:++backNum];
+        [self cleanTextField];
     }
 }
 
 -(void) preQuest {
     if (backNum > 1) {
+        [self save2FileButtonClicked:self];
         [self setQuesImage:--backNum];
-        
+        [self cleanTextField];
+        /*
         NSFileManager *mgr = [[NSFileManager alloc] init];
         NSString  *pngPath = [NSHomeDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"Documents/Screenshot %@.png",kFILE_ANS]];
         if([mgr fileExistsAtPath:pngPath isDirectory:NO])
@@ -228,22 +259,10 @@
             //[image release];
         }
         [mgr release];
+         */
     }
 }
 
-/*
-//- (void) applyPickedColor: (InfColorPickerController*) picker
-- (void) applyPickedColor
-{
-    
-    float red,green,blue,alpha;
-    
-    //self.curColor = picker.resultColor;
-    [self.curColor getRed:&red green:&green blue:&blue alpha:&alpha];
-    
-    [slv setColor:0 g:0 b:0 a:0];
-}
-*/
 #pragma mark	UIPopoverControllerDelegate methods
 //------------------------------------------------------------------------------
 
@@ -353,27 +372,11 @@
     (eraserButton.tintColor == [UIColor redColor])?[eraserButton setTintColor:redoButton.tintColor]:[eraserButton setTintColor:[UIColor redColor]];
 }
 
-/*
--(IBAction)changeColorClicked:(id)sender
-{
-    if( [ self dismissActivePopover ] )
-		return;
-	
-	InfColorPickerController* picker = [ InfColorPickerController colorPickerViewController ];
-	
-	picker.sourceColor = self.curColor;
-	picker.delegate = self;
-	
-	UIPopoverController* popover = [ [ [ UIPopoverController alloc ] initWithContentViewController: picker ] autorelease ];
-	
-	[ self showPopover: popover from: sender ];
-}
-*/
 -(IBAction)save2FileButtonClicked:(id)sender
 {
     //[slv save2FileButtonClicked];
     Test3DAppDelegate *delegate = (Test3DAppDelegate*)[[UIApplication sharedApplication] delegate];
-    NSLog(@"%@",delegate.TestNumberString);
+    //NSLog(@"%@",delegate.TestNumberString);
     [slv save2File:kFILE_ANS filefolder:delegate.TestNumberString];
 }
 
