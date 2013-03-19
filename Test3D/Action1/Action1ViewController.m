@@ -59,6 +59,7 @@
 }
 
 -(void) viewDidDisappear:(BOOL)animated {
+    image = nil;
     [timer invalidate];
 }
 
@@ -214,17 +215,17 @@
 
 //進入活動二頁面
 -(void)switchToAction2{
-    
     Storyboard = self.storyboard;
     [self presentViewController:[Storyboard instantiateViewControllerWithIdentifier:@"ACT2"] animated:YES completion:Nil];
-    
 }
+
 -(void)dealloc{
     NSLog(@"Action1 release");
     [scrollView release];
     [countdownLabel release];
-    [imageView release];
     [image release];
+    [imageView release];
+    
     [StartBtn release];
     [OkBtn release];
     [saveFile release];
@@ -238,7 +239,12 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
+    if([self isViewLoaded] && self.view.window == nil)
+    {
+        image = nil;
+        self.view = nil;
+    }
 }
 -(void)viewDidUnload{
     [super viewDidUnload];

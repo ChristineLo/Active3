@@ -34,6 +34,24 @@
     [self showTeachImage];
 }
 
+- (void) didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    
+    if ([self isViewLoaded] && self.view.window == nil) {
+        NSLog(@"VCT3T MemoryWarning");
+        [[CCDirector sharedDirector] purgeCachedData];
+    }
+    else if ([self isViewLoaded] && self.view.window != nil) {
+        NSLog(@"VCT3 單頁記憶體不足");
+        [slv clearButtonClicked];
+    }
+}
+
+-(void) viewDidDisappear:(BOOL)animated {
+    [[CCDirector sharedDirector] purgeCachedData];
+    self.view = nil;
+}
+
 - (void) initAct3t{
     [super viewDidLoad];
     
@@ -67,15 +85,25 @@
 
 -(void) nextTeachImage {
     ++backNum;
+    if (teach.image) {
+        teach.image = nil;
+    }
     if (backNum < 3) {
-        [teach setImage:[UIImage imageNamed:[NSString stringWithFormat:@"act3t%d",backNum]]];
+        NSString *path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"act3t%d",backNum] ofType:@"png"];
+        [teach setImage:[UIImage imageWithContentsOfFile:path]];
+        path = nil;
     }
     else {
+        //最後一個教學圖離開時，要delay？
+        /*
         id ob = [self.view viewWithTag:5001];
         [ob removeFromSuperview];
+        [ob release];
+         */
         [teach removeFromSuperview];
         [self initAct3t];
-        //[teach release];
+        teach.image = nil;
+        [teach release];
     }
 }
 
@@ -132,16 +160,15 @@
     self.curColor = [UIColor blackColor];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
+-(void) dealloc {
+    [[CCDirector sharedDirector] release];
     [threeDButtons dealloc];
     [twoDButtons dealloc];
-    [director dealloc];
     [slv dealloc];
     [tCountDownTimer dealloc];
     [ulCountDownTime dealloc];
     [threeDLayer dealloc];
+    [super dealloc];
 }
 
 -(void)setButtonAttrib:(UIGlossyButton*)_button
@@ -330,5 +357,48 @@
 {
     [whitePenButton setEnabled:[isEnable boolValue]];
 }
+/*cocos2d*/
+- (void)applicationWillResignActive:(UIApplication *)application {
+    
+     [[CCDirector sharedDirector] pause];
+}
 
+/** Resume the cocos3d/cocos2d action. */
+-(void) resumeApp { [[CCDirector sharedDirector] resume];
+}
+
+- (void)applicationDidBecomeActive: (UIApplication*) application {
+	
+     // Workaround to fix the issue of drop to 40fps on iOS4.X on app resume.
+     // Adds short delay before resuming the app.
+     [NSTimer scheduledTimerWithTimeInterval: 0.5f
+     target: self
+     selector: @selector(resumeApp)
+     userInfo: nil
+     repeats: NO];
+     
+     // If dropping to 40fps is not an issue, remove above, and uncomment the following to avoid delay.
+     //	[self resumeApp];
+}
+
+- (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
+	[[CCDirector sharedDirector] purgeCachedData];
+}
+
+-(void) applicationDidEnterBackground:(UIApplication*)application {
+	[[CCDirector sharedDirector] stopAnimation];
+}
+
+-(void) applicationWillEnterForeground:(UIApplication*)application {
+	[[CCDirector sharedDirector] startAnimation];
+}
+
+- (void)applicationWillTerminate:(UIApplication *)application {
+    [[director openGLView] removeFromSuperview];
+     [director end];
+}
+
+- (void)applicationSignificantTimeChange:(UIApplication *)application {
+	[[CCDirector sharedDirector] setNextDeltaTimeZero:YES];
+}
 @end

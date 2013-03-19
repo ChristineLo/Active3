@@ -42,6 +42,8 @@
 }
 
 -(void) viewDidDisappear:(BOOL)animated {
+    NSLog(@"action2 view disappear");
+    image = nil;
     [timer invalidate];
 }
 
@@ -226,6 +228,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    if([self isViewLoaded] && self.view.window == nil)
+    {
+        NSLog(@"remove view");
+        self.view = nil;
+    }
 }
 -(void)viewDidUnload{
     [super viewDidUnload];

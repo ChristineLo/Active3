@@ -19,6 +19,7 @@
 {
     addTeachWord *addTeachingWord;
     UILabel *ulCountDownTime;
+    UILabel *imgNumLabel;
     NSTimer *tCountDownTimer;
     int iActionTime;
     
@@ -30,6 +31,9 @@
     
     UIPopoverController* activePopover;
     UIPopoverController *popover;
+    
+    UIImage *imageSaved;
+    UIImage *imageOrigin;
 }
 @property (retain, nonatomic) IBOutlet UILabel *ulCountDownTime;
 #pragma mark 繪圖view

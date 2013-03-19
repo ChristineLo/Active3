@@ -89,6 +89,10 @@ CGPoint midPoint(CGPoint p1, CGPoint p2);
     return self;
 }
 - (void) dealloc{
+    NSLog(@"slv dealloc");
+    [bufferArray release];
+    [lineArray release];
+    curImage = nil;
     [super dealloc];
 }
 
@@ -134,7 +138,7 @@ CGPoint midPoint(CGPoint p1, CGPoint p2);
             CGContextSetAlpha(context, self.lineAlpha);
             CGContextStrokePath(context); 
 #endif
-            //[curImage release];
+            [curImage release];
 
             
         }
@@ -176,20 +180,20 @@ CGPoint midPoint(CGPoint p1, CGPoint p2);
             CGContextSetAlpha(context, self.lineAlpha);
             CGContextStrokePath(context); 
 #endif
-            //[curImage release];
+            [curImage release];
             
         }
             break;
         case UNDO:
         {
             [curImage drawInRect:self.bounds];   
-            //[curImage release];
+            [curImage release];
             break;
         }
         case REDO:
         {
             [curImage drawInRect:self.bounds];
-            //[curImage release];
+            [curImage release];
             break;
         }
         case RELOAD:
@@ -201,7 +205,6 @@ CGPoint midPoint(CGPoint p1, CGPoint p2);
                 curImage = [_tmp imageRotatedByDegrees:90];
             }
             [curImage drawInRect:self.bounds]; 
-
             break;
         }
         default:
@@ -273,7 +276,7 @@ CGPoint midPoint(CGPoint p1, CGPoint p2)
     [lineArray addObject:lineInfo];
 #endif    
                               
-    //[curImage release];
+    [curImage release];
     [self checkDrawStatus];
     
 }
@@ -499,9 +502,11 @@ CGPoint midPoint(CGPoint p1, CGPoint p2)
     UIGraphicsEndImageContext();
     error = [UIImagePNGRepresentation(saveImage) writeToFile:pngPath atomically:YES];
     
-        NSLog(@"SaveSuccessMessage:%@", pngPath);
+    saveImage = nil;
+    [saveImage release];
+    NSLog(@"SaveSuccessMessage:%@", pngPath);
 }
-
+/*
 -(void)save2FileButtonClicked
 {
     BOOL error;
@@ -526,19 +531,9 @@ CGPoint midPoint(CGPoint p1, CGPoint p2)
     } else {  
         title = NSLocalizedString(@"SaveFailedTitle", @"");  
         message = NSLocalizedString(@"SaveFailMessage", @"");
-    }  
-    /*
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
-                                                    message:message  
-                                                   delegate:nil  
-                                          cancelButtonTitle:NSLocalizedString(@"ButtonOK", @"")  
-                                          otherButtonTitles:nil];  
-    [alert show];  
-    [alert release];  
-
-    */
+    }
 }
-
+*/
 //ref: http://iphoneincubator.com/blog/tag/uigraphicsbeginimagecontext
 -(void)save2AlbumButtonClicked
 {
@@ -576,6 +571,9 @@ CGPoint midPoint(CGPoint p1, CGPoint p2)
 
 - (void)loadFromAlbumButtonClicked:(UIImage*)_image
 {
+    [lineArray removeAllObjects];
+    [bufferArray removeAllObjects];
+    curImage = nil;
     drawStep = RELOAD;
     curImage = _image;
     [curImage retain];

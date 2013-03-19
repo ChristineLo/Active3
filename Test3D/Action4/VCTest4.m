@@ -23,14 +23,9 @@
 
 - (void)viewDidLoad
 {
-    slv = [[[SmoothLineView alloc] initWithFrame:CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y + kMENU_HEIGHT, self.view.bounds.size.width, self.view.bounds.size.height - kMENU_HEIGHT)] autorelease];
-    //slv = [[SmoothLineView alloc] initWithFrame:CGRectMake(0, 0, 768, 970)];
-    slv.delegate = self;
-    [self.view addSubview:slv];
-    
-    
     [self initQuest];
     [self initButton];
+    [self addTextField];
     
     self.curColor = [UIColor blackColor];
     
@@ -51,6 +46,30 @@
 #endif
 }
 
+//進入活動三頁面
+-(void) viewDidDisappear:(BOOL)animated {
+    [tCountDownTimer invalidate];
+}
+
+-(void) dealloc {
+    [slv release];
+    [imageSaved release];
+    [imageOrigin release];
+    [super dealloc];
+}
+
+-(void) didReceiveMemoryWarning {
+    NSLog(@"action 4 MemoryWarning");
+    if ([self isViewLoaded] && self.view.window == nil) {
+        self.view = nil;
+    }
+    else if ([self isViewLoaded] && self.view.window != nil) {
+        [self save2FileButtonClicked:self];
+        [self setQuesImage:backNum];
+    }
+    [super didReceiveMemoryWarning];
+}
+
 -(void)StartCountDownTimer:(id)sender {
     UIAlertView *tellTimeStart = [[UIAlertView alloc] initWithTitle:@"活動四" message:@"十分鐘計時開始!!" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"確定",nil];
     tellTimeStart.tag = 0;
@@ -66,8 +85,6 @@
     //[ulCountDownTime setTextColor:[UIColor whiteColor]];
     [self setCoundDownLabel];
     tCountDownTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(setCoundDownLabel) userInfo:NULL repeats:YES];
-    
-    [self addTextField];
 }
 
 -(void) addTextField {
@@ -81,27 +98,34 @@
     [tmp setBorderStyle:UITextBorderStyleLine];
     [tmp setFont:[UIFont fontWithName:@"ArialMT" size:30]];
     [slv addSubview:tmp];
+    [tmp release];
+    
     tmp = [[UITextField alloc] initWithFrame:CGRectMake(20+dx, 300, w, h)];
     [tmp setTag:3002];
     [tmp setBorderStyle:UITextBorderStyleLine];
     [tmp setFont:[UIFont fontWithName:@"ArialMT" size:30]];
     [slv addSubview:tmp];
+    [tmp release];
+    
     tmp = [[UITextField alloc] initWithFrame:CGRectMake(20, 300+dy, w, h)];
     [tmp setTag:3003];
     [tmp setBorderStyle:UITextBorderStyleLine];
     [tmp setFont:[UIFont fontWithName:@"ArialMT" size:30]];
     [slv addSubview:tmp];
+    [tmp release];
+    
     tmp = [[UITextField alloc] initWithFrame:CGRectMake(20+dx, 300+dy, w, h)];
     [tmp setTag:3004];
     [tmp setBorderStyle:UITextBorderStyleLine];
     [tmp setFont:[UIFont fontWithName:@"ArialMT" size:30]];
     [slv addSubview:tmp];
+    [tmp release];
 }
 
 -(void) cleanTextField {
     for (int i = 3001; i < 3005; ++i) {
         UITextField *tmp = (UITextField*)[self.view viewWithTag:3001];
-        tmp.text = @"";
+        [tmp setClearButtonMode:UITextFieldViewModeWhileEditing];
     }
 }
 
@@ -142,11 +166,6 @@
             }
             break;
     }
-}
-
-//進入活動三頁面
--(void) viewDidDisappear:(BOOL)animated {
-    [tCountDownTimer invalidate];
 }
 
 -(void)switchNextAction{
@@ -197,38 +216,44 @@
 
 -(void) initQuest {
     backNum = 1;
+    slv = [[SmoothLineView alloc] initWithFrame:CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y + kMENU_HEIGHT, self.view.bounds.size.width, self.view.bounds.size.height - kMENU_HEIGHT)];
+    slv.delegate = self;
+    [self.view addSubview:slv];
+    
+    imgNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 10, 100, 20)];
+    [imgNumLabel setFont:[UIFont fontWithName:@"ArialMT" size:15]];
+    [imgNumLabel setText:[NSString stringWithFormat:@"第%02d頁",backNum]];
+    [slv addSubview:imgNumLabel];
+    
     [self setQuesImage:backNum];
 }
 
 -(void)  setQuesImage :(int) Num {
-    //NSFileManager *fileMgr = [[NSFileManager alloc] init];
     Test3DAppDelegate *delegate = (Test3DAppDelegate*)[[UIApplication sharedApplication] delegate];
-    NSString  *pngPath = [NSHomeDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"Documents/%@/%@.png",delegate.TestNumberString,[NSString stringWithFormat:@"Active4-%d",Num]]];
-    UIImage *image;
-    
-    if (backImage != NULL) {
-        [slv removeFromSuperview];
-        slv = [[[SmoothLineView alloc] initWithFrame:CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y + kMENU_HEIGHT, self.view.bounds.size.width, self.view.bounds.size.height - kMENU_HEIGHT)] autorelease];
-        slv.delegate = self;
-        [self.view addSubview:slv];
-        [backImage removeFromSuperview];
-        //[backImage release];
+    if (delegate.TestNumberString == NULL) {
+        delegate.TestNumberString = @"test";
     }
     
-    image = [UIImage imageNamed:[NSString stringWithFormat:@"action4%02d.png",Num]];
-    UIImage *imageSaved = [UIImage imageWithContentsOfFile:pngPath];
+    [imgNumLabel setText:[NSString stringWithFormat:@"第%02d頁",backNum]];
+    
+    NSString  *savePath = [NSHomeDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"Documents/%@/%@.png",delegate.TestNumberString,[NSString stringWithFormat:@"Active4-%d",Num]]];
+    NSString *originPath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"action4%02d",Num] ofType:@"png"];
+
+    if (imageOrigin) {
+        imageOrigin = nil;
+        [imageOrigin release];
+    }
+    if (imageSaved) {
+        imageSaved = nil;
+        [imageSaved release];
+    }
+    imageSaved = [UIImage imageWithContentsOfFile:savePath];
+    imageOrigin = [UIImage imageWithContentsOfFile:originPath];
+    
     if (imageSaved)
         [slv loadFromAlbumButtonClicked:imageSaved];
-    else{
-        [slv loadFromAlbumButtonClicked:image];
-    }
-    
-    [self addTextField];
-    
-    backImage = [[UIImageView alloc] initWithImage:image];
-    [backImage setFrame:CGRectMake(backImage.frame.origin.x, backImage.frame.origin.y, backImage.frame.size.width, backImage.frame.size.height)];
-    [slv addSubview:backImage];
-    [image release];
+    else
+        [slv loadFromAlbumButtonClicked:imageOrigin];
     
     (Num == 1) ? [self setPreButtonEnable:[NSNumber numberWithBool:NO]] : [self setPreButtonEnable:[NSNumber numberWithBool:YES]];
 
@@ -249,17 +274,6 @@
         [self save2FileButtonClicked:self];
         [self setQuesImage:--backNum];
         [self cleanTextField];
-        /*
-        NSFileManager *mgr = [[NSFileManager alloc] init];
-        NSString  *pngPath = [NSHomeDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"Documents/Screenshot %@.png",kFILE_ANS]];
-        if([mgr fileExistsAtPath:pngPath isDirectory:NO])
-        {
-            UIImage *image = [UIImage imageWithContentsOfFile:pngPath];
-            [slv loadFromAlbumButtonClicked:image];
-            //[image release];
-        }
-        [mgr release];
-         */
     }
 }
 
@@ -363,7 +377,7 @@
 -(IBAction)clearButtonClicked:(id)sender
 {
     [slv clearButtonClicked];
-    
+    [self setQuesImage:backNum];
 }
 
 -(IBAction)eraserButtonClicked:(id)sender
@@ -376,7 +390,6 @@
 {
     //[slv save2FileButtonClicked];
     Test3DAppDelegate *delegate = (Test3DAppDelegate*)[[UIApplication sharedApplication] delegate];
-    //NSLog(@"%@",delegate.TestNumberString);
     [slv save2File:kFILE_ANS filefolder:delegate.TestNumberString];
 }
 

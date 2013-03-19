@@ -55,6 +55,10 @@
         [fileMgr createDirectoryAtPath:TestNumberFilepath withIntermediateDirectories:YES attributes:Nil error:Nil];
         [JsonDataString writeToFile:DataFilepath atomically:YES encoding:NSUTF8StringEncoding error:&err];
     }
+    else //成功儲存
+    {
+        [JsonDataString release];
+    }
 }
 -(NSMutableDictionary *)readFromJsonFile{
     NSError *err;
@@ -103,9 +107,12 @@
         if (isImage) {
             NSString *path = [tmpPath stringByAppendingPathComponent:file];
             [dirList addObject:path];
+            //[path release];
         }
     }
     NSLog(@"file list%@",dirList.description);
+    //[tmpPath release];
+    //[fileList release];
     return dirList;
 }
 
@@ -126,6 +133,11 @@
         
          JsonToDicFile = [JsonParser objectWithString:JsondataString error:&error];
     }
+    
+    //[tmpPath release];
+    //[filename release];
+    //[path release];
+    
     return JsonToDicFile;
 }
 

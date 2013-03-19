@@ -17,6 +17,22 @@
     return self;
 }
 
+-(void) didReceiveMemoryWarning
+{
+    if ([self isViewLoaded] && self.view.window == nil) {
+        self.view = nil;
+    }
+}
+
+-(void) dealloc {
+    image = nil;
+    [image release];
+    imageView.image = nil;
+    [imageView release];
+    NSLog(@"teachWord dealloc");
+    [super dealloc];
+}
+
 -(void)addTeachingWordString:(NSString *)content title:(NSString*)title
 {
     if (title) {
@@ -28,6 +44,7 @@
         [titleView setText:title];
         //[titleView setEditable:NO];
         [self.view addSubview:titleView];
+        [titleView release];
     }
     
     if (content) {
@@ -39,6 +56,7 @@
         [textView setText:content];
         [textView setEditable:NO];
         [self.view addSubview:textView];
+        [textView release];
     }
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
@@ -59,6 +77,8 @@
 
 -(void) addLeafButtonWithFram: (CGRect)fram
 {
+    NSLog(@"teachWord release image");
+    
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     //[button setFrame:CGRectMake(280, 512+image.size.height*0.5+10, 150, 40)];
     [button setFrame:fram];

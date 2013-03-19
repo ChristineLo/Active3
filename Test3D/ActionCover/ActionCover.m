@@ -56,7 +56,11 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
+    if([self isViewLoaded] && self.view.window == nil)
+    {
+        self.view = nil;
+    }
 }
 -(void)radioButtonSelectedAtIndex:(NSUInteger)index inGroup:(NSString *)groupId{
     NSLog(@"changed to %d in %@",index,groupId);
@@ -121,8 +125,12 @@
     
 }
 -(void)submitClick:(id)sender{
+#if DEMO
+    tellNext = [[UIAlertView alloc] initWithTitle:@"填寫個人資料" message:@"確定要下一頁" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"確定",nil];
+    tellNext.tag = 1;
+    [tellNext show];
+#else
     [self checkAllwrite];
-    //[self switchToAction1];
     if (T1 &T2 &T3 &T4 &T5 &checkS) {
         NSLog(@"write down");
         tellNext = [[UIAlertView alloc] initWithTitle:@"填寫個人資料" message:@"確定要下一頁" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"確定",nil];
@@ -135,6 +143,7 @@
         tellErr.tag=2;
         [tellErr show];
     }
+#endif
 }
 -(void)switchToAction1{
     
@@ -249,8 +258,5 @@
     [tellNext release];
     [dAlert release];
     [super dealloc];
-}
--(void)viewDidUnload{
-    [super viewDidUnload];
 }
 @end

@@ -29,6 +29,26 @@
 @synthesize toolBar;
 @synthesize smallView;
 
+- (void) didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    
+    if ([self isViewLoaded] && self.view.window == nil) {
+        NSLog(@"VCT3 MemoryWarning");
+        [[CCDirector sharedDirector] purgeCachedData];
+        [slv clearButtonClicked];
+    }
+    else if ([self isViewLoaded] && self.view.window != nil) {
+        NSLog(@"VCT3 單頁記憶體不足");
+        [slv clearButtonClicked];
+    }
+}
+
+-(void) viewDidDisappear:(BOOL)animated {
+    [tCountDownTimer invalidate];
+    [[CCDirector sharedDirector] purgeCachedData];
+    self.view = nil;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -183,22 +203,16 @@
     
     self.curColor = [UIColor blackColor];
 }
--(void) viewDidDisappear:(BOOL)animated {
-    [tCountDownTimer invalidate];
-}
 
-- (void)didReceiveMemoryWarning
-{
-    NSLog(@"memory warning");
-    [super didReceiveMemoryWarning];
+-(void) dealloc {
+    [[CCDirector sharedDirector] release];
     [threeDButtons dealloc];
     [twoDButtons dealloc];
-    [threeDButtons dealloc];
-    [twoDButtons dealloc];
-    [director dealloc];
     [slv dealloc];
     [tCountDownTimer dealloc];
     [ulCountDownTime dealloc];
+    [threeDLayer dealloc];
+    [super dealloc];
 }
 
 -(void)setButtonAttrib:(UIGlossyButton*)_button
@@ -422,5 +436,49 @@
     UIImage *resultImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return resultImage;
+}
+/*cocos2d*/
+- (void)applicationWillResignActive:(UIApplication *)application {
+    
+    [[CCDirector sharedDirector] pause];
+}
+
+/** Resume the cocos3d/cocos2d action. */
+-(void) resumeApp { [[CCDirector sharedDirector] resume];
+}
+
+- (void)applicationDidBecomeActive: (UIApplication*) application {
+	
+    // Workaround to fix the issue of drop to 40fps on iOS4.X on app resume.
+    // Adds short delay before resuming the app.
+    [NSTimer scheduledTimerWithTimeInterval: 0.5f
+                                     target: self
+                                   selector: @selector(resumeApp)
+                                   userInfo: nil
+                                    repeats: NO];
+    
+    // If dropping to 40fps is not an issue, remove above, and uncomment the following to avoid delay.
+    //	[self resumeApp];
+}
+
+- (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
+	[[CCDirector sharedDirector] purgeCachedData];
+}
+
+-(void) applicationDidEnterBackground:(UIApplication*)application {
+	[[CCDirector sharedDirector] stopAnimation];
+}
+
+-(void) applicationWillEnterForeground:(UIApplication*)application {
+	[[CCDirector sharedDirector] startAnimation];
+}
+
+- (void)applicationWillTerminate:(UIApplication *)application {
+    [[director openGLView] removeFromSuperview];
+    [director end];
+}
+
+- (void)applicationSignificantTimeChange:(UIApplication *)application {
+	[[CCDirector sharedDirector] setNextDeltaTimeZero:YES];
 }
 @end

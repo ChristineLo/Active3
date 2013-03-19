@@ -116,8 +116,8 @@
     numOfFile = [readFile numOfQuizFiles];
     NSLog(@"number of QuizFiles %i",numOfFile);
     
-   __block STHTTPRequest *up = [[STHTTPRequest requestWithURLString:@"http://dtd.ntue.edu.tw/questionnaire/UploadUser.php"] retain];
-   
+   //__block STHTTPRequest *up = [[STHTTPRequest requestWithURLString:@"http://dtd.ntue.edu.tw/questionnaire/UploadUser.php"] retain];
+   __block STHTTPRequest *up = [[STHTTPRequest requestWithURLString:@"http://irating.ntue.edu.tw:8080/mobile/UploadUser.php"] retain];
     
     //NSLog(@"-- url%@", [self urlEncodedString]);
     if (numOfFile > 0) {
