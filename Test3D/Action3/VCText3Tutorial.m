@@ -54,6 +54,9 @@
 
 -(void) viewDidDisappear:(BOOL)animated {
     [[CCDirector sharedDirector] purgeCachedData];
+    [[CCDirector sharedDirector] stopAnimation];
+    [[director openGLView] removeFromSuperview];
+    [director end];
     self.view = nil;
 }
 
@@ -63,7 +66,7 @@
     if (image) {
         [slv loadFromAlbumButtonClicked:image];
     }
-    [path release];
+    //[path release];
 }
 
 - (void) initAct3t{
@@ -253,6 +256,7 @@
 -(void) checkEditState {
     switch (editState) {
         case THREE_D:
+            [[CCDirector sharedDirector] startAnimation];
             [slv setUserInteractionEnabled:NO];
             [slv setIsAccessibilityElement:NO];
 
@@ -264,6 +268,7 @@
             [self setTwoDButtonVisible:NO];
             break;
         case TWO_D:
+            [[CCDirector sharedDirector] stopAnimation];
             [slv setUserInteractionEnabled:YES];
             [slv setIsAccessibilityElement:YES];
             [smallView removeGestureRecognizer:[smallView.gestureRecognizers lastObject]];

@@ -41,6 +41,7 @@
         Test3DAppDelegate *delegate = (Test3DAppDelegate*)[[UIApplication sharedApplication] delegate];
         //儲存後從新載入畫布
         [slv save2File:kFILE_ANS filefolder:delegate.TestNumberString];
+        [slv clearButtonClicked];
         [self reloadDrawImage:delegate];
     }
 }
@@ -51,11 +52,14 @@
     if (image) {
         [slv loadFromAlbumButtonClicked:image];
     }
-    [path release];
+    //[path release];
 }
 
 -(void) viewDidDisappear:(BOOL)animated {
     [tCountDownTimer invalidate];
+    [[CCDirector sharedDirector] stopAnimation];
+    [[director openGLView] removeFromSuperview];
+    [director end];
     [[CCDirector sharedDirector] purgeCachedData];
     self.view = nil;
 }
@@ -365,12 +369,21 @@
 -(IBAction)save2FileButtonClicked:(id)sender
 {
     //資料夾暫存
+    /*
     Test3DAppDelegate *delegate = (Test3DAppDelegate*)[[UIApplication sharedApplication] delegate];
     
     UIGraphicsBeginImageContext(self.smallView.bounds.size);
     [self.smallView.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage* image1 = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
+     */
+    
+    //儲存後從新載入畫布
+    Test3DAppDelegate *delegate = (Test3DAppDelegate*)[[UIApplication sharedApplication] delegate];
+    [slv save2File:kFILE_ANS filefolder:delegate.TestNumberString];
+    NSString  *path = [NSHomeDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"Documents/%@/Active3.png",delegate.TestNumberString]];
+    UIImage *image1 = [UIImage imageWithContentsOfFile:path];
+    [slv clearButtonClicked];
     
     //cocos2d截圖
     [CCDirector sharedDirector].nextDeltaTimeZero = YES;
@@ -382,10 +395,11 @@
     [threeDLayer visit];
     [rtx end];
     UIImage *image2 = [rtx getUIImageFromBuffer];
-    
+    [rtx release];
     
     UIImage *resultImg = [self addImage:image2 toImage:image1];
-    
+    image1 = nil;
+    image2 = nil;
     
     NSLog(@"%@",delegate.TestNumberString);
     NSData *imageData = UIImagePNGRepresentation(resultImg);
@@ -393,10 +407,8 @@
     [imageData writeToFile:pngPath atomically:YES];
     
     //清除圖片
-    image1 = nil;
-    image2 = nil;
     resultImg = nil;
-    imageData = nil;
+    //imageData = nil;
     pngPath = nil;
 }
 
