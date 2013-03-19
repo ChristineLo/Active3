@@ -35,12 +35,23 @@
     if ([self isViewLoaded] && self.view.window == nil) {
         NSLog(@"VCT3 MemoryWarning");
         [[CCDirector sharedDirector] purgeCachedData];
-        [slv clearButtonClicked];
     }
     else if ([self isViewLoaded] && self.view.window != nil) {
         NSLog(@"VCT3 單頁記憶體不足");
-        [slv clearButtonClicked];
+        Test3DAppDelegate *delegate = (Test3DAppDelegate*)[[UIApplication sharedApplication] delegate];
+        //儲存後從新載入畫布
+        [slv save2File:kFILE_ANS filefolder:delegate.TestNumberString];
+        [self reloadDrawImage:delegate];
     }
+}
+
+-(void) reloadDrawImage:(Test3DAppDelegate*)del {
+    NSString  *path = [NSHomeDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"Documents/%@/Active3.png",del.TestNumberString]];
+    UIImage *image = [UIImage imageWithContentsOfFile:path];
+    if (image) {
+        [slv loadFromAlbumButtonClicked:image];
+    }
+    [path release];
 }
 
 -(void) viewDidDisappear:(BOOL)animated {
@@ -378,10 +389,15 @@
     
     NSLog(@"%@",delegate.TestNumberString);
     NSData *imageData = UIImagePNGRepresentation(resultImg);
-    NSString  *pngPath = [NSHomeDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"Documents/%@/Active3.jpg",delegate.TestNumberString]];
+    NSString  *pngPath = [NSHomeDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"Documents/%@/Active3.png",delegate.TestNumberString]];
     [imageData writeToFile:pngPath atomically:YES];
     
-    //[delegate release];
+    //清除圖片
+    image1 = nil;
+    image2 = nil;
+    resultImg = nil;
+    imageData = nil;
+    pngPath = nil;
 }
 
 -(IBAction)defaultButtonClicked:(id)sender

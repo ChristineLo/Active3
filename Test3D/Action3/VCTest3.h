@@ -23,7 +23,7 @@ enum
 	TWO_D					= 0x0001,
 };
 
-#define kFILE_ANS [NSString stringWithFormat:@"Active3-%d",backNum]
+#define kFILE_ANS @"Active3"
 #define kMENU_HEIGHT 0
 #define COLOR_BD [UIColor colorWithRed:70.0f/255.0f green:105.0f/255.0f blue:192.0f/255.0f alpha:1.0f]
 #define COLOR_BS [UIColor redColor]

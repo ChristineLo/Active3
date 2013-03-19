@@ -37,19 +37,33 @@
 - (void) didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     
+    //沒有顯示的時候
     if ([self isViewLoaded] && self.view.window == nil) {
         NSLog(@"VCT3T MemoryWarning");
         [[CCDirector sharedDirector] purgeCachedData];
     }
+    //正在顯示
     else if ([self isViewLoaded] && self.view.window != nil) {
         NSLog(@"VCT3 單頁記憶體不足");
-        [slv clearButtonClicked];
+        Test3DAppDelegate *delegate = (Test3DAppDelegate*)[[UIApplication sharedApplication] delegate];
+        //儲存後從新載入畫布
+        [slv save2File:kFILE_ANS filefolder:delegate.TestNumberString];
+        [self reloadDrawImage:delegate];
     }
 }
 
 -(void) viewDidDisappear:(BOOL)animated {
     [[CCDirector sharedDirector] purgeCachedData];
     self.view = nil;
+}
+
+-(void) reloadDrawImage:(Test3DAppDelegate*)del {
+    NSString  *path = [NSHomeDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"Documents/%@/Active3.png",del.TestNumberString]];
+    UIImage *image = [UIImage imageWithContentsOfFile:path];
+    if (image) {
+        [slv loadFromAlbumButtonClicked:image];
+    }
+    [path release];
 }
 
 - (void) initAct3t{
@@ -84,22 +98,19 @@
 }
 
 -(void) nextTeachImage {
-    ++backNum;
     if (teach.image) {
         teach.image = nil;
     }
-    if (backNum < 3) {
+    if (++backNum < 3) {
         NSString *path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"act3t%d",backNum] ofType:@"png"];
         [teach setImage:[UIImage imageWithContentsOfFile:path]];
         path = nil;
     }
     else {
         //最後一個教學圖離開時，要delay？
-        /*
         id ob = [self.view viewWithTag:5001];
         [ob removeFromSuperview];
-        [ob release];
-         */
+         
         [teach removeFromSuperview];
         [self initAct3t];
         teach.image = nil;
@@ -305,12 +316,6 @@
 {
     [slv drawButtonClicked];
     slv.lineColor = [UIColor whiteColor];
-}
-
--(IBAction)save2FileButtonClicked:(id)sender
-{
-    //[slv save2FileButtonClicked];
-    [slv save2File:kFILE_ANS];
 }
 
 -(IBAction)defaultButtonClicked:(id)sender

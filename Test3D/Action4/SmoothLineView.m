@@ -15,7 +15,7 @@
 #define DEFAULT_COLOR [UIColor blackColor]
 #define DEFAULT_WIDTH 4.0f
 #define DEFAULT_ALPHA 1.0f
-#define DEFAULT_WIDTH_ADD 10.0f
+#define DEFAULT_WIDTH_ADD 20.0f
 
 @interface SmoothLineView () 
 
@@ -139,8 +139,6 @@ CGPoint midPoint(CGPoint p1, CGPoint p2);
             CGContextStrokePath(context); 
 #endif
             [curImage release];
-
-            
         }
             break;
         case CLEAR:
@@ -281,67 +279,7 @@ CGPoint midPoint(CGPoint p1, CGPoint p2)
     
 }
 
-//UIPanGestureRecognizer will get bug. why?
-
-/*
-- (void)handleDrawing:(UIPanGestureRecognizer *)recognizer
-{
-    CGPoint point  = [recognizer locationInView:self];
-    
-    switch (recognizer.state) {
-        case UIGestureRecognizerStateBegan:
-        {
-            
-            previousPoint1 = point;
-            previousPoint2 = point;
-            currentPoint = point;
-            
-            break;
-        }
-        case UIGestureRecognizerStateChanged:
-        {
-            previousPoint2  = previousPoint1;
-            previousPoint1  = currentPoint;
-            currentPoint    = point;
-            
-            if(drawStep != ERASE) 
-                drawStep = DRAW;
-            [self calculateMinImageArea:previousPoint1 :previousPoint2 :currentPoint];
-            
-            break;
-        }
-        case UIGestureRecognizerStateEnded:
-        {
-            
-            
-            UIGraphicsBeginImageContext(self.bounds.size);
-            [self.layer renderInContext:UIGraphicsGetCurrentContext()];
-            curImage = UIGraphicsGetImageFromCurrentImageContext();
-            [curImage retain];
-            UIGraphicsEndImageContext();
-            
-            NSDictionary *lineInfo = [NSDictionary dictionaryWithObjectsAndKeys:curImage, @"IMAGE",
-                                      nil];
-            
-            [lineArray addObject:lineInfo];
-            
-            [curImage release];
- 
-            [self checkDrawStatus];
-            
-            break;
-        }
-            
-        case UIGestureRecognizerStateCancelled:
-            break;
-        default:
-            break;
-    }
-}
-*/
-
 #pragma mark Private Helper function
-
 
 - (void) calculateMinImageArea:(CGPoint)pp1 :(CGPoint)pp2 :(CGPoint)cp
 {
@@ -405,7 +343,7 @@ CGPoint midPoint(CGPoint p1, CGPoint p2)
 
 
 #pragma mark Button Handle
-//
+
 -(void)undoButtonClicked
 {
 #if PUSHTOFILE
@@ -494,7 +432,9 @@ CGPoint midPoint(CGPoint p1, CGPoint p2)
 
 -(void)save2File:(NSString*)fileName filefolder:(NSString*)foler{
     BOOL error;
-    
+    if (foler == NULL) {
+        foler = @"test";
+    }
     NSString  *pngPath = [NSHomeDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"Documents/%@/%@.png",foler,fileName]];
     UIGraphicsBeginImageContext(self.bounds.size);
     [self.layer renderInContext:UIGraphicsGetCurrentContext()];
@@ -626,9 +566,11 @@ CGPoint midPoint(CGPoint p1, CGPoint p2)
     if([bufferArray count]>0)
 #endif
     {
+        /*
         [delegate performSelectorOnMainThread:@selector(setRedoButtonEnable:)
 								   withObject:[NSNumber numberWithBool:YES]
 								waitUntilDone:NO];
+         */
         [delegate performSelectorOnMainThread:@selector(setClearButtonEnable:)
 								   withObject:[NSNumber numberWithBool:YES]
 								waitUntilDone:NO];
