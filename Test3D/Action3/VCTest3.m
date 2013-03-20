@@ -58,6 +58,7 @@
 -(void) viewDidDisappear:(BOOL)animated {
     [tCountDownTimer invalidate];
     [[CCDirector sharedDirector] stopAnimation];
+    //[director popScene];
     [[director openGLView] removeFromSuperview];
     [director end];
     [[CCDirector sharedDirector] purgeCachedData];
@@ -395,7 +396,6 @@
     [threeDLayer visit];
     [rtx end];
     UIImage *image2 = [rtx getUIImageFromBuffer];
-    [rtx release];
     
     UIImage *resultImg = [self addImage:image2 toImage:image1];
     image1 = nil;
@@ -405,11 +405,6 @@
     NSData *imageData = UIImagePNGRepresentation(resultImg);
     NSString  *pngPath = [NSHomeDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"Documents/%@/Active3.png",delegate.TestNumberString]];
     [imageData writeToFile:pngPath atomically:YES];
-    
-    //清除圖片
-    resultImg = nil;
-    //imageData = nil;
-    pngPath = nil;
 }
 
 -(IBAction)defaultButtonClicked:(id)sender

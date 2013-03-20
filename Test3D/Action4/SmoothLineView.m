@@ -438,6 +438,7 @@ CGPoint midPoint(CGPoint p1, CGPoint p2)
     NSString  *pngPath = [NSHomeDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"Documents/%@/%@.png",foler,fileName]];
     UIGraphicsBeginImageContext(self.bounds.size);
     [self.layer renderInContext:UIGraphicsGetCurrentContext()];
+    
     UIImage *saveImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     error = [UIImagePNGRepresentation(saveImage) writeToFile:pngPath atomically:YES];
