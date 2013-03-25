@@ -53,6 +53,9 @@
 }
 
 -(void) viewDidDisappear:(BOOL)animated {
+    if (tCountDownTimer) {
+        [tCountDownTimer invalidate];
+    }
     [[CCDirector sharedDirector] purgeCachedData];
     [[CCDirector sharedDirector] stopAnimation];
     [[director openGLView] removeFromSuperview];
@@ -80,11 +83,13 @@
     editState = TWO_D;
     [self checkEditState];
     
-    UIButton *skipButton = (UIButton*) [self.view viewWithTag: 2001];
-    [skipButton addTarget:self action:@selector(switchNextAction) forControlEvents:UIControlEventTouchUpInside];
-    if (skipButton == NULL) {
-        NSLog(@"button is null");
-    }
+#if DEMO
+    UIButton *skipButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [skipButton setFrame: CGRectMake(712, 5, 50, 44)];
+    [skipButton setTitle:@"開始" forState:UIControlStateNormal];
+    [skipButton addTarget:self action:@selector(timeIsUpHandle) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:skipButton];
+#endif
 }
 
 -(void) showTeachImage {
@@ -118,9 +123,48 @@
         [self initAct3t];
         teach.image = nil;
         [teach release];
+        
+        [self startAction];
     }
 }
+//*****到數計時
+-(void) startAction{    
+    iActionTime = 300;
+    tCountDownTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(setCoundDownLabel) userInfo:NULL repeats:YES];
+}
 
+
+-(void) setCoundDownLabel {
+    //NSLog(@"timer");
+    [ulCountDownTime setText:[NSString stringWithFormat:@"%02d:%02d",iActionTime/60,iActionTime%60]];
+    
+    if (iActionTime < 1) {
+        NSLog(@"timer remove");
+        [tCountDownTimer invalidate];
+        tCountDownTimer = nil;
+        [self timeIsUpHandle];
+    }
+    --iActionTime;
+}
+//***********
+//填寫完成，時間停止
+-(void) timeIsUpHandle{
+    UIAlertView *tellTimeStop = [[UIAlertView alloc] initWithTitle:@"操作練習結束" message:@"進入下活動三" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil];
+    tellTimeStop.tag = 1;
+    [tellTimeStop show];
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    switch (alertView.tag) {
+        case 1:
+            //結束
+            if(buttonIndex == 0) {
+                [self switchNextAction];
+            }
+            break;
+    }
+}
+//*****
 //進入活動三頁面
 -(void)switchNextAction{
     [director popScene];
@@ -144,7 +188,7 @@
                                     multiSampling:NO
                                   numberOfSamples:4];
     
-    [glView setMultipleTouchEnabled:YES];
+    [glView setMultipleTouchEnabled:NO];
     
     [director setOpenGLView:glView];
     
@@ -284,7 +328,9 @@
 #pragma mark Guesture Movement
 -(void) pinchGuestureHandler:(UIPinchGestureRecognizer*) guesture
 {
-    [threeDLayer scaleModel:guesture.scale];
+    if (!depthButton.isEnabled) {
+        [threeDLayer scaleModel:guesture.scale];
+    }
 }
 
 #pragma mark Button Click Event
@@ -320,20 +366,29 @@
 -(IBAction)whitePenButtonClicked:(id)sender
 {
     [slv drawButtonClicked];
-    slv.lineColor = [UIColor whiteColor];
+    slv.lineColor = [UIColor grayColor];
 }
 
 -(IBAction)defaultButtonClicked:(id)sender
 {
     [threeDLayer setEditMode:EMode3DTransfer];
+    [defaultButton setEnabled:NO];
+    [rotateButton setEnabled:YES];
+    [depthButton setEnabled:YES];
 }
 -(IBAction)rotateButtonClicked:(id)sender
 {
     [threeDLayer setEditMode:EMode3DRotate];
+    [defaultButton setEnabled:YES];
+    [rotateButton setEnabled:NO];
+    [depthButton setEnabled:YES];
 }
 -(IBAction)depthButtonClicked:(id)sender
 {
     [threeDLayer setEditMode:EMode3DZDepth];
+    [defaultButton setEnabled:YES];
+    [rotateButton setEnabled:YES];
+    [depthButton setEnabled:NO];
 }
 
 -(IBAction)switchEditStateButtonClicked:(id)sender

@@ -531,9 +531,11 @@ CGPoint midPoint(CGPoint p1, CGPoint p2)
     if([lineArray count]>0)
 #endif
     {
+        /*
         [delegate performSelectorOnMainThread:@selector(setUndoButtonEnable:)
 								   withObject:[NSNumber numberWithBool:YES]
 								waitUntilDone:NO];
+         */
         [delegate performSelectorOnMainThread:@selector(setClearButtonEnable:)
 								   withObject:[NSNumber numberWithBool:YES]
 								waitUntilDone:NO];
@@ -543,9 +545,11 @@ CGPoint midPoint(CGPoint p1, CGPoint p2)
     }
     else 
     {
+        /*
         [delegate performSelectorOnMainThread:@selector(setUndoButtonEnable:)
 								   withObject:[NSNumber numberWithBool:NO]
 								waitUntilDone:NO];
+         */
         [delegate performSelectorOnMainThread:@selector(setClearButtonEnable:)
 								   withObject:[NSNumber numberWithBool:NO]
 								waitUntilDone:NO];

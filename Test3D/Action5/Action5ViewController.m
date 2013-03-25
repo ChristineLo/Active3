@@ -58,7 +58,7 @@
 -(void)setQusetionImage{
     scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 430, 764, 400)];
     scrollView.contentSize = CGSizeMake(764, 800);
-    scrollView.pagingEnabled = YES;
+    //scrollView.pagingEnabled = YES;
     [self.view addSubview:scrollView];
     
     image = [UIImage imageNamed:@"ActionQuestion5_2.png"];

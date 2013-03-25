@@ -72,18 +72,19 @@
     [UploadBtn setTitle:@"資料上傳網路" forState:UIControlStateNormal];
     [self.view addSubview:UploadBtn];
     
-    ReturnBtn=[UIButton buttonWithType:UIButtonTypeRoundedRect];
-    ReturnBtn.frame = CGRectMake(270, 510, 180, 40);
-    [ReturnBtn setTitle:@"回到首頁" forState:UIControlStateNormal];
-    [self.view addSubview:ReturnBtn];
-    [ReturnBtn addTarget:self action:@selector(ReturnToCover:) forControlEvents:UIControlEventTouchUpInside];
-    
     giveupLabel = [[UILabel alloc]initWithFrame:CGRectMake(120, 350, 650, 40)];
     giveupLabel.font = [UIFont systemFontOfSize:25];
     giveupLabel.text = @"測驗到此結束，感謝你的填答!!!(未上傳成功)";
     [self.view addSubview:giveupLabel];
     [giveupLabel setHidden:YES];
 
+#if DEMO
+    ReturnBtn=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    ReturnBtn.frame = CGRectMake(270, 510, 180, 40);
+    [ReturnBtn setTitle:@"回到首頁" forState:UIControlStateNormal];
+    [self.view addSubview:ReturnBtn];
+    [ReturnBtn addTarget:self action:@selector(ReturnToCover:) forControlEvents:UIControlEventTouchUpInside];
+#endif
     
     }
 -(void)detectNetWork{

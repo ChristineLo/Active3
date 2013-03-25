@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Imagination Test.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>Test3D copy.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 		<key>Test3D.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -13,6 +23,16 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>84A1A42D166CF138002D4491</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B8E255BF170027BC00AA03F4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B8E255D9170027EA00AA03F4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -29,22 +29,22 @@
     [self.view addSubview:addTeachingWord.view];
     [self addChildViewController:addTeachingWord];
 #if DEMO
-    UIButton *skipButton = (UIButton*) [self.view viewWithTag: 2001];
+    UIButton *skipButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [skipButton setFrame: CGRectMake(712, 5, 50, 44)];
+    [skipButton setTitle:@"下一步" forState:UIControlStateNormal];
     [skipButton addTarget:self action:@selector(OkBtnAddToView) forControlEvents:UIControlEventTouchUpInside];
-    if (skipButton == NULL) {
-        NSLog(@"button is null");
-    }
-    
-#else
-    UIButton *skipButton = (UIButton*) [self.view viewWithTag: 2001];
-    [skipButton removeFromSuperview];
+    [self.view addSubview:skipButton];
 #endif
 }
 
 -(void) viewDidDisappear:(BOOL)animated {
     NSLog(@"action2 view disappear");
     image = nil;
-    [timer invalidate];
+    if (timer)
+    {
+        NSLog(@"disappear time invalidate");
+        [timer invalidate];
+    }
 }
 
 //按下後開始計時

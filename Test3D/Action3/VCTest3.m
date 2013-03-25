@@ -56,7 +56,11 @@
 }
 
 -(void) viewDidDisappear:(BOOL)animated {
-    [tCountDownTimer invalidate];
+    if (tCountDownTimer) {
+        NSLog(@"disabpper timer invalidate");
+        [tCountDownTimer invalidate];
+        tCountDownTimer = nil;
+    }
     [[CCDirector sharedDirector] stopAnimation];
     //[director popScene];
     [[director openGLView] removeFromSuperview];
@@ -80,11 +84,11 @@
     [self.view addSubview:addTeachingWord.view];
     [self addChildViewController:addTeachingWord];
 #if DEMO
-    UIButton *skipButton = (UIButton*) [self.view viewWithTag: 2001];
+    UIButton *skipButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [skipButton setFrame: CGRectMake(712, 5, 50, 44)];
+    [skipButton setTitle:@"下一步" forState:UIControlStateNormal];
     [skipButton addTarget:self action:@selector(timeIsUpHandle) forControlEvents:UIControlEventTouchUpInside];
-    if (skipButton == NULL) {
-        NSLog(@"button is null");
-    }
+    [self.view addSubview:skipButton];
 #endif
 }
 
@@ -120,9 +124,16 @@
     if (iActionTime == 10) {
         [ulCountDownTime setTextColor:[UIColor redColor]];
     }
+    else if (iActionTime == 60)
+    {
+        UIAlertView *tellTimeStop = [[UIAlertView alloc] initWithTitle:@"一分鐘提醒" message:@"標題要記得填喔！" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil];
+        [tellTimeStop show];
+    }
     else if (iActionTime < 1) {
         NSLog(@"timer remove");
         [tCountDownTimer invalidate];
+        tCountDownTimer = nil;
+        
         [self timeIsUpHandle];
     }
     --iActionTime;
@@ -176,7 +187,7 @@
                                     multiSampling:NO
                                   numberOfSamples:4];
     
-    [glView setMultipleTouchEnabled:YES];
+    [glView setMultipleTouchEnabled:NO];
     [glView setFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)];
     
     [director setOpenGLView:glView];
@@ -328,7 +339,9 @@
 #pragma mark Guesture Movement
 -(void) pinchGuestureHandler:(UIPinchGestureRecognizer*) guesture
 {
-    [threeDLayer scaleModel:guesture.scale];
+    if (!depthButton.isEnabled) {
+        [threeDLayer scaleModel:guesture.scale];
+    }
 }
 
 #pragma mark Button Click Event
@@ -364,7 +377,7 @@
 -(IBAction)whitePenButtonClicked:(id)sender
 {
     [slv drawButtonClicked];
-    slv.lineColor = [UIColor whiteColor];
+    slv.lineColor = [UIColor grayColor];
 }
 
 -(IBAction)save2FileButtonClicked:(id)sender
@@ -410,14 +423,23 @@
 -(IBAction)defaultButtonClicked:(id)sender
 {
     [threeDLayer setEditMode:EMode3DTransfer];
+    [defaultButton setEnabled:NO];
+    [rotateButton setEnabled:YES];
+    [depthButton setEnabled:YES];
 }
 -(IBAction)rotateButtonClicked:(id)sender
 {
     [threeDLayer setEditMode:EMode3DRotate];
+    [defaultButton setEnabled:YES];
+    [rotateButton setEnabled:NO];
+    [depthButton setEnabled:YES];
 }
 -(IBAction)depthButtonClicked:(id)sender
 {
     [threeDLayer setEditMode:EMode3DZDepth];
+    [defaultButton setEnabled:YES];
+    [rotateButton setEnabled:YES];
+    [depthButton setEnabled:NO];
 }
 
 -(IBAction)switchEditStateButtonClicked:(id)sender

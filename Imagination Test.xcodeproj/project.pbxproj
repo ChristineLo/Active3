@@ -244,6 +244,7 @@
 		B8D3C39F16B7F577007FF5F2 /* act3t1.png in Resources */ = {isa = PBXBuildFile; fileRef = B8D3C39C16B7F577007FF5F2 /* act3t1.png */; };
 		B8D3C3A016B7F577007FF5F2 /* act3t2.png in Resources */ = {isa = PBXBuildFile; fileRef = B8D3C39D16B7F577007FF5F2 /* act3t2.png */; };
 		B8D3C3A416B7FD7B007FF5F2 /* TeachingWord4.png in Resources */ = {isa = PBXBuildFile; fileRef = B8D3C3A216B7FD7B007FF5F2 /* TeachingWord4.png */; };
+		B8E256F3170030CD00AA03F4 /* Imagination Test-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B8E255C6170027BC00AA03F4 /* Imagination Test-Info.plist */; };
 		B8FF3F6216DB4429007E6B91 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8FF3F6116DB4429007E6B91 /* CFNetwork.framework */; };
 		B8FF3F6516DB7E0A007E6B91 /* PutController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8FF3F5F16DB43F1007E6B91 /* PutController.m */; };
 		B8FF3F6616DB7E12007E6B91 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B8FF3F6416DB4A45007E6B91 /* NetworkManager.m */; };
@@ -751,6 +752,16 @@
 		B8D3C39C16B7F577007FF5F2 /* act3t1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = act3t1.png; sourceTree = "<group>"; };
 		B8D3C39D16B7F577007FF5F2 /* act3t2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = act3t2.png; sourceTree = "<group>"; };
 		B8D3C3A216B7FD7B007FF5F2 /* TeachingWord4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TeachingWord4.png; sourceTree = "<group>"; };
+		B8E255C6170027BC00AA03F4 /* Imagination Test-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Imagination Test-Info.plist"; sourceTree = "<group>"; };
+		B8E255C8170027BC00AA03F4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B8E255CA170027BD00AA03F4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B8E255CC170027BD00AA03F4 /* Imagination Test-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Imagination Test-Prefix.pch"; sourceTree = "<group>"; };
+		B8E255CD170027BD00AA03F4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		B8E255CE170027BD00AA03F4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B8E255D0170027BD00AA03F4 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		B8E255D2170027BD00AA03F4 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		B8E255D4170027BD00AA03F4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		B8E256F0170027EC00AA03F4 /* Test3D copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Test3D copy-Info.plist"; path = "/Users/mac06/Dropbox/CreativeTest/Test3D tatol/Test3D copy-Info.plist"; sourceTree = "<absolute>"; };
 		B8FF3F5E16DB43F1007E6B91 /* PutController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PutController.h; sourceTree = "<group>"; };
 		B8FF3F5F16DB43F1007E6B91 /* PutController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PutController.m; sourceTree = "<group>"; };
 		B8FF3F6116DB4429007E6B91 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -847,8 +858,10 @@
 				B8C37D10169D904D007FB26A /* Action3 */,
 				B850B09F167B304C0064C7C9 /* Action4 */,
 				84A1A442166CF138002D4491 /* Test3D */,
+				B8E255C4170027BC00AA03F4 /* Imagination Test */,
 				84A1A431166CF138002D4491 /* Frameworks */,
 				84A1A42F166CF138002D4491 /* Products */,
+				B8E256F0170027EC00AA03F4 /* Test3D copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1464,6 +1477,7 @@
 		84A1A698166CF140002D4491 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				84A1A6AD166CF1F4002D4491 /* Storyboard.storyboard */,
 				84A1A699166CF140002D4491 /* Prefix.pch */,
 				84A1A69A166CF140002D4491 /* main.m */,
 			);
@@ -1481,7 +1495,6 @@
 				E86B57C616A54BAA008860D0 /* Radiobutton */,
 				84A1A69D166CF140002D4491 /* Test3DAppDelegate.h */,
 				84A1A69E166CF140002D4491 /* Test3DAppDelegate.m */,
-				84A1A6AD166CF1F4002D4491 /* Storyboard.storyboard */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1654,6 +1667,30 @@
 			path = teachImage;
 			sourceTree = SOURCE_ROOT;
 		};
+		B8E255C4170027BC00AA03F4 /* Imagination Test */ = {
+			isa = PBXGroup;
+			children = (
+				B8E255CD170027BD00AA03F4 /* AppDelegate.h */,
+				B8E255CE170027BD00AA03F4 /* AppDelegate.m */,
+				B8E255C5170027BC00AA03F4 /* Supporting Files */,
+			);
+			path = "Imagination Test";
+			sourceTree = "<group>";
+		};
+		B8E255C5170027BC00AA03F4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B8E255C6170027BC00AA03F4 /* Imagination Test-Info.plist */,
+				B8E255C7170027BC00AA03F4 /* InfoPlist.strings */,
+				B8E255CA170027BD00AA03F4 /* main.m */,
+				B8E255CC170027BD00AA03F4 /* Imagination Test-Prefix.pch */,
+				B8E255D0170027BD00AA03F4 /* Default.png */,
+				B8E255D2170027BD00AA03F4 /* Default@2x.png */,
+				B8E255D4170027BD00AA03F4 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		B8FF3F6016DB43F9007E6B91 /* FTP */ = {
 			isa = PBXGroup;
 			children = (
@@ -1794,7 +1831,7 @@
 			attributes = {
 				LastUpgradeCheck = 0450;
 			};
-			buildConfigurationList = 84A1A428166CF138002D4491 /* Build configuration list for PBXProject "Test3D" */;
+			buildConfigurationList = 84A1A428166CF138002D4491 /* Build configuration list for PBXProject "Imagination Test" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1857,6 +1894,7 @@
 				B801711E16F82FA400BBB993 /* action412.png in Resources */,
 				B801711F16F82FA400BBB993 /* action413.png in Resources */,
 				B801712016F82FA400BBB993 /* action414.png in Resources */,
+				B8E256F3170030CD00AA03F4 /* Imagination Test-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2091,6 +2129,17 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		B8E255C7170027BC00AA03F4 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B8E255C8170027BC00AA03F4 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		84A1A6A8166CF140002D4491 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -2170,7 +2219,7 @@
 				GCC_PREFIX_HEADER = Test3D/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = NO;
 				INFOPLIST_FILE = Test3D/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "0EE9DE6E-93D0-41F0-A886-8E819BFE9C8E";
@@ -2190,7 +2239,7 @@
 				GCC_PREFIX_HEADER = Test3D/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = NO;
 				INFOPLIST_FILE = Test3D/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "0EE9DE6E-93D0-41F0-A886-8E819BFE9C8E";
@@ -2203,7 +2252,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		84A1A428166CF138002D4491 /* Build configuration list for PBXProject "Test3D" */ = {
+		84A1A428166CF138002D4491 /* Build configuration list for PBXProject "Imagination Test" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				84A1A6A8166CF140002D4491 /* Debug */,

@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Test3D/Action4/VCTest4.m"
-         timestampString = "385377967.044716"
+         timestampString = "385889762.871449"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "240"
-         endingLineNumber = "240"
+         startingLineNumber = "248"
+         endingLineNumber = "248"
          landmarkName = "-setQuesImage:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -21,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Test3D/Action4/VCTest4.m"
-         timestampString = "385377967.044716"
+         timestampString = "385889762.871449"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "250"
-         endingLineNumber = "250"
+         startingLineNumber = "258"
+         endingLineNumber = "258"
          landmarkName = "-setQuesImage:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -60,11 +60,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Test3D/Action3/VCText3Tutorial.m"
-         timestampString = "385391396.845681"
+         timestampString = "385890183.239209"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "114"
-         endingLineNumber = "114"
+         startingLineNumber = "119"
+         endingLineNumber = "119"
          landmarkName = "-nextTeachImage"
          landmarkType = "5">
       </FileBreakpoint>
@@ -73,11 +73,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Test3D/Action3/VCText3Tutorial.m"
-         timestampString = "385391396.845681"
+         timestampString = "385884841.68183"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "64"
-         endingLineNumber = "64"
+         startingLineNumber = "67"
+         endingLineNumber = "67"
          landmarkName = "-reloadDrawImage:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -112,11 +112,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Test3D/Action3/VCTest3.m"
-         timestampString = "385467154.982186"
+         timestampString = "385890183.239209"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "382"
-         endingLineNumber = "382"
+         startingLineNumber = "395"
+         endingLineNumber = "395"
          landmarkName = "-save2FileButtonClicked:"
          landmarkType = "5">
       </FileBreakpoint>

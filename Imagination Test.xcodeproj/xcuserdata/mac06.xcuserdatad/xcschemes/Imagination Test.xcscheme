@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0450"
+   LastUpgradeVersion = "0460"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "84A1A42D166CF138002D4491"
-               BuildableName = "Test3D.app"
-               BlueprintName = "Test3D"
-               ReferencedContainer = "container:Test3D.xcodeproj">
+               BlueprintIdentifier = "B8E255D9170027EA00AA03F4"
+               BuildableName = "Test3D copy.app"
+               BlueprintName = "Imagination Test"
+               ReferencedContainer = "container:Imagination Test.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "84A1A42D166CF138002D4491"
-            BuildableName = "Test3D.app"
-            BlueprintName = "Test3D"
-            ReferencedContainer = "container:Test3D.xcodeproj">
+            BlueprintIdentifier = "B8E255D9170027EA00AA03F4"
+            BuildableName = "Test3D copy.app"
+            BlueprintName = "Imagination Test"
+            ReferencedContainer = "container:Imagination Test.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -51,10 +51,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "84A1A42D166CF138002D4491"
-            BuildableName = "Test3D.app"
-            BlueprintName = "Test3D"
-            ReferencedContainer = "container:Test3D.xcodeproj">
+            BlueprintIdentifier = "B8E255D9170027EA00AA03F4"
+            BuildableName = "Test3D copy.app"
+            BlueprintName = "Imagination Test"
+            ReferencedContainer = "container:Imagination Test.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -69,10 +69,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "84A1A42D166CF138002D4491"
-            BuildableName = "Test3D.app"
-            BlueprintName = "Test3D"
-            ReferencedContainer = "container:Test3D.xcodeproj">
+            BlueprintIdentifier = "B8E255D9170027EA00AA03F4"
+            BuildableName = "Test3D copy.app"
+            BlueprintName = "Imagination Test"
+            ReferencedContainer = "container:Imagination Test.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
