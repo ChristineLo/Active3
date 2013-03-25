@@ -252,12 +252,13 @@
 
 - (void) initButton
 {
+    /*
     undoButton = (UIGlossyButton*) [self.toolBar viewWithTag: 1001];
     [self setButtonAttrib:undoButton];
     
     redoButton = (UIGlossyButton*) [self.toolBar viewWithTag: 1002];
     [self setButtonAttrib:redoButton];
-    
+    */
     clearButton = (UIGlossyButton*) [self.toolBar viewWithTag: 1003];
     [self setButtonAttrib:clearButton];
     
@@ -274,7 +275,7 @@
     [whitePenButton setEnabled: YES];
     
     if (twoDButtons == NULL) {
-        twoDButtons = [[NSArray arrayWithObjects:undoButton, redoButton, clearButton, eraserButton, blackPenButton, whitePenButton, nil] retain];
+        twoDButtons = [[NSArray arrayWithObjects:clearButton, eraserButton, blackPenButton, whitePenButton, nil] retain];
     }
     
     defaultButton = (UIGlossyButton*) [self.toolBar viewWithTag: 1008];

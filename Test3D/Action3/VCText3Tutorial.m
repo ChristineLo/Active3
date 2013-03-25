@@ -239,12 +239,13 @@
 
 - (void) initButton
 {
+    /*
     undoButton = (UIGlossyButton*) [self.toolBar viewWithTag: 1001];
     [self setButtonAttrib:undoButton];
     
     redoButton = (UIGlossyButton*) [self.toolBar viewWithTag: 1002];
     [self setButtonAttrib:redoButton];
-    
+    */
     clearButton = (UIGlossyButton*) [self.toolBar viewWithTag: 1003];
     [self setButtonAttrib:clearButton];
     
@@ -261,7 +262,8 @@
     [whitePenButton setEnabled: YES];
     
     if (twoDButtons == NULL) {
-        twoDButtons = [[NSArray arrayWithObjects:undoButton, redoButton, clearButton, eraserButton, blackPenButton, whitePenButton, nil] retain];
+        twoDButtons = [[NSArray arrayWithObjects:clearButton, eraserButton, blackPenButton, whitePenButton, nil] retain];
+        NSLog(@"buttons:%d",twoDButtons.count);
     }
     
     defaultButton = (UIGlossyButton*) [self.toolBar viewWithTag: 1008];
@@ -275,6 +277,7 @@
     
     if (threeDButtons == NULL) {
         threeDButtons = [[NSArray arrayWithObjects:defaultButton, rotateButton, depthButton, nil] retain];
+        NSLog(@"buttons:%d",threeDButtons.count);
     }
     
     switchButton = (UIGlossyButton*) [self.toolBar viewWithTag: 1007];
@@ -294,6 +297,7 @@
 {
     for (UIGlossyButton *aButton in twoDButtons) {
         [aButton setHidden:!isEnable];
+        [aButton setEnabled:isEnable];
     }
 }
 
@@ -334,18 +338,6 @@
 }
 
 #pragma mark Button Click Event
-
--(IBAction)undoButtonClicked:(id)sender
-{
-    [slv undoButtonClicked];
-    
-}
-
--(IBAction)redoButtonClicked:(id)sender
-{
-    [slv redoButtonClicked];
-    
-}
 
 -(IBAction)clearButtonClicked:(id)sender
 {
