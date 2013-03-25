@@ -200,12 +200,13 @@
 
 - (void) initButton
 {
+    /*
     undoButton = (UIGlossyButton*) [self.view viewWithTag: 1001];
     [self setButtonAttrib:undoButton];
     
     redoButton = (UIGlossyButton*) [self.view viewWithTag: 1002];
     [self setButtonAttrib:redoButton];
-    
+    */
     clearButton = (UIGlossyButton*) [self.view viewWithTag: 1003];
     [self setButtonAttrib:clearButton];
     
