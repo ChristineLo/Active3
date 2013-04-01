@@ -172,9 +172,15 @@ enum {
     BOOL                    success;
     NSURL *                 url;
     
+    /*
     url = [[NetworkManager sharedInstance] smartURLForString:@"120.127.14.66"];
     self.usernameText = @"administrator";
     self.passwordText = @"1qa2ws+de3fr4";
+    */
+    
+    url = [[NetworkManager sharedInstance] smartURLForString:@"irating.ntue.edu.tw"];
+    self.usernameText = @"weiwen";
+    self.passwordText = @"0988523032";
     
     success = (url != nil);
     
@@ -183,7 +189,7 @@ enum {
         // URL that we're going to put to.
         
         url = CFBridgingRelease(
-            CFURLCreateCopyAppendingPathComponent(NULL, (__bridge CFURLRef) url, (__bridge CFStringRef) [NSString stringWithFormat:@"questionnaire/image/%@%@",body,[filePath lastPathComponent]], false)
+            CFURLCreateCopyAppendingPathComponent(NULL, (__bridge CFURLRef) url, (__bridge CFStringRef) [NSString stringWithFormat:@"image/%@%@",body,[filePath lastPathComponent]], false)
         );
         NSLog(@"%@",url);
         success = (url != nil);
