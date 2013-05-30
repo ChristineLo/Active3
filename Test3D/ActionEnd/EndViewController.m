@@ -161,6 +161,7 @@
                         if (success) {
                             [UploadArray addObject:body];
                             NSLog(@"已傳完檔案數 %i",[UploadArray count]);
+                            //[networkLabel setText:@"測驗者資料上傳完成"];
                             [up release];
                             [ActDicArray release];
                             [self sendToServer:NULL];

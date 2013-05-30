@@ -128,11 +128,16 @@
 
 -(void) cleanTextField {
     for (int i = 3001; i < 3005; ++i) {
-        UITextField *tmp = (UITextField*)[self.view viewWithTag:3001];
-        [tmp setClearButtonMode:UITextFieldViewModeWhileEditing];
+        UITextField *tmp = (UITextField*)[slv viewWithTag:i];
+        [tmp setText:@""];
+        tmp = NULL;
+        //[tmp setClearButtonMode:UITextFieldViewModeWhileEditing];
     }
 }
 
+/*
+ *計時相關設定
+ */
 //到數計時
 -(void) setCoundDownLabel {
     [ulCountDownTime setText:[NSString stringWithFormat:@"%02d:%02d",iActionTime/60,iActionTime%60]];
@@ -200,13 +205,6 @@
 
 - (void) initButton
 {
-    /*
-    undoButton = (UIGlossyButton*) [self.view viewWithTag: 1001];
-    [self setButtonAttrib:undoButton];
-    
-    redoButton = (UIGlossyButton*) [self.view viewWithTag: 1002];
-    [self setButtonAttrib:redoButton];
-    */
     clearButton = (UIGlossyButton*) [self.view viewWithTag: 1003];
     [self setButtonAttrib:clearButton];
     
@@ -234,6 +232,13 @@
     [imgNumLabel setText:[NSString stringWithFormat:@"第%02d頁",backNum]];
     [slv addSubview:imgNumLabel];
     
+    frontImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 768, 970)];
+    [frontImage setFrame:slv.frame];
+    [self.view addSubview:frontImage];
+    [self.view bringSubviewToFront:frontImage];
+    
+    //[slv addSubview:frontImage];
+    
     [self setQuesImage:backNum];
 }
 
@@ -242,6 +247,8 @@
     if (delegate.TestNumberString == NULL) {
         delegate.TestNumberString = @"test";
     }
+    
+    [slv clearsContextBeforeDrawing];
     
     [imgNumLabel setText:[NSString stringWithFormat:@"第%02d頁",backNum]];
     
@@ -264,10 +271,16 @@
     else
         [slv loadFromAlbumButtonClicked:imageOrigin];
     
+    if (frontImage.image) {
+        frontImage.image = nil;
+        [frontImage.image release];
+    }
+    
+    [frontImage setImage:imageOrigin];
+    
     (Num == 1) ? [self setPreButtonEnable:[NSNumber numberWithBool:NO]] : [self setPreButtonEnable:[NSNumber numberWithBool:YES]];
 
     (Num == 14) ? [self setNextButtonEnable:[NSNumber numberWithBool:NO]] : [self setNextButtonEnable:[NSNumber numberWithBool:YES]];
-
 }
 
 -(void) nextQuest {
@@ -386,7 +399,13 @@
 -(IBAction)clearButtonClicked:(id)sender
 {
     [slv clearButtonClicked];
-    [self setQuesImage:backNum];
+    NSString *originPath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"action4%02d",backNum] ofType:@"png"];
+    if (imageOrigin) {
+        imageOrigin = nil;
+        [imageOrigin release];
+    }
+    imageOrigin = [UIImage imageWithContentsOfFile:originPath];
+    [slv loadFromAlbumButtonClicked:imageOrigin];
 }
 
 -(IBAction)eraserButtonClicked:(id)sender
@@ -398,8 +417,18 @@
 -(IBAction)save2FileButtonClicked:(id)sender
 {
     //[slv save2FileButtonClicked];
+    
+    UIImageView *viewtosave = [[UIImageView alloc] initWithImage:frontImage.image];
+    [viewtosave setFrame:CGRectMake(0, 0, 768, 970)];
+    [slv addSubview:viewtosave];
+     
     Test3DAppDelegate *delegate = (Test3DAppDelegate*)[[UIApplication sharedApplication] delegate];
     [slv save2File:kFILE_ANS filefolder:delegate.TestNumberString];
+    
+    [viewtosave removeFromSuperview];
+    viewtosave = nil;
+    [viewtosave release];
+    
 }
 
 -(IBAction)save2AlbumButtonClicked:(id)sender

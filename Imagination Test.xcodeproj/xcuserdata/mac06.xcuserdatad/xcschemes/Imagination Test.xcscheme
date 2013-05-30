@@ -14,8 +14,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B8E255D9170027EA00AA03F4"
-               BuildableName = "Test3D copy.app"
+               BlueprintIdentifier = "84BEC9B61712561500E0E512"
+               BuildableName = "ImaginationTest.app"
                BlueprintName = "Imagination Test"
                ReferencedContainer = "container:Imagination Test.xcodeproj">
             </BuildableReference>
@@ -32,8 +32,8 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B8E255D9170027EA00AA03F4"
-            BuildableName = "Test3D copy.app"
+            BlueprintIdentifier = "84BEC9B61712561500E0E512"
+            BuildableName = "ImaginationTest.app"
             BlueprintName = "Imagination Test"
             ReferencedContainer = "container:Imagination Test.xcodeproj">
          </BuildableReference>
@@ -51,8 +51,8 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B8E255D9170027EA00AA03F4"
-            BuildableName = "Test3D copy.app"
+            BlueprintIdentifier = "84BEC9B61712561500E0E512"
+            BuildableName = "ImaginationTest.app"
             BlueprintName = "Imagination Test"
             ReferencedContainer = "container:Imagination Test.xcodeproj">
          </BuildableReference>
@@ -69,8 +69,8 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B8E255D9170027EA00AA03F4"
-            BuildableName = "Test3D copy.app"
+            BlueprintIdentifier = "84BEC9B61712561500E0E512"
+            BuildableName = "ImaginationTest.app"
             BlueprintName = "Imagination Test"
             ReferencedContainer = "container:Imagination Test.xcodeproj">
          </BuildableReference>
@@ -81,6 +81,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
+      customArchiveName = "origin"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

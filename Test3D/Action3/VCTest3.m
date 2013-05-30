@@ -141,10 +141,17 @@
 
 //填寫完成，時間停止
 -(void) timeIsUpHandle{
-    
-    UIAlertView *tellTimeStop = [[UIAlertView alloc] initWithTitle:@"活動三" message:@"時間到，停止作答!!\n進入下一活動" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil];
-    tellTimeStop.tag = 1;
-    [tellTimeStop show];
+    if ([title.text isEqual:@""]) {
+        UIAlertView *tellTimeStop = [[UIAlertView alloc] initWithTitle:@"時間到！" message:@"請在下方輸入標題。" delegate:self cancelButtonTitle:@"確定" otherButtonTitles:nil];
+        [tellTimeStop setAlertViewStyle:UIAlertViewStylePlainTextInput];
+        [tellTimeStop setTag:2];
+        [tellTimeStop show];
+        
+    } else {
+        UIAlertView *tellTimeStop = [[UIAlertView alloc] initWithTitle:@"活動三" message:@"時間到，停止作答!!\n進入下一活動" delegate:self cancelButtonTitle:@"確定" otherButtonTitles:nil];
+        tellTimeStop.tag = 1;
+        [tellTimeStop show];
+    }
 }
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
@@ -159,6 +166,13 @@
             if(buttonIndex == 0) {
                     [self save2FileButtonClicked:NULL];
                     [self switchNextAction];
+            }
+            break;
+        case 2:
+            if (buttonIndex == 0) {
+                [title setText:[alertView textFieldAtIndex:0].text];
+                [self save2FileButtonClicked:NULL];
+                [self switchNextAction];
             }
             break;
     }
@@ -215,18 +229,18 @@
     
     [smallView addSubview:slv];
     
-    UILabel *lable = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, 100, 40)];
+    UILabel *lable = [[UILabel alloc] initWithFrame:CGRectMake(20, 70, 100, 40)];
     [lable setBackgroundColor:[UIColor clearColor]];
     [lable setFont:[UIFont fontWithName:@"ArialMT" size:30]];
     [lable setTextColor:[UIColor blackColor]];
     [lable setText:@"標題："];
-    [smallView addSubview:lable];
+    [slv addSubview:lable];
     
-    UITextView *title = [[UITextView alloc] initWithFrame:CGRectMake(120, 20, 600, 40)];
+    title = [[UITextView alloc] initWithFrame:CGRectMake(120, 70, 600, 40)];
     [title setBackgroundColor:[UIColor colorWithRed:0.9 green:0.9 blue:200/255 alpha:0.1]];
     //[title setBorderStyle:UITextBorderStyleBezel];
     [title setFont:[UIFont fontWithName:@"ArialMT" size:15]];
-    [smallView addSubview:title];
+    [slv addSubview:title];
     
     self.curColor = [UIColor blackColor];
 }

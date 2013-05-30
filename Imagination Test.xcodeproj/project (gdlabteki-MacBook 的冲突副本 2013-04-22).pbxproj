@@ -1134,6 +1134,7 @@
 		84A1A423166CF138002D4491 = {
 			isa = PBXGroup;
 			children = (
+				B8FF3F6016DB43F9007E6B91 /* FTP */,
 				B84B81BF16B8EF48001070E0 /* icon-114.png */,
 				B84B81BD16B8EF1E001070E0 /* icon-57.png */,
 				B8D3C39816B7D8CD007FF5F2 /* icon.png */,
@@ -1989,7 +1990,6 @@
 				B8FF3F5F16DB43F1007E6B91 /* PutController.m */,
 			);
 			name = FTP;
-			path = ../..;
 			sourceTree = "<group>";
 		};
 		E86B57AB16A54BAA008860D0 /* JSON */ = {
@@ -2077,7 +2077,6 @@
 		E86B584516A55FCE008860D0 /* ActionEnd */ = {
 			isa = PBXGroup;
 			children = (
-				B8FF3F6016DB43F9007E6B91 /* FTP */,
 				E86B584616A55FCE008860D0 /* EndViewController.h */,
 				E86B584716A55FCE008860D0 /* EndViewController.m */,
 			);
@@ -2729,7 +2728,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: yating lo (T3GD3KLT45)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: yating lo (J5JSG92U29)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -2747,13 +2746,13 @@
 				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-all_load",
 					"-ObjC",
 				);
-				PROVISIONING_PROFILE = "0EE9DE6E-93D0-41F0-A886-8E819BFE9C8E";
+				PROVISIONING_PROFILE = "3A0B274C-A1C4-4E46-990B-B5BA85B4C7F4";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				STRIP_INSTALLED_PRODUCT = NO;
@@ -2766,7 +2765,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: National Taipei University of Education";
+				CODE_SIGN_IDENTITY = "iPhone Developer: yating lo (J5JSG92U29)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREPROCESSOR_DEFINITIONS = NDEBUG;
@@ -2776,14 +2775,14 @@
 				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-all_load",
 					"-ObjC",
 				);
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "3A0B274C-A1C4-4E46-990B-B5BA85B4C7F4";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2845,12 +2844,12 @@
 				GCC_PREFIX_HEADER = Test3D/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = NO;
 				INFOPLIST_FILE = "Test3D copy2-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = ImaginationTest;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				TARGETED_DEVICE_FAMILY = 2;
+				PROVISIONING_PROFILE = "2CDA68B0-1839-4DCC-8A1E-2DD69A510D90";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2CDA68B0-1839-4DCC-8A1E-2DD69A510D90";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2866,12 +2865,12 @@
 				GCC_PREFIX_HEADER = Test3D/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = NO;
 				INFOPLIST_FILE = "Test3D copy2-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = ImaginationTest;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				TARGETED_DEVICE_FAMILY = 2;
+				PROVISIONING_PROFILE = "2CDA68B0-1839-4DCC-8A1E-2DD69A510D90";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2CDA68B0-1839-4DCC-8A1E-2DD69A510D90";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};

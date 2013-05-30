@@ -25,8 +25,7 @@
     
     #pragma mark 繪圖view
     SmoothLineView *slv;
-    
-    UIImageView *backImage;
+    UIImageView *frontImage;
     int backNum;
     
     UIPopoverController* activePopover;

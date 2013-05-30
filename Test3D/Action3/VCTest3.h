@@ -28,7 +28,9 @@ enum
 #define COLOR_BD [UIColor colorWithRed:70.0f/255.0f green:105.0f/255.0f blue:192.0f/255.0f alpha:1.0f]
 #define COLOR_BS [UIColor redColor]
 
-@interface VCTest3 : UIViewController<UIPopoverControllerDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate, addTeachWordDelegate>
+@interface VCTest3 : UIViewController<UIPopoverControllerDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,
+UIAlertViewDelegate,
+addTeachWordDelegate>
 {
     int editState;
     NSArray *twoDButtons;
@@ -43,6 +45,7 @@ enum
     SmoothLineView *slv;
     UIImageView *backImage;
     int backNum;
+    UITextView *title;
     
 #pragma mark 3DView
     CCDirector *director;
