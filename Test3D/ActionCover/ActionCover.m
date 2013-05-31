@@ -49,8 +49,9 @@
     _dic = [[NSMutableDictionary alloc] initWithCapacity:16];
     delegate = (Test3DAppDelegate*)[[UIApplication sharedApplication] delegate];
     
-	
-    
+	//測驗日期顯示
+    [df setDateFormat:(NSString*) @"yyyy-MM-dd "];
+    _TestDay.text =[df stringFromDate:[NSDate date]];
 }
 
 - (void)didReceiveMemoryWarning

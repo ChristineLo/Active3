@@ -188,7 +188,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="封面個人資料2.png" id="5Ox-Pt-uCk">
                                 <rect key="frame" x="83" y="36" width="598" height="312"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="TUF-dT-98Q">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="TUF-dT-98Q">
                                 <rect key="frame" x="672" y="81" width="76" height="31"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="今日日期">

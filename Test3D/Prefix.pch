@@ -14,4 +14,4 @@
 #import <QuartzCore/QuartzCore.h>
 #endif
 
-#define DEMO 1
+#define DEMO 0
